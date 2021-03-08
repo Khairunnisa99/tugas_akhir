@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableBab extends Migration
+class CreateProkertodoc extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateTableBab extends Migration
      */
     public function up()
     {
-        Schema::create('table_bab', function (Blueprint $table) {
-            $table->bigIncrements('idBab');
-            $table->string('nomorBab');
-            $table->text('kodeBab');
-            $table->text('namaBab');
-            
-            $table->timestamps();
+        Schema::create('prokertodoc', function (Blueprint $table) {
+            $table->bigIncrements('idprokertodoc');
+            $table->bigInteger('dokumen_idDokumen');
+            $table->bigInteger('pelaksanaanprogram_idjpelaksanaanprogram');
         });
     }
 
@@ -30,6 +27,6 @@ class CreateTableBab extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_babempat');
+        Schema::dropIfExists('prokertodoc');
     }
 }
