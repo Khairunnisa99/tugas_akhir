@@ -1,5 +1,7 @@
 <?php
 
+
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,50 +28,56 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dokumen', 'DokumenController@index')->name('dokumen.index');
-    Route::get('/dokumen/create', 'DokumenController@create');
-Route::get('/dokumen/edit/{dokumen}', 'DokumenController@edit');
-Route::patch('/dokumen/{dokumen}', 'DokumenController@update')->name('dokumen.update');
-Route::delete('/dokumen/{dokumen}','DokumenController@destroy');
- 
-//Rapat
-Route::resource('rapat','RapatController');
-Route::get('/rapat', 'RapatController@index')->name('rapat.index');
-Route::get('/rapat/create', 'RapatController@create');
 
-//Klinik
-Route::resource('klinik','KlinikController');
-Route::get('/klinik', 'KlinikController@index')->name('klinik.index');
-Route::get('/klinik/create', 'KlinikController@create');
-Route::get('/klinik/edit/{klinik}', 'KlinikController@edit');
-Route::patch('/klinik/{klinik}', 'KlinikController@update')->name('klinik.update');
+    Route::resource('dokumen', 'DokumenController');
+    //     Route::get('/dokumen', 'DokumenController@index')->name('dokumen.index');
+    //     Route::get('/dokumen/create', 'DokumenController@create');
+    // Route::get('/dokumen/edit/{dokumen}', 'DokumenController@edit');
+    // Route::patch('/dokumen/{dokumen}', 'DokumenController@update')->name('dokumen.update');
+    // Route::delete('/dokumen/{dokumen}','DokumenController@destroy');
 
-//Bab
-Route::get('/bab', 'BabController@index')->name('bab.index');
+    //Rapat
+    Route::resource('rapat', 'RapatController');
+    // Route::get('/rapat', 'RapatController@index')->name('rapat.index');
+    // Route::get('/rapat/create', 'RapatController@create');
 
-//Babsatu
-Route::get('/babsatu', 'BabsatuController@index')->name('babsatu.index');
-Route::get('/babsatu/create', 'BabsatuController@create');
+    //Klinik
+    Route::resource('klinik', 'KlinikController');
+    // Route::get('/klinik', 'KlinikController@index')->name('klinik.index');
+    // Route::get('/klinik/create', 'KlinikController@create');
+    // Route::get('/klinik/edit/{klinik}', 'KlinikController@edit');
+    // Route::patch('/klinik/{klinik}', 'KlinikController@update')->name('klinik.update');
 
-//Babdua
-Route::get('/babdua', 'BabduaController@index')->name('babdua.index');
-Route::get('/babdua/create', 'BabduaController@create');
+    //Bab
+    Route::resource('/bab', 'Admin\BabController');
 
-//Babtiga
-Route::get('/babtiga','BabtigaController@index')->name('babtiga.index');
-Route::get('/babtiga/create', 'BabtigaController@create');
+    //Babsatu
 
-//Babempat
-Route::get('/babempat', 'BabempatController@index')->name('babempat.index');
-Route::get('/babempat/create', 'BabempatController@create');
+    Route::resource('/bab_satu', 'Admin\SubSubBabController');
+    // Route::resource('/bab_satu', 'BabsatuController');
+    // Route::get('/babsatu', 'BabsatuController@index')->name('babsatu.index');
+    // Route::get('/babsatu/create', 'BabsatuController@create');
 
-//PK
-Route::get('/programkerja', 'ProgramkerjaController@index')->name('programkerja.index');
-Route::get('/programkerja/create', 'ProgramkerjaController@create');
+    //Babdua
+    Route::resource('/bab_dua', 'Admin\SubBabDuaController');
+    // Route::get('/babdua', 'BabduaController@index')->name('babdua.index');
+    // Route::get('/babdua/create', 'BabduaController@create');
 
+    //Babtiga
+    Route::resource('/bab_tiga', 'Admin\SubBabTigaController');
+    // Route::get('/babtiga', 'BabtigaController@index')->name('babtiga.index');
+    // Route::get('/babtiga/create', 'BabtigaController@create');
+
+    //Babempat
+    Route::resource('/bab_empat', 'Admin\SubBabEmpatController');
+    // Route::get('/babempat', 'BabempatController@index')->name('babempat.index');
+    // Route::get('/babempat/create', 'BabempatController@create');
+
+
+    //standar
+    Route::resource('/standar', 'Admin\SubBabController');
+
+    //PK
+    Route::get('/programkerja', 'ProgramkerjaController@index')->name('programkerja.index');
+    Route::get('/programkerja/create', 'ProgramkerjaController@create');
 });
-
-
-
-
-

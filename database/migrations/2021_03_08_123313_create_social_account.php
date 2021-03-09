@@ -20,9 +20,9 @@ class CreateSocialAccount extends Migration
             $table->string('client_id');
             $table->text('data');
             $table->string('code');
-            $table->timestamps();
             $table->string('email');
             $table->string('username');
+            $table->timestamps();
 
         });
     }

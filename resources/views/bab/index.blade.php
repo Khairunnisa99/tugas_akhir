@@ -2,51 +2,59 @@
 @push('customcss')
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
 @endpush
-  @section('title','Dahboard')
+  @section('title','Bab')
   @section('page-title','Home')
   @section('content')
-  <a href="/bab/create" class="btn btn-primary my-3">Tambah Data</a>
   <!-- Default box -->
-  
-  <table class="table">
-  
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col"></th>
-          
-          <th scope="col">Nomor Bab</th>
-          <th scope="col">Kode Bab</th>
-          <th scope="col">Nama Bab</th>
-          
-         
-        </tr>
-      </thead>
-  <tbody>
-  <?php $no = 0;?>
-    @foreach($bab as $bb)
-    <?php $no++ ;?>
-    <tr>
-    <td>{{ ($bab ->currentpage()-1) * $bab ->perpage() + $loop->index + 1 }}</td>
-        <td>{{ $bb->nomorBab }}</td>
-        <td>{{ $bb->kodeBab }}</td>
-        <td>{{ $bb->namaBab }}</td>
-        
-        <td>
-            <a href="/bab/edit/{{$bb->idBab}}" class="badge badge-success">Edit</a>
-            <a href="" class="badge badge-danger">Upload</a>
-            <form action="{{url ('bab/' .$bb->id)}}" method="post" class="d-inline" onsubmit="return confirm('Yakin dihapus?')">
-                        @method('delete')
-                        @csrf
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-            <!--<a href="" class="badge badge-danger">Delete</a>-->
-             
-                     
-        </td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
+   <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <a href="{{ route('bab.create') }}" class="btn btn-primary my-3">Tambah Data</a>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+
+                <table class="table table-bordered">
+                
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nomor Bab</th>
+                        <th scope="col">Kode Bab</th>
+                        <th scope="col">Nama Bab</th>
+                        <th scope="col">Aksi</th>
+                        
+                      
+                      </tr>
+                    </thead>
+                <tbody>
+                <?php $no = 0;?>
+                  @foreach($babAkreditasi as $bb)
+                  <?php $no++ ;?>
+                        <tr>
+                            <td>{{ ($babAkreditasi ->currentpage()-1) * $babAkreditasi ->perpage() + $loop->index + 1 }}</td>
+                                <td>{{ $bb->NomorBab }}</td>
+                                <td>{{ $bb->KodeBab }}</td>
+                                <td>{{ $bb->NamaBab }}</td>
+                                
+                                <td>
+                                  <form action="{{ route('bab.destroy', $bb->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="{{ route('bab.edit', $bb->id) }}" class="btn btn-info">Edit</a>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
+                                  </form>
+                                </td>
+                          </tr>
+              @endforeach
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 

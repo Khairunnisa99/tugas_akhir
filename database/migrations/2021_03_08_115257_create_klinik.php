@@ -14,12 +14,14 @@ class CreateKlinik extends Migration
     public function up()
     {
         Schema::create('klinik', function (Blueprint $table) {
-            $table->bigIncrements('idklinik');
+            $table->bigIncrements('id');
             $table->string('namaKlinik');
             $table->text('alamatKlinik');
             $table->string('webKlinik');
             $table->string('telponKlinik');
             $table->string('logo');
+            $table->timestamps();
+
 
         });
     }

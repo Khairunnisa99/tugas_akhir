@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="{{ asset ('dist/css/skins/_all-skins.min.css')}}">
 
 </head>
-<body class="hold-transition skin-purple sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -40,7 +40,7 @@
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{Auth::user()->name}}</span>
             </a>
             <ul class="dropdown-menu">
@@ -83,53 +83,92 @@
 
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
+            <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+        <li class="treeview {{ set_active([
+          'bab_satu.index','bab_satu.create', 'bab_satu.edit',
+          'bab_dua.index','bab_dua.create', 'bab_dua.edit', 
+          'bab_tiga.index','bab_tiga.create', 'bab_tiga.edit', 
+          'bab_empat.index','bab_empat.create', 'bab_empat.edit',
+          'bab.index', 'bab.create', 'bab.edit', 'standar.index', 'standar.create', 'standar.edit',
+          ]) }}">
+          <a href="#">
+            <i class="fa fa-bookmark"></i>
+            <span>Akreditasi</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li class="{{ set_active(['bab_satu.index','bab_satu.create', 'bab_satu.edit']) }}"><a href="{{route('bab_satu.index')}}">BAB 1</a></li>
+              <li class="{{ set_active(['bab_dua.index','bab_dua.create', 'bab_dua.edit']) }}"><a href="{{route('bab_dua.index')}}">BAB 2</a></li>
+              <li class="{{ set_active(['bab_tiga.index','bab_tiga.create', 'bab_tiga.edit']) }}"><a href="{{route('bab_tiga.index')}}">BAB 3</a></li>
+              <li class="{{ set_active(['bab_empat.index','bab_empat.create', 'bab_empat.edit']) }}"><a href="{{route('bab_empat.index')}}">BAB 4</a></li>
+              <li class="treeview {{ set_active([
+                'bab.index','bab.create', 'bab.edit','standar.index', 'standar.create', 'standar.edit']) }}">
+                <a href="#">
+                  <i class="fa fa-bookmark"></i>
+                  <span>Struktur Akreditasi</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ set_active(['bab.index', 'bab.create', 'bab.edit']) }}"><a href="{{ route('bab.index') }}">BAB </a></li>
+                    <li class="{{ set_active(['standar.index', 'standar.create', 'standar.edit']) }}"><a href="{{ route('standar.index') }}">Standart</a></li>
+                    <li><a href="#">Kriteria</a></li>
+                    <li><a href="#">Elemen</a></li>
+                    <li><a href="#">Periode Akreditasi</a></li>
+                </ul>
+              </li>
+          </ul>
+        </li>
         <li class="treeview">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-pencil"></i>Akreditasi <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{route('babsatu.index')}}">BAB 1</a></li>
-            <li><a href="{{route('babdua.index')}}">BAB 2</a></li>
-            <li><a href="{{route('babtiga.index')}}">BAB 3</a></li>
-            <li><a href="{{route('babempat.index')}}">BAB 4</a></li>
-          </ul>
-          <ul>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-pencil"></i>Struktur Akreditasi <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-            <li><a href="{{route('bab.index')}}">BAB </a></li>
-            <li><a href="#">Standar</a></li>
-            <li><a href="#">Kriteria</a></li>
-            <li><a href="#">Elemen</a></li>
-            <li><a href="#">Periode Akreditasi</a></li>
-            </ul></li>
-        </ul>
-        </li>
-            <li><a href="{{route('dokumen.index')}}"><i class="fa fa-pencil"></i>Dokumen</a></li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-pencil"></i>Program Kerja <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{route('programkerja.index')}}">Program Kerja</a></li>
-            <li><a href="#">Pelaksanaan</a></li>
-     </ul>
-     <ul>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-pencil"></i>Data Proker <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-            <li><a href="#">Periode Program Kerja</a></li>
-            <li><a href="#">Tipe Program Kerja</a></li>
-            <li><a href="#">Status Program Kerja</a></li>
-            <li><a href="#">Tipe Pelaksanaan</a></li>
-            <li><a href="#">Status Pelaksanaan</a></li>
-            </ul></li>
-
-          </ul>
-        </li>
-            <li><a href="{{route('rapat.index')}}"><i class="fa fa-pencil"></i>Rapat</a></li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-pencil"></i>User <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Profile Setting</a></li>
-            <li><a href="#">User Admin</a></li>
-          </ul>
-        </li>
-            <li><a href="{{route('klinik.index')}}"><i class="fa fa-pencil"></i>Klinik</a></li>
+                <a href="#">
+                  <i class="fa fa-cogs"></i>
+                  <span>Program Kerja</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#">Program Kerja </a></li>
+                    <li><a href="#">Pelaksanaan</a></li>
+                    <li class="active treeview">
+                    <a href="#">
+                      <i class="fa fa-cogs"></i>
+                      <span>Data Proker</span>
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="#">Periode Program Kerja</a></li>
+                        <li><a href="#">Tipe Program Kerja</a></li>
+                        <li><a href="#">Status Program Kerja</a></li>
+                        <li><a href="#">Tipe Pelaksanaan</a></li>
+                        <li><a href="#">Status Pelaksanaan</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="{{ set_active('dokumen.index') }}"><a href="{{route('dokumen.index')}}"><i class="fa fa-file" aria-hidden="true"></i> Dokumen</a></li>
+              <li class="{{ set_active('rapat.index') }}"><a href="#"><i class="fa fa-wechat"></i>Rapat</a></li>
+              <li class="treeview">
+                    <a href="#">
+                      <i class="fa fa-users"></i>
+                      <span>Users</span>
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Profile Setting</a></li>
+                        <li><a href="#">User Admin</a></li>
+  
+                    </ul>
+              </li>
+            <li><a href="{{route('klinik.index')}}"><i class="fa fa-hospital-o"></i>Klinik</a></li>
         </li>
       </ul>
     </section>
@@ -157,6 +196,7 @@
     </div>
     <strong> <a href="#">Laravel Blog</a></strong>
   </footer>
+</div>
 <script src="{{ asset ('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ asset ('bootstrap/js/bootstrap.min.js')}}"></script>
@@ -168,5 +208,19 @@
 <script src="{{ asset ('dist/js/app.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset ('dist/js/demo.js')}}"></script>
+<script>
+  /** add active class and stay opened when selected */
+var url = window.location;
+
+// for sidebar menu entirely but not cover treeview
+$('ul.nav-sidebar a').filter(function() {
+    return this.href == url;
+}).addClass('active');
+
+// for treeview
+$('ul.nav-treeview a').filter(function() {
+    return this.href == url;
+}).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
+</script>
 </body>
 </html>

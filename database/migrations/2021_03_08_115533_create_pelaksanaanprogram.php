@@ -14,7 +14,7 @@ class CreatePelaksanaanprogram extends Migration
     public function up()
     {
         Schema::create('pelaksanaanprogram', function (Blueprint $table) {
-            $table->bigIncrements('idjpelaksanaanprogram');
+            $table->bigIncrements('id');
             $table->bigInteger('programkerja_idprogramkerja');
             $table->bigInteger('typepelaksanaan_idtypepelaksanaan');
             $table->string('NamaPelaksanaan');
@@ -23,8 +23,6 @@ class CreatePelaksanaanprogram extends Migration
             $table->text('KeteranganPelaksanaan');
             $table->bigInteger('statuspelaksanaan_idstatuspelaksanaan');
             $table->timestamps();
-            $table->string('created_by');
-            $table->string('updated_by');
             $table->bigInteger('lock');
 
         });

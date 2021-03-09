@@ -14,7 +14,7 @@ class CreateDokumen extends Migration
     public function up()
     {
         Schema::create('dokumen', function (Blueprint $table) {
-            $table->bigIncrements('idDokumen');
+            $table->bigIncrements('id');
             $table->string('namaDokumen');
             $table->text('keterangan');
             $table->timestamps();

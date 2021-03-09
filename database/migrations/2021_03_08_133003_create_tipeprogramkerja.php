@@ -14,9 +14,11 @@ class CreateTipeprogramkerja extends Migration
     public function up()
     {
         Schema::create('tipeprogramkerja', function (Blueprint $table) {
-            $table->bigIncrements('idtipeprogramkerja');
+            $table->bigIncrements('id');
             $table->string('tipeprogram');
             $table->text('keterangantipe');
+            $table->timestamps();
+
         });
     }
 

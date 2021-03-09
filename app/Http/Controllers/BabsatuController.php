@@ -24,6 +24,7 @@ class BabsatuController extends Controller
      */
     public function create()
     {
+        
         return view('babsatu.create');
     }
 

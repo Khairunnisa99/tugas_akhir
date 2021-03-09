@@ -14,16 +14,15 @@ class CreateSubsubbab extends Migration
     public function up()
     {
         Schema::create('subsubbab', function (Blueprint $table) {
-            $table->bigIncrements('idSubSubBab');
-            $table->bigInteger('SubBab_idSubBab');
-            $table->string('NomerKriteria');
-            $table->string('MaksudDanTujuan');
-            $table->bigInteger('Skor');;
-            $table->bigInteger('periodeakreditasi_idperiodeakreditasi');
-            $table->bigInteger('lock');
+            $table->bigIncrements('id');
+            $table->bigInteger('id_subbab')->unsigned();
+            $table->string('NomerKriteria')->nullable();
+            $table->string('namaKriteria')->nullable();
+            $table->string('MaksudDanTujuan')->nullable();
+            $table->bigInteger('Skor')->nullable();
+            $table->bigInteger('periodeakreditasi_idperiodeakreditasi')->nullable();
+            $table->bigInteger('lock')->nullable();
             $table->timestamps();
-            $table->string('created_by');
-            $table->string('updated_by');
         });
     }
 

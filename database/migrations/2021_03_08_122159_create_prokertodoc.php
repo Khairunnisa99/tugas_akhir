@@ -14,9 +14,11 @@ class CreateProkertodoc extends Migration
     public function up()
     {
         Schema::create('prokertodoc', function (Blueprint $table) {
-            $table->bigIncrements('idprokertodoc');
+            $table->bigIncrements('id');
             $table->bigInteger('dokumen_idDokumen');
             $table->bigInteger('pelaksanaanprogram_idjpelaksanaanprogram');
+            $table->timestamps();
+
         });
     }
 

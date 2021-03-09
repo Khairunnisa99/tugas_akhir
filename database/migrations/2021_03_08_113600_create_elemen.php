@@ -14,7 +14,7 @@ class CreateElemen extends Migration
     public function up()
     {
         Schema::create('elemen', function (Blueprint $table) {
-            $table->bigIncrements('idElemen');
+            $table->bigIncrements('id');
             $table->bigInteger('SubSubBab_idSubSubBab');
             $table->string('NoElemen');
             $table->text('ElemenPenilaian');
@@ -26,8 +26,6 @@ class CreateElemen extends Migration
             $table->bigInteger('periodeakreditasi_idperiodeakreditasi');
             $table->bigInteger('lock');
             $table->timestamps();
-            $table->string('created_by');
-            $table->string('updated_by');
         });
     }
 

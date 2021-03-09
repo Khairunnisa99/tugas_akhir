@@ -14,9 +14,11 @@ class CreateTypepelaksanaan extends Migration
     public function up()
     {
         Schema::create('typepelaksanaan', function (Blueprint $table) {
-            $table->bigIncrements('idtypelaksanaan');
+            $table->bigIncrements('id');
             $table->string('namaTypePelaksanaan');
             $table->text('keterangan');
+
+            $table->timestamps();
         });
     }
 

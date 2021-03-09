@@ -14,9 +14,11 @@ class CreateElementodoc extends Migration
     public function up()
     {
         Schema::create('elementodoc', function (Blueprint $table) {
-            $table->bigIncrements('idElemenToDoc');
+            $table->bigIncrements('id');
             $table->bigInteger('elemen_idElemen');
             $table->bigInteger('Dokumen_idDokumen');
+            $table->timestamps();
+
         });
     }
 

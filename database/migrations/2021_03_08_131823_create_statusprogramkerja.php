@@ -14,9 +14,11 @@ class CreateStatusprogramkerja extends Migration
     public function up()
     {
         Schema::create('statusprogramkerja', function (Blueprint $table) {
-            $table->bigIncrements('idstatusprogramkerja');
+            $table->bigIncrements('id');
             $table->string('statusProker');
             $table->text('keteranganStatus');
+            $table->timestamps();
+
         });
     }
 

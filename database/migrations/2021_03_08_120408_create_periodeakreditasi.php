@@ -14,7 +14,7 @@ class CreatePeriodeakreditasi extends Migration
     public function up()
     {
         Schema::create('periodeakreditasi', function (Blueprint $table) {
-            $table->bigIncrements('idperiodeakreditasi');
+            $table->bigIncrements('id');
             $table->string('namaPeriodeAkreditasi');
             $table->string('tahunProgramAkreditasi');
             $table->date('TanggalMulai');
@@ -23,8 +23,6 @@ class CreatePeriodeakreditasi extends Migration
             $table->text('deskripsiPeriodeAkreditasi');
             $table->bigInteger('lock');
             $table->timestamps();
-            $table->string('created_by');
-            $table->string('updated_by');
 
         });
     }

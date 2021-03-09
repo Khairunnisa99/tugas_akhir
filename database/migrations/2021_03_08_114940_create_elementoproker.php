@@ -14,9 +14,11 @@ class CreateElementoproker extends Migration
     public function up()
     {
         Schema::create('elementoproker', function (Blueprint $table) {
-            $table->bigIncrements('idelementoproker');
+            $table->bigIncrements('id');
             $table->bigInteger('elemen_idElemen');
             $table->bigInteger('programkerja_idprogramkerja');
+            $table->timestamps();
+
         });
     }
 

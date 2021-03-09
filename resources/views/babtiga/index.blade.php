@@ -1,52 +1,62 @@
 @extends('layouts.app')
-@push('customcss')
+{{-- @push('customcss')
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
-@endpush
+@endpush --}}
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')
-  <a href="/babtiga/create" class="btn btn-primary my-3">Tambah Data</a>
+
+  <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <a href="{{ route('bab_tiga.create') }}" class="btn btn-primary my-3">Tambah Data</a>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+
   <!-- Default box -->
   
-  <table class="table">
+  <table class="table table-bordered">
   
       <thead class="thead-dark">
-        <tr>
-          <th scope="col"></th>
-          
+        <tr class="text-center">
+          <th scope="col">#</th>  
           <th scope="col">Nomor Kriteria</th>
           <th scope="col">Nama Kriteria</th>
           <th scope="col">Maksud dan Tujuan</th>
+          <th scope="col">Aksi</th>
          
         </tr>
       </thead>
   <tbody>
   <?php $no = 0;?>
-    @foreach($babtiga as $btg)
-    <?php $no++ ;?>
+  @foreach($babs as $btu)
+  @php
+        $no++
+  @endphp
     <tr>
-    <td>{{ ($babtiga ->currentpage()-1) * $babtiga ->perpage() + $loop->index + 1 }}</td>
-        <td>{{ $btg->nomorKriteria }}</td>
-        <td>{{ $btg->namaKriteria }}</td>
-        <td>{{ $btg->maksudTujuan }}</td>
+    <td>{{ ($babs ->currentpage()-1) * $babs ->perpage() + $loop->index + 1 }}</td>
+        <td>{{ $btu->NomerKriteria }}</td>
+        <td>{{ $btu->namaKriteria }}</td>
+        <td>{{ $btu->MaksudDanTujuan }}</td>
         
         <td>
-            <a href="/babtiga/edit/{{$btg->idBabtiga}}" class="badge badge-success">Edit</a>
-            <a href="" class="badge badge-danger">Upload</a>
-            <form action="{{url ('babtiga/' .$btg->id)}}" method="post" class="d-inline" onsubmit="return confirm('Yakin dihapus?')">
-                        @method('delete')
-                        @csrf
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-            <!--<a href="" class="badge badge-danger">Delete</a>-->
-             
-                     
+          <form action="{{ route('bab_tiga.destroy', $btu->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <a href="{{ route('bab_tiga.edit', $btu->id) }}" class="btn btn-info">Edit</a>
+            <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
+          </form>
         </td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
-
+      </tr>
+      @endforeach
+    </tbody>
+    </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 @endsection

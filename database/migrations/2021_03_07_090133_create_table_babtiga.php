@@ -15,6 +15,7 @@ class CreateTableBabtiga extends Migration
     {
         Schema::create('table_babtiga', function (Blueprint $table) {
             $table->bigIncrements('idBabtiga');
+            $table->string('id_standar');
             $table->string('nomorKriteria');
             $table->text('namaKriteria');
             $table->text('maksudTujuan');

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\dokumen;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,8 @@ class DokumenController extends Controller
      */
     public function index()
     {
-        $dokumen= dokumen::paginate(10);
-        return view('dokumen.index',['dokumen'=>$dokumen]);
-        
+        $dokumen = dokumen::paginate(10);
+        return view('dokumen.index', ['dokumen' => $dokumen]);
     }
 
     /**
@@ -36,8 +36,8 @@ class DokumenController extends Controller
      */
     public function store(Request $request)
     {
-        dokumen::create($request->all()); 
-        return redirect('/dokumen') ->with ('status', 'Dokumen berhasil ditambahkan');
+        dokumen::create($request->all());
+        return redirect('/dokumen')->with('status', 'Dokumen berhasil ditambahkan');
     }
 
     /**
@@ -71,17 +71,17 @@ class DokumenController extends Controller
      */
     public function update(Request $request, dokumen $dokumen)
     {
-        $request->validate([             
-            'namaDokumen' => 'required',             
-            'keterangan' => 'required'         
-           ]);                  
-       dokumen::where('idDokumen', $dokumen->idDokumen)                 
-       ->update([                    
-            'namaDokumen' => $request->namaDokumen,                    
-             'keterangan' => $request->keterangan,                                     
-             ]);         
-           return redirect('/dokumen') 
-       ->with ('status', 'Data Mahasiswa Berhasil Diubah!');
+        $request->validate([
+            'namaDokumen' => 'required',
+            'keterangan' => 'required'
+        ]);
+        dokumen::where('idDokumen', $dokumen->idDokumen)
+            ->update([
+                'namaDokumen' => $request->namaDokumen,
+                'keterangan' => $request->keterangan,
+            ]);
+        return redirect('/dokumen')
+            ->with('status', 'Data Mahasiswa Berhasil Diubah!');
     }
 
     /**
@@ -93,6 +93,6 @@ class DokumenController extends Controller
     public function destroy($id)
     {
         DB::table('dokumen')->where('id', $id)->destroy();
-        return redirect('dokumen')->with('status','berhasil dihapus!');
+        return redirect('dokumen')->with('status', 'berhasil dihapus!');
     }
 }

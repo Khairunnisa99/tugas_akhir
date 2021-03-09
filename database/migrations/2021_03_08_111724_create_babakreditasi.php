@@ -14,16 +14,13 @@ class CreateBabakreditasi extends Migration
     public function up()
     {
         Schema::create('babakreditasi', function (Blueprint $table) {
-            $table->bigIncrements('idBabAkreditasi');
-            $table->string('NomorBab');
-            $table->string('KodeBab');
-            $table->string('NamaBab');
-            $table->bigInteger('periodeakreditasi_idperiodeakreditasi');
-            $table->bigInteger('lock');
+            $table->bigIncrements('id');
+            $table->string('NomorBab')->nullable();
+            $table->string('KodeBab')->nullable();
+            $table->string('NamaBab')->nullable();
+            $table->bigInteger('periodeakreditasi_idperiodeakreditasi')->nullable();
+            $table->bigInteger('lock')->nullable();
             $table->timestamps();
-            $table->string('created_by');
-            $table->string('updated_by');
-
         });
     }
 
