@@ -16,13 +16,15 @@ class CreateTableRapat extends Migration
         Schema::create('table_rapat', function (Blueprint $table) {
             $table->bigIncrements('idRapat');
             $table->string('namaRapat');
-            $table->dateTime('waktuRapat');
-            $table->text('agendaRapat');
-            $table->text('pesertaRapat');
-            $table->text('notulenRapat');
-            $table->text('materiRapat');
-            $table->text('rekomendasi');
-            $table->text('tindakLanjut');
+            $table->dateTime('WaktuRapat');
+            $table->text('KeteranganRapat');
+            $table->text('PesertaRapat');
+            $table->text('NotulenRapat');
+            $table->bigIncrements('lock');
+            $table->text('Umpan');
+            $table->text('MateriRapat');
+            $table->text('Rekomendasi');
+            $table->text('TindakLanjut');
             $table->timestamps();
         });
     }

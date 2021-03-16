@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class rapat extends Model
 {
-    protected $table='table_rapat';
+    protected $table='rapat';
     protected $guarded=['id'];
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\klinik;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class KlinikController extends Controller
 {
@@ -35,7 +37,36 @@ class KlinikController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $this->validate($request, [
+            'namaKlinik' => 'required',
+            'alamatKlinik' => 'required',
+            'webKlinik' => 'required',
+            'telponKlinik' => 'required',
+            'logo' => 'required|image',
+
+        ]);
+
+        // syntax upload file image
+        $image = $request->file('logo');
+        $image->storeAs('public/klinik/', $image->hashName());
+
+
+        $klinik = klinik::create([
+            'namaKlinik' => $request->input('namaKlinik'),
+            'alamatKlinik' => $request->input('alamatKlinik'),
+            'webKlinik' => $request->input('webKlinik'),
+            'telponKlinik' => $request->input('telponKlinik'),
+            'logo' => $image->hashName()
+
+        ]);
+            // dd($babs);
+        if ($klinik) {
+            # code...
+            return redirect()->route('klinik.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('klinik.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**
@@ -55,8 +86,9 @@ class KlinikController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(klinik $klinik)
+    public function edit($id)
     {
+        $klinik = klinik::findOrFail($id);
         return view('klinik.edit', compact('klinik'));
     }
 
@@ -69,17 +101,49 @@ class KlinikController extends Controller
      */
     public function update(Request $request, klinik $klinik)
     {
-        $request->validate([             
-            'namaKlinik' => 'required',             
-            'alamatKlinik' => 'required'         
-           ]);                  
-       klinik::where('idKlinik', $klinik->idKlinik)                 
-       ->update([                    
-            'namaKlinik' => $request->namaKlinik,                    
-             'alamatKlinik' => $request->alamatKlinik,                                     
-             ]);         
-           return redirect('/klinik') 
-       ->with ('status', 'Data Klinik Berhasil Diubah!');
+        $request->validate([
+            'namaKlinik' => 'required',
+            'alamatKlinik' => 'required',
+            'webKlinik' => 'required',
+            'telponKlinik' => 'required',
+            // 'logo' => 'required'
+        ]);
+
+        if(empty($request->file('logo'))){
+            $klinik = klinik::findOrFail($klinik->id);
+            $klinik->update([
+                'namaKlinik' => $request->input('namaKlinik'),
+                'alamatKlinik' => $request->input('alamatKlinik'),
+                'webKlinik' => $request->input('webKlinik'),
+                'telponKlinik' => $request->input('telponKlinik'),
+                // 'logo' => $request->input('logo')
+            ]);
+        }else{
+            // remove foto
+            Storage::disk('local')->delete('public/klinik' . $klinik->logo);
+
+             // syntax upload file image
+            $image = $request->file('logo');
+            $image->storeAs('public/klinik/', $image->hashName());
+
+            $klinik = klinik::findOrFail($klinik->id);
+            $klinik->update([
+                'namaKlinik' => $request->input('namaKlinik'),
+                'alamatKlinik' => $request->input('alamatKlinik'),
+                'webKlinik' => $request->input('webKlinik'),
+                'telponKlinik' => $request->input('telponKlinik'),
+                'logo' => $image->hashName()
+
+            ]);
+        }
+
+
+        if ($klinik) {
+                # code...
+             return redirect()->route('klinik.index')->with(['success' => 'Data Berhasil DiUpdate']);
+        } else {
+                return redirect()->route('klinik.index')->with(['error' => 'Data Gagal DiUpdate']);
+        }
     }
 
     /**
@@ -90,6 +154,19 @@ class KlinikController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $klinik = klinik::findOrFail($id);
+        Storage::disk('local')->delete('public/klinik' . $klinik->logo);
+        $klinik->delete();
+
+        return redirect()->route('klinik.index');
     }
+    public function search(Request $request)
+    {   $cari = $request->search;
+        $post = DB::table('klinik')
+        ->where('namaKlinik','like',"%".$cari."%")
+        ->paginate();
+
+        return view('klinik.index',['klinik' => $post]);
+
+      }
 }

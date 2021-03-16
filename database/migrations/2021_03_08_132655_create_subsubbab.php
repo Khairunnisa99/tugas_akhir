@@ -23,6 +23,7 @@ class CreateSubsubbab extends Migration
             $table->bigInteger('periodeakreditasi_idperiodeakreditasi')->nullable();
             $table->bigInteger('lock')->nullable();
             $table->timestamps();
+
         });
     }
 

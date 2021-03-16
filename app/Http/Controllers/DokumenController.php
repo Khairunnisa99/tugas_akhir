@@ -16,6 +16,7 @@ class DokumenController extends Controller
     {
         $dokumen = dokumen::paginate(10);
         return view('dokumen.index', ['dokumen' => $dokumen]);
+
     }
 
     /**
@@ -36,8 +37,25 @@ class DokumenController extends Controller
      */
     public function store(Request $request)
     {
-        dokumen::create($request->all());
-        return redirect('/dokumen')->with('status', 'Dokumen berhasil ditambahkan');
+        //dokumen::create($request->all());
+        //return redirect('/dokumen')->with('status', 'Dokumen berhasil ditambahkan');
+        $this->validate($request, [
+            'namaDokumen' => 'required',
+            'keterangan' => 'required'
+        ]);
+
+        $dokumen = dokumen::create([
+            'namaDokumen' => $request->input('namaDokumen'),
+            'keterangan' => $request->input('keterangan'),
+
+        ]);
+            // dd($babs);
+        if ($dokumen) {
+            # code...
+            return redirect()->route('dokumen.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('dokumen.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**
@@ -57,8 +75,9 @@ class DokumenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(dokumen $dokumen)
+    public function edit($id)
     {
+        $dokumen = dokumen::findOrFail($id);
         return view('dokumen.edit', compact('dokumen'));
     }
 
@@ -69,19 +88,23 @@ class DokumenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, dokumen $dokumen)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        $this->validate($request, [
             'namaDokumen' => 'required',
             'keterangan' => 'required'
         ]);
-        dokumen::where('idDokumen', $dokumen->idDokumen)
-            ->update([
-                'namaDokumen' => $request->namaDokumen,
-                'keterangan' => $request->keterangan,
-            ]);
-        return redirect('/dokumen')
-            ->with('status', 'Data Mahasiswa Berhasil Diubah!');
+        $dokumen = dokumen::findOrFail($id);
+        $dokumen->update([
+                'namaDokumen' => $request->input ('namaDokumen'),
+                'keterangan' => $request->input ('keterangan')
+        ]);
+        if ($dokumen) {
+            # code...
+            return redirect()->route('dokumen.index')->with(['success' => 'Data Berhasil DiUpdate']);
+        } else {
+            return redirect()->route('dokumen.index')->with(['error' => 'Data Gagal DiUpdate']);
+        }
     }
 
     /**
@@ -92,7 +115,18 @@ class DokumenController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('dokumen')->where('id', $id)->destroy();
-        return redirect('dokumen')->with('status', 'berhasil dihapus!');
+        $dokumen = dokumen::findOrFail($id);
+        $dokumen->delete();
+
+        return redirect()->route('dokumen.index');
     }
+    public function search(Request $request)
+    {   $cari = $request->search;
+        $post = DB::table('dokumen')
+        ->where('namaDokumen','like',"%".$cari."%")
+        ->paginate();
+
+        return view('dokumen.index',['dokumen' => $post]);
+
+      }
 }

@@ -5,13 +5,19 @@
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')
-  <a href="/dokumen/create" class="btn btn-primary my-3">Tambah Data</a>
+  <a href="/rapat/create" class="btn btn-primary my-3">Tambah Data</a>
+  <form action="/search" method="get">
+
+    <input type="search" name="search" class="form-control">
+    <span class="input-group-prepend">
+        <button type="submit" class="btn btn-success">Search</button>
+    </span>                 </form>
   <!-- Default box -->
   <table class="table">
       <thead class="thead-dark">
         <tr>
           <th scope="col"></th>
-    
+
           <th scope="col">Nama Rapat</th>
           <th scope="col">Waktu Rapat</th>
           <th scope="col">Agenda Rapat</th>
@@ -21,7 +27,7 @@
           <th scope="col">Rekomendasi</th>
           <th scope="col">Tindak Lanjut</th>
 
-         
+
         </tr>
       </thead>
   <tbody>
@@ -31,18 +37,22 @@
     <tr>
     <td>{{ $no }}</td>
     <td>{{ $rpt->namaRapat }}</td>
-        <td>{{ $rpt->waktuRapat }}</td>
-        <td>{{ $rpt->agendaRapat }}</td>
-        <td>{{ $rpt->pesertaRapat }}</td>
-        <td>{{ $rpt->notulenRapat }}</td>
-        <td>{{ $rpt->materiRapat }}</td>
-        <td>{{ $rpt->rekomendasi }}</td>
-        <td>{{ $rpt->tindakLanjut }}</td>
-        
+        <td>{{ $rpt->WaktuRapat }}</td>
+        <td>{{ $rpt->KeteranganRapat }}</td>
+        <td>{{ $rpt->PesertaRapat }}</td>
+        <td>{{ $rpt->NotulenRapat }}</td>
+        <td>{{ $rpt->MateriRapat }}</td>
+        <td>{{ $rpt->Rekomendasi }}</td>
+        <td>{{ $rpt->TindakLanjut }}</td>
+
         <td>
-            <a href="" class="badge badge-success">Edit</a>
-            <a href="" class="badge badge-danger">Delete</a>
-        </td>
+            <form action="{{ route('rapat.destroy', $rpt->id) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <a href="{{ route('rapat.edit', $rpt->id) }}" class="btn btn-info">Edit</a>
+              <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
+            </form>
+          </td>
     </tr>
     @endforeach
   </tbody>

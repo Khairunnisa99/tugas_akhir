@@ -41,7 +41,7 @@
           </div>
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
-                
+
         </form>
     </div>
  </div>
