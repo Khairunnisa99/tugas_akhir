@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\SubBab;
 use App\Models\SubBabDua;
 use Illuminate\Http\Request;
 

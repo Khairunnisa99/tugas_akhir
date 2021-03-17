@@ -1,42 +1,48 @@
 @extends('layouts.app')
-@push('customcss')
+{{-- @push('customcss')
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
-@endpush
-  @section('title','Dahboard')
+@endpush --}}
+  @section('title','Edit Data')
   @section('page-title','Home')
-  @section('content') 
-    <div class="container mt-4"> 
-    <div class="row"> <div class="col-8"> 
-    <h1 class="mt-3">Form Ubah Data Dokumen</h1> 
- 
-<form method="post" action="{{route('klinik.update', $klinik)}}"> 
-    @csrf 
-    @method('patch')
-    <div class="form-group">     
-        <label for="namaKlinik">Nama Klinik</label>     
-        <input type="text" class="form-control @error('namaKlinik') is-invalid @enderror" id="namaKlinik" placeholder="namaKlinik" name="namaKlinik" value="{{ $klinik->namaKlinik }}">     
-        
-            @error('namaKlinik')         
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>     
-                    @enderror   
-    </div>   
-        <div class="form-group">     
-            <label for="keterangan">Alamat Klinik</label>     
-            <input type="text" class="form-control @error('alamatKlinik') is-invalid @enderror" id="alamatKlinik" placeholder="alamatKlinik" name="alamatKlinik" value="{{ $klinik->alamatKlinik }}">     
-                @error('alamatKlinik')         
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>    
-                        @enderror   
-        </div>   
-            
-                   <button type="submit" class="btn btn-primary">Ubah Data</button> 
-</form> 
- 
-</div> 
-</div> 
-</div> 
-@endsection 
- 
+  @section('content')
+<div class="container">
+ <div class="row">
+    <div class="card-title">
+       <h3>Edit klinik </h3>
+    </div>
+    <div class="card-body">
+      <form method="post" action="{{ route('klinik.update', $klinik->id) }}" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+         <div class="form-group">
+            <label for="">Edit Klinik</label>
+            {{-- <input type="text" name="NomorBab" id="" class="form-control" placeholder=""> --}}
+         </div>
+          <div class="form-group">
+            <label for="">Nama Klinik</label>
+            <input type="text" value="{{ $klinik->namaKlinik }}" name="namaKlinik" class="form-control" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="">Alamat Klinik</label>
+            <input type="text" value="{{ $klinik->alamatKlinik }}" name="alamatKlinik" class="form-control" placeholder="">
+          </div>
+          <div class="form-group">
+             <label for="">Web Klinik</label>
+             <input type="text" value="{{ $klinik->webKlinik }}" class="form-control" name="webKlinik" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="">Telpon Klinik</label>
+            <input type="text" value="{{ $klinik->telponKlinik }}" class="form-control" name="telponKlinik" placeholder="">
+         </div>
+         <div class="form-group">
+            <label for="">logo</label>
+            <input type="file" class="form-control" name="logo">
+         </div>
+
+          <button type="submit" class="btn btn-primary">Simpan Data</button>
+
+        </form>
+    </div>
+ </div>
+</div>
+@endsection

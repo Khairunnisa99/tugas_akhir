@@ -86,10 +86,11 @@
             <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
         <li class="treeview {{ set_active([
           'bab_satu.index','bab_satu.create', 'bab_satu.edit',
-          'bab_dua.index','bab_dua.create', 'bab_dua.edit', 
-          'bab_tiga.index','bab_tiga.create', 'bab_tiga.edit', 
+          'bab_dua.index','bab_dua.create', 'bab_dua.edit',
+          'bab_tiga.index','bab_tiga.create', 'bab_tiga.edit',
           'bab_empat.index','bab_empat.create', 'bab_empat.edit',
           'bab.index', 'bab.create', 'bab.edit', 'standar.index', 'standar.create', 'standar.edit',
+          'kriteria.index', 'kriteria.create', 'kriteria.edit',
           ]) }}">
           <a href="#">
             <i class="fa fa-bookmark"></i>
@@ -104,7 +105,8 @@
               <li class="{{ set_active(['bab_tiga.index','bab_tiga.create', 'bab_tiga.edit']) }}"><a href="{{route('bab_tiga.index')}}">BAB 3</a></li>
               <li class="{{ set_active(['bab_empat.index','bab_empat.create', 'bab_empat.edit']) }}"><a href="{{route('bab_empat.index')}}">BAB 4</a></li>
               <li class="treeview {{ set_active([
-                'bab.index','bab.create', 'bab.edit','standar.index', 'standar.create', 'standar.edit']) }}">
+                'bab.index','bab.create', 'bab.edit','standar.index', 'standar.create', 'standar.edit',
+                'kriteria.index', 'kriteria.create', 'kriteria.edit']) }}">
                 <a href="#">
                   <i class="fa fa-bookmark"></i>
                   <span>Struktur Akreditasi</span>
@@ -115,8 +117,8 @@
                 <ul class="treeview-menu">
                     <li class="{{ set_active(['bab.index', 'bab.create', 'bab.edit']) }}"><a href="{{ route('bab.index') }}">BAB </a></li>
                     <li class="{{ set_active(['standar.index', 'standar.create', 'standar.edit']) }}"><a href="{{ route('standar.index') }}">Standart</a></li>
-                    <li><a href="#">Kriteria</a></li>
-                    <li><a href="#">Elemen</a></li>
+                    <li class="{{ set_active(['kriteria.index', 'kriteria.create', 'kriteria.edit']) }}"><a href="{{ route('kriteria.index') }}">Kriteria</a></li>
+                    <li class="{{ set_active(['elemen.index', 'elemen.create', 'elemen.edit']) }}"><a href="{{ route('elemen.index') }}">Elemen</a></li>
                     <li><a href="#">Periode Akreditasi</a></li>
                 </ul>
               </li>
@@ -131,7 +133,7 @@
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Program Kerja </a></li>
+                    <li class="{{ set_active(['programkerja.index', 'programkerja.create', 'programkerja.edit']) }}"><a href="{{ route('programkerja.index') }}">Program Kerja </a></li>
                     <li><a href="#">Pelaksanaan</a></li>
                     <li class="active treeview">
                     <a href="#">
@@ -142,17 +144,17 @@
                       </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Periode Program Kerja</a></li>
-                        <li><a href="#">Tipe Program Kerja</a></li>
-                        <li><a href="#">Status Program Kerja</a></li>
-                        <li><a href="#">Tipe Pelaksanaan</a></li>
-                        <li><a href="#">Status Pelaksanaan</a></li>
+                        <li class="{{ set_active(['periodeprogramkerja.index', 'periodeprogramkerja.create', 'periodeprogramkerja.edit']) }}"><a href="{{ route('periodeprogramkerja.index') }}">Periode Program Kerja</a></li>
+                        <li class="{{ set_active(['tipeprogramkerja.index', 'tipeprogramkerja.create', 'tipeprogramkerja.edit']) }}"><a href="{{ route('tipeprogramkerja.index') }}">Tipe Program Kerja</a></li>
+                        <li class="{{ set_active(['statusprogramkerja.index', 'statusprogramkerja.create', 'statusprogramkerja.edit']) }}"><a href="{{ route('statusprogramkerja.index') }}">Status Program Kerja</a></li>
+                        <li class="{{ set_active(['tipepelaksanaan.index', 'tipepelaksanaan.create', 'tipepelaksanaan.edit']) }}"><a href="{{ route('tipepelaksanaan.index') }}">Tipe Pelaksanaan</a></li>
+                        <li class="{{ set_active(['statuspelaksanaan.index', 'statuspelaksanaan.create', 'statuspelaksanaan.edit']) }}"><a href="{{ route('statuspelaksanaan.index') }}">Status Pelaksanaan</a></li>
                     </ul>
                   </li>
                 </ul>
               </li>
               <li class="{{ set_active('dokumen.index') }}"><a href="{{route('dokumen.index')}}"><i class="fa fa-file" aria-hidden="true"></i> Dokumen</a></li>
-              <li class="{{ set_active('rapat.index') }}"><a href="#"><i class="fa fa-wechat"></i>Rapat</a></li>
+              <li class="{{ set_active(['rapat.index','rapat.create','rapat.edit']) }}"><a href="{{route('rapat.index')}}"><i class="fa fa-wechat"></i>Rapat</a></li>
               <li class="treeview">
                     <a href="#">
                       <i class="fa fa-users"></i>
@@ -165,7 +167,7 @@
                         <li><a href="#">Profile</a></li>
                         <li><a href="#">Profile Setting</a></li>
                         <li><a href="#">User Admin</a></li>
-  
+
                     </ul>
               </li>
             <li><a href="{{route('klinik.index')}}"><i class="fa fa-hospital-o"></i>Klinik</a></li>

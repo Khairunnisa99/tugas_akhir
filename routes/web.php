@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\KlinikController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +30,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('dokumen', 'DokumenController');
+    //Route::get('dokumen','DokumenController@search');
     //     Route::get('/dokumen', 'DokumenController@index')->name('dokumen.index');
     //     Route::get('/dokumen/create', 'DokumenController@create');
     // Route::get('/dokumen/edit/{dokumen}', 'DokumenController@edit');
@@ -38,11 +39,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Rapat
     Route::resource('rapat', 'RapatController');
+    Route::get('/searchsatu','RapatController@searchsatu');
     // Route::get('/rapat', 'RapatController@index')->name('rapat.index');
     // Route::get('/rapat/create', 'RapatController@create');
 
     //Klinik
     Route::resource('klinik', 'KlinikController');
+    Route::get('/search','KlinikController@search');
     // Route::get('/klinik', 'KlinikController@index')->name('klinik.index');
     // Route::get('/klinik/create', 'KlinikController@create');
     // Route::get('/klinik/edit/{klinik}', 'KlinikController@edit');
@@ -78,6 +81,28 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/standar', 'Admin\SubBabController');
 
     //PK
-    Route::get('/programkerja', 'ProgramkerjaController@index')->name('programkerja.index');
-    Route::get('/programkerja/create', 'ProgramkerjaController@create');
+    Route::resource('/programkerja','ProgramkerjaController');
+    //Route::get('/programkerja/create', 'ProgramkerjaController@create');
+
+    //Periode
+    Route::resource('/periodeprogramkerja', 'PeriodeprogramkerjaController');
+
+    //TPK
+    Route::resource('/tipeprogramkerja', 'TipeprogramkerjaController');
+
+    //SPK
+    Route::resource('/statusprogramkerja', 'StatusprogramkerjaController');
+
+    //TPelaksanaan
+    Route::resource('/tipepelaksanaan', 'TipepelaksanaanController');
+
+    //SPN
+    Route::resource('/statuspelaksanaan', 'StatuspelaksanaanController');
+
+    //Kriteria
+    //Route::resource('/babdua', 'Admin\SubBabDuaController');
+    Route::resource('/kriteria', 'KriteriaController');
+
+    //elemen
+    Route::resource('/elemen', 'ElemenController');
 });

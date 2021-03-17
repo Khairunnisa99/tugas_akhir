@@ -10,7 +10,8 @@
     <div class="col-8">
         <h1 class="mt-10">Tambah Data </h1>
 
-        <form method="post" action="/dokumen">
+        <form method="post" action="{{ route('dokumen.store') }}" enctype="multipart/form-data">
+
         @csrf
           <div class="form-group">
              <label for="namaDokumen">Nama Dokumen</label>
@@ -20,10 +21,10 @@
              <label for="keterangan">Keterangan</label>
              <input type="text" class="form-control" id="nim" placeholder="Masukan Keterangan" name="keterangan">
           </div>
-        
+
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
-                
+
         </form>
 
 

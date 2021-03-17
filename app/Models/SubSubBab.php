@@ -12,8 +12,8 @@ class SubSubBab extends Model
     protected $guarded = [];
 
 
-    public function SubBab()
+    public function Standar()
     {
-        return $this->hasMany(SubBab::class, 'id_subbab', 'id');
+        return $this->hasMany('app\Models\SubBab::class');
     }
 }

@@ -33,9 +33,38 @@ class ProgramkerjaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $request->validate([
+            'NamaProgramKerja' => 'required',
+            'peiodeprogramkerja_idperiodeprogramkerja' => 'required',
+            'tipeprogramkerja_idtipeprogramkerja' => 'required',
+            'tanggalMulai' => 'required',
+            'tanggalBerakhir' => 'required',
+            'DeskripsiProgramKerja' => 'required',
+            'statusprogramkerja_idstatusprogramkerja' => 'required',
+            'lock' => 'required'
+
+        ]);
+        $programkerja = programkerja::findOrFail($id);
+        $programkerja->update([
+
+            'NamaProgramKerja' => $request->NamaProgramKerja,
+            'peiodeprogramkerja_idperiodeprogramkerja' => $request->periodeprogramkerja_idperiodeprogramkerja,
+            'tipeprogramkerja_idtipeprogramkerja' => $request->tipeprogramkerja_idtipeprogramkerja,
+            'tanggalMulai' => $request->tanggalMulai,
+            'tanggalBerakhir' => $request->tanggalBerakhir,
+            'DeskripsiProgramKerja' => $request->DeskripsiProgramKerja,
+            'statusprogramkerja_idstatusprogramkerja' => $request->statusprogramkerja_idstatusprogramkerja,
+            'lock' => $request->lock
+            ]);
+            if ($programkerja) {
+                # code...
+                return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+            } else {
+                return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+            }
+
     }
 
     /**
@@ -69,7 +98,36 @@ class ProgramkerjaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'NamaProgramKerja' => 'required',
+            'peiodeprogramkerja_idperiodeprogramkerja' => 'required',
+            'tipeprogramkerja_idtipeprogramkerja' => 'required',
+            'tanggalMulai' => 'required',
+            'tanggalBerakhir' => 'required',
+            'DeskripsiProgramKerja' => 'required',
+            'statusprogramkerja_idstatusprogramkerja' => 'required',
+            'lock' => 'required'
+
+        ]);
+        $programkerja = programkerja::findOrFail($id);
+        $programkerja->update([
+
+            'NamaProgramKerja' => $request->NamaProgramKerja,
+            'peiodeprogramkerja_idperiodeprogramkerja' => $request->periodeprogramkerja_idperiodeprogramkerja,
+            'tipeprogramkerja_idtipeprogramkerja' => $request->tipeprogramkerja_idtipeprogramkerja,
+            'tanggalMulai' => $request->tanggalMulai,
+            'tanggalBerakhir' => $request->tanggalBerakhir,
+            'DeskripsiProgramKerja' => $request->DeskripsiProgramKerja,
+            'statusprogramkerja_idstatusprogramkerja' => $request->statusprogramkerja_idstatusprogramkerja,
+            'lock' => $request->lock
+            ]);
+            if ($programkerja) {
+                # code...
+                return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+            } else {
+                return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+            }
+
     }
 
     /**
@@ -80,6 +138,9 @@ class ProgramkerjaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $programkerja = programkerja::findOrFail($id);
+        $programkerja->delete();
+
+        return redirect()->route('programkerja.index');
     }
 }

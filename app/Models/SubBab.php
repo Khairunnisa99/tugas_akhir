@@ -15,6 +15,11 @@ class SubBab extends Model
         return $this->hasMany('App\Models\Bab');
     }
 
+    public function Kriteria()
+    {
+        return $this->belongsTo('App\Models\SubSubBab', 'id_subbab', 'id');
+    }
+
     public function SubSubBab()
     {
         return $this->belongsTo(SubSubBab::class, 'id', 'id_subbab');

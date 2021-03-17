@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\rapat;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\Storage;
 class RapatController extends Controller
 {
     /**
@@ -35,7 +36,41 @@ class RapatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $this->validate($request, [
+            'namaRapat' => 'required',
+            'WaktuRapat' => 'required',
+            'KeteranganRapat' => 'required',
+            'PesertaRapat' => 'required',
+            'NotulenRapat' => 'required',
+            // 'lock' => 'required',
+            // 'Umpan' => 'required',
+            'MateriRapat' => 'required',
+            'Rekomendasi' => 'required',
+            // 'TindakLanjut' => 'required'
+
+        ]);
+
+        $rapat = rapat::create([
+            'namaRapat' => $request->input('namaRapat'),
+            'WaktuRapat' => $request->input('WaktuRapat'),
+            'KeteranganRapat' => $request->input('KeteranganRapat'),
+            'PesertaRapat' => $request->input('PesertaRapat'),
+            'NotulenRapat' => $request->input('NotulenRapat'),
+            'lock' => $request->input('lock'),
+            'Umpan' => $request->input('Umpan'),
+            'MateriRapat' => $request->input('MateriRapat'),
+            'Rekomendasi' => $request->input('Rekomendasi'),
+            'TindakLanjut' => $request->input('TindakLanjut')
+
+        ]);
+            // dd($babs);
+        if ($rapat) {
+            # code...
+            return redirect()->route('rapat.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('rapat.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**
@@ -55,9 +90,9 @@ class RapatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(rapat $rapat)
     {
-        //
+        return view('rapat.edit', compact('rapat'));
     }
 
     /**
@@ -69,7 +104,37 @@ class RapatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'namaRapat' => 'required',
+            'WaktuRapat' => 'required',
+            'KeteranganRapat' => 'required',
+            'PesertaRapat' => 'required',
+            //'Umpan' => 'required',
+            //'lock' => 'required',
+            'MateriRapat' => 'required',
+            'Rekomendasi' => 'required',
+            'TindakLanjut' => 'required'
+        ]);
+        $rapat = rapat::findOrFail($id);
+        $rapat->update([
+
+                'namaRapat' => $request->namaRapat,
+                'WaktuRapat' => $request->WaktuRapat,
+                'KeteranganRapat' => $request->KeteranganRapat,
+                'PesertaRapat' => $request->PesertaRapat,
+                'lock' => $request->lock,
+                'Umpan' => $request->Umpan,
+                'MateriRapat' => $request->MateriRapat,
+                'Rekomendasi' => $request->Rekomendasi,
+                'TindakLanjut' => $request->TindakLanjut
+            ]);
+
+            if ($rapat) {
+                # code...
+                return redirect()->route('rapat.index')->with(['success' => 'Data Berhasil Disimpan']);
+            } else {
+                return redirect()->route('rapat.index')->with(['success' => 'Data Berhasil Disimpan']);
+            }
     }
 
     /**
@@ -80,6 +145,18 @@ class RapatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rapat = rapat::findOrFail($id);
+        $rapat->delete();
+
+        return redirect()->route('rapat.index');
     }
+    public function searchsatu(Request $request)
+    {   $carisatu = $request->search;
+        $posts = DB::table('rapat')
+        ->where('KeteranganRapat','like',"%".$carisatu."%")
+        ->paginate();
+
+        return view('rapat.index',['rapat' => $posts]);
+
+      }
 }

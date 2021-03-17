@@ -16,17 +16,17 @@
             <div class="box-body">
 
   <!-- Default box -->
-  
+
   <table class="table table-bordered">
-  
+
       <thead class="thead-dark">
         <tr class="text-center">
-          <th scope="col">#</th>  
+          <th scope="col">#</th>
           <th scope="col">Nomor Kriteria</th>
           <th scope="col">Nama Kriteria</th>
           <th scope="col">Maksud dan Tujuan</th>
           <th scope="col">Aksi</th>
-         
+
         </tr>
       </thead>
   <tbody>
@@ -40,7 +40,7 @@
         <td>{{ $btu->NomerKriteria }}</td>
         <td>{{ $btu->namaKriteria }}</td>
         <td>{{ $btu->MaksudDanTujuan }}</td>
-        
+
         <td>
           <form action="{{ route('bab_satu.destroy', $btu->id) }}" method="POST">
             @csrf
@@ -52,7 +52,8 @@
       </tr>
       @endforeach
     </tbody>
-    </table>
+</table>
+{{$babs->links()}}
       </div>
     </div>
   </div>
