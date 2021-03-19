@@ -5,15 +5,24 @@
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')
-  <a href="/tipeprogramkerja/create" class="btn btn-primary my-3">Tambah Data</a>
+  <a href="{{ route('tipeprogramkerja.create') }}" class="btn btn-primary my-3">Tambah Data</a>
+  <div class="card">
+    {{-- <div class="card-header">Data Rapat</div> --}}
+    <div class="card-head">
+      <form action="{{ route('tipeprogramkerja.index') }}" method="get">
+      <button type="submit" class="btn btn-primary btn-sm text-center" style="float: right;">CARI</button>
+      <input class="form-control" type="text" name="q" placeholder="Search.." style="width: 200px; float:right">
+      </form>
+    </div>
+  </div>
   <!-- Default box -->
   <table class="table">
       <thead class="thead-dark">
         <tr>
           <th scope="col"></th>
 
-          <th scope="col">tipeProgram</th>
-          <th scope="col">keterangantipe</th>
+          <th scope="col">Tipe Program</th>
+          <th scope="col">Keterangan</th>
 
         </tr>
       </thead>
@@ -23,7 +32,7 @@
     <?php $no++ ;?>
     <tr>
     <td>{{ $no }}</td>
-        <td>{{ $tp->tipeProgram }}</td>
+        <td>{{ $tp->tipeprogram }}</td>
         <td>{{ $tp->keterangantipe }}</td>
 
         <td>

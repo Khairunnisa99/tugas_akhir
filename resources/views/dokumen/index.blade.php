@@ -15,6 +15,7 @@
         </form>
       </div>
     </div>
+    
   <!-- Default box -->
 
   <table class="table">
@@ -48,8 +49,8 @@
     </tr>
     @endforeach
   </tbody>
-  {{ $dokumen->links() }}
 </table>
+{{ $dokumen->links() }}
 
 
 @endsection

@@ -14,8 +14,14 @@ class PeriodeprogramkerjaController extends Controller
      */
     public function index()
     {
-        $periodeprogramkerja= periodeprogramkerja::paginate(10);
-        return view('periodeprogramkerja.index',['periodeprogramkerja'=>$periodeprogramkerja]);
+        $periodeprogramkerja = periodeprogramkerja::latest()->when(request()->q, function ($periodeprogramkerja) {
+            $periodeprogramkerja = $periodeprogramkerja->where(
+                'TahunProgramKerja',
+                'like',
+                '%' . request()->q . '%'
+            );
+        })->paginate(5);
+        return view('periodeprogramkerja.index', ['periodeprogramkerja' => $periodeprogramkerja]);
     }
 
     /**
@@ -36,31 +42,25 @@ class PeriodeprogramkerjaController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $request->validate([
-            'NamaPeriodeProgramKerja' => 'required',
+        //dokumen::create($request->all());
+        //return redirect('/dokumen')->with('status', 'Dokumen berhasil ditambahkan');
+        $this->validate($request, [
             'TahunProgramKerja' => 'required',
-            'tanggalMulai' => 'required',
-            'tanggalBerakhir' => 'required',
-            'DeskripsiPeriodeProgramKerja' => 'required',
-            'lock' => 'required'
+            'DeskripsiPeriodeProgramKerja' => 'required'
+        ]);
+
+        $periodeprogramkerja = periodeprogramkerja::create([
+            'TahunProgramKerja' => $request->input('TahunProgramKerja'),
+            'DeskripsiPeriodeProgramKerja' => $request->input('DeskripsiPeriodeProgramKerja'),
 
         ]);
-        $periodeprogramkerja = periodeprogramkerja::findOrFail($id);
-        $periodeprogramkerja->update([
-            'NamaProgramKerja' => $request->NamaProgramKerja,
-            'TahunProgramKerja' => $request->TahunProgramKerja,
-            'tanggalMulai' => $request->tanggalMulai,
-            'tanggalBerakhir' => $request->tanggalBerakhir,
-            'DeskripsiPeriodeProgramKerja' => $request->DeskripsiPeriodeProgramKerja,
-            'lock' => $request->lock
-            ]);
-            if ($periodeprogramkerja) {
-                # code...
-                return redirect()->route('periodeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('periodeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
-
+        // dd($babs);
+        if ($periodeprogramkerja) {
+            # code...
+            return redirect()->route('periodeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('periodeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**
@@ -82,7 +82,8 @@ class PeriodeprogramkerjaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $periodeprogramkerja = periodeprogramkerja::findOrFail($id);
+        return view('periodeprogramkerja.edit', compact('periodeprogramkerja'));
     }
 
     /**
@@ -94,31 +95,21 @@ class PeriodeprogramkerjaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'NamaPeriodeProgramKerja' => 'required',
+        $this->validate($request, [
             'TahunProgramKerja' => 'required',
-            'tanggalMulai' => 'required',
-            'tanggalBerakhir' => 'required',
-            'DeskripsiPeriodeProgramKerja' => 'required',
-            'lock' => 'required'
-
+            'DeskripsiPeriodeProgramKerja' => 'required'
         ]);
         $periodeprogramkerja = periodeprogramkerja::findOrFail($id);
         $periodeprogramkerja->update([
-            'NamaProgramKerja' => $request->NamaProgramKerja,
-            'TahunProgramKerja' => $request->TahunProgramKerja,
-            'tanggalMulai' => $request->tanggalMulai,
-            'tanggalBerakhir' => $request->tanggalBerakhir,
-            'DeskripsiPeriodeProgramKerja' => $request->DeskripsiPeriodeProgramKerja,
-            'lock' => $request->lock
-            ]);
-            if ($periodeprogramkerja) {
-                # code...
-                return redirect()->route('periodeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('periodeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
-
+            'TahunProgramKerja' => $request->input('TahunProgramKerja'),
+            'DeskripsiPeriodeProgramKerja' => $request->input('DeskripsiPeriodeProgramKerja')
+        ]);
+        if ($periodeprogramkerja) {
+            # code...
+            return redirect()->route('periodeprogramkerja.index')->with(['success' => 'Data Berhasil DiUpdate']);
+        } else {
+            return redirect()->route('periodeprogramkerja.index')->with(['error' => 'Data Gagal DiUpdate']);
+        }
     }
 
     /**
@@ -134,4 +125,11 @@ class PeriodeprogramkerjaController extends Controller
 
         return redirect()->route('periodeprogramkerja.index');
     }
-}
+    // public function search(Request $request)
+    // {   $cari = $request->search;
+    //     $post = DB::table('dokumen')
+    //     ->where('namaDokumen','like',"%".$cari."%")
+    //     ->paginate();
+
+    //     return view('dokumen.index',['dokumen' => $post]);
+    }

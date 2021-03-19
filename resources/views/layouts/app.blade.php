@@ -145,7 +145,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{ set_active(['periodeprogramkerja.index', 'periodeprogramkerja.create', 'periodeprogramkerja.edit']) }}"><a href="{{ route('periodeprogramkerja.index') }}">Periode Program Kerja</a></li>
-                        <li class="{{ set_active(['tipeprogramkerja.index', 'tipeprogramkerja.create', 'tipeprogramkerja.edit']) }}"><a href="{{ route('tipeprogramkerja.index') }}">Tipe Program Kerja</a></li>
+                        <li class="{{ set_active('tipeprogramkerja.index') }}"><a href="{{route('tipeprogramkerja.index')}}"><i class="fa fa-file" aria-hidden="true"></i> Tipe Program Kerja</a></li>
                         <li class="{{ set_active(['statusprogramkerja.index', 'statusprogramkerja.create', 'statusprogramkerja.edit']) }}"><a href="{{ route('statusprogramkerja.index') }}">Status Program Kerja</a></li>
                         <li class="{{ set_active(['tipepelaksanaan.index', 'tipepelaksanaan.create', 'tipepelaksanaan.edit']) }}"><a href="{{ route('tipepelaksanaan.index') }}">Tipe Pelaksanaan</a></li>
                         <li class="{{ set_active(['statuspelaksanaan.index', 'statuspelaksanaan.create', 'statuspelaksanaan.edit']) }}"><a href="{{ route('statuspelaksanaan.index') }}">Status Pelaksanaan</a></li>

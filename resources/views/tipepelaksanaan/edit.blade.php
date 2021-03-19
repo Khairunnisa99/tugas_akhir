@@ -13,10 +13,10 @@
     @csrf
     @method('patch')
     <div class="form-group">
-        <label for="tipepelaksanaan">Tipe Pelaksanann</label>
-        <input type="text" class="form-control @error('tipepelaksanaan') is-invalid @enderror" id="tipepelaksanaan" placeholder="tipepelaksanaan" name="tipepelaksanaan" value="{{ $tipepelaksanaan->tipepelaksanaan }}">
+        <label for="namaTypePelaksanaan">Tipe Pelaksanann</label>
+        <input type="text" class="form-control @error('namaTypePelaksanaan') is-invalid @enderror"  placeholder="nama tipe pelaksanaan" name="namaTypePelaksanaan" value="{{ $tipepelaksanaan->namaTypePelaksanaan }}">
 
-            @error('tipepelaksanaan')
+            @error('namaTypePelaksanaan')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -24,7 +24,7 @@
     </div>
         <div class="form-group">
             <label for="keterangan">Keterangan</label>
-            <input type="text" class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" placeholder="keterangan" name="keterangan" value="{{ $keterangan->keterangan}}">
+            <input type="text" class="form-control @error('keterangan') is-invalid @enderror"  placeholder="keterangan" name="keterangan" value="{{ $tipepelaksanaan->keterangan}}">
                 @error('keterangan')
                     <div class="invalid-feedback">
                         {{ $message }}

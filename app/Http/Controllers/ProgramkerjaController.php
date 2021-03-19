@@ -13,7 +13,7 @@ class ProgramkerjaController extends Controller
      */
     public function index()
     {
-        $programkerja= programkerja::paginate(10);
+        $programkerja= programkerja::latest()->paginate(10);
         return view('programkerja.index',['programkerja'=>$programkerja]);
     }
 
@@ -46,9 +46,7 @@ class ProgramkerjaController extends Controller
             'lock' => 'required'
 
         ]);
-        $programkerja = programkerja::findOrFail($id);
-        $programkerja->update([
-
+        $programkerja = programkerja::create([
             'NamaProgramKerja' => $request->NamaProgramKerja,
             'peiodeprogramkerja_idperiodeprogramkerja' => $request->periodeprogramkerja_idperiodeprogramkerja,
             'tipeprogramkerja_idtipeprogramkerja' => $request->tipeprogramkerja_idtipeprogramkerja,

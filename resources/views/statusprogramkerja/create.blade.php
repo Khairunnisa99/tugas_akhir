@@ -10,15 +10,15 @@
     <div class="col-8">
         <h1 class="mt-10">Tambah Data </h1>
 
-        <form method="post" action="/statusprogramkerja">
+        <form method="post" action="{{ route('statusprogramkerja.store') }}" enctype="multipart/form-data">
         @csrf
           <div class="form-group">
              <label for="statusProker">Status Proker</label>
-             <input type="text" class="form-control" id="statusProker" placeholder="Masukan Status" name="statusProker">
+             <input type="text" class="form-control"  placeholder="Masukan Status" name="statusProker">
           </div>
           <div class="form-group">
              <label for="keteranganStatus">Keterangan Status</label>
-             <input type="text" class="form-control" id="keteranganStatus" placeholder="Masukan Keterangan" name="keteranganStatus">
+             <input type="text" class="form-control"  placeholder="Masukan Keterangan" name="keteranganStatus">
           </div>
 
 
