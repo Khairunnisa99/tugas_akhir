@@ -14,7 +14,7 @@ class CreateTableKlinik extends Migration
     public function up()
     {
         Schema::create('table_klinik', function (Blueprint $table) {
-            $table->bigIncrements('idDokumen');
+            $table->bigIncrements('id');
             $table->string('namaKlinik');
             $table->string('alamatKlinik');
             $table->string('webKlinik');

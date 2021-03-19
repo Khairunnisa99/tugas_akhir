@@ -14,7 +14,7 @@ class CreateTableBabsatu extends Migration
     public function up()
     {
         Schema::create('table_babsatu', function (Blueprint $table) {
-            $table->bigIncrements('idBabsatu');
+            $table->bigIncrements('id');
             $table->string('id_standar');
             $table->string('nomorKriteria');
             $table->text('namaKriteria');

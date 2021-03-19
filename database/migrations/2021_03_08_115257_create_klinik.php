@@ -15,11 +15,11 @@ class CreateKlinik extends Migration
     {
         Schema::create('klinik', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('namaKlinik');
-            $table->text('alamatKlinik');
-            $table->string('webKlinik');
-            $table->string('telponKlinik');
-            $table->string('logo');
+            $table->string('namaKlinik')->nullable();
+            $table->text('alamatKlinik')->nullable();
+            $table->string('webKlinik')->nullable();
+            $table->string('telponKlinik')->nullable();
+            $table->string('logo')->nullable();
             $table->timestamps();
 
 

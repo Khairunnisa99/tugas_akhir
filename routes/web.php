@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return redirect()->route('home');
 });
 
 Auth::routes();
@@ -39,13 +39,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Rapat
     Route::resource('rapat', 'RapatController');
-    Route::get('/searchsatu','RapatController@searchsatu');
+    Route::get('/searchsatu', 'RapatController@searchsatu');
     // Route::get('/rapat', 'RapatController@index')->name('rapat.index');
     // Route::get('/rapat/create', 'RapatController@create');
 
     //Klinik
     Route::resource('klinik', 'KlinikController');
-    Route::get('/search','KlinikController@search');
+    Route::get('/search', 'KlinikController@search');
     // Route::get('/klinik', 'KlinikController@index')->name('klinik.index');
     // Route::get('/klinik/create', 'KlinikController@create');
     // Route::get('/klinik/edit/{klinik}', 'KlinikController@edit');
@@ -81,7 +81,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/standar', 'Admin\SubBabController');
 
     //PK
-    Route::resource('/programkerja','ProgramkerjaController');
+    Route::resource('/programkerja', 'ProgramkerjaController');
     //Route::get('/programkerja/create', 'ProgramkerjaController@create');
 
     //Periode
