@@ -48,7 +48,7 @@ class ProgramkerjaController extends Controller
         ]);
         $programkerja = programkerja::create([
             'NamaProgramKerja' => $request->NamaProgramKerja,
-            'peiodeprogramkerja_idperiodeprogramkerja' => $request->periodeprogramkerja_idperiodeprogramkerja,
+            'periodeprogramkerja_idperiodeprogramkerja' => $request->periodeprogramkerja_idperiodeprogramkerja,
             'tipeprogramkerja_idtipeprogramkerja' => $request->tipeprogramkerja_idtipeprogramkerja,
             'tanggalMulai' => $request->tanggalMulai,
             'tanggalBerakhir' => $request->tanggalBerakhir,
