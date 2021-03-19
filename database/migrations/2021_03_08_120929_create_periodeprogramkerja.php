@@ -15,12 +15,12 @@ class CreatePeriodeprogramkerja extends Migration
     {
         Schema::create('periodeprogramkerja', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('NamaPeriodeProgramKerja');
-            $table->string('TahunProgramKerja');
-            $table->date('tanggalMulai');
-            $table->date('tanggalBerakhir');
-            $table->text('DeskripsiPeriodeProgramKerja');
-            $table->bigInteger('lock');
+            $table->string('NamaPeriodeProgramKerja')->nullable();
+            $table->string('TahunProgramKerja')->nullable();
+            $table->date('tanggalMulai')->nullable();
+            $table->date('tanggalBerakhir')->nullable();
+            $table->text('DeskripsiPeriodeProgramKerja')->nullable();
+            $table->bigInteger('lock')->nullable();
             $table->timestamps();
         });
     }

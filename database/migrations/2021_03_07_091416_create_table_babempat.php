@@ -14,8 +14,8 @@ class CreateTableBabempat extends Migration
     public function up()
     {
         Schema::create('table_babempat', function (Blueprint $table) {
-            $table->bigIncrements('idBabempat');
-            $table->string('id_standar');
+            $table->bigIncrements('id');
+            $table->bigInteger('id_standar');
             $table->string('nomorKriteria');
             $table->text('namaKriteria');
             $table->text('maksudTujuan');

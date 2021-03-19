@@ -15,8 +15,8 @@ class CreateDokumen extends Migration
     {
         Schema::create('dokumen', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('namaDokumen');
-            $table->text('keterangan');
+            $table->string('namaDokumen')->nullable();
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

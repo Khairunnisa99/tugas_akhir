@@ -14,9 +14,14 @@ class DokumenController extends Controller
      */
     public function index()
     {
-        $dokumen = dokumen::paginate(10);
+        $dokumen = dokumen::latest()->when(request()->q, function ($dokumen) {
+            $dokumen = $dokumen->where(
+                'namaDokumen',
+                'like',
+                '%' . request()->q . '%'
+            );
+        })->paginate(5);
         return view('dokumen.index', ['dokumen' => $dokumen]);
-
     }
 
     /**
@@ -49,7 +54,7 @@ class DokumenController extends Controller
             'keterangan' => $request->input('keterangan'),
 
         ]);
-            // dd($babs);
+        // dd($babs);
         if ($dokumen) {
             # code...
             return redirect()->route('dokumen.index')->with(['success' => 'Data Berhasil Disimpan']);
@@ -96,8 +101,8 @@ class DokumenController extends Controller
         ]);
         $dokumen = dokumen::findOrFail($id);
         $dokumen->update([
-                'namaDokumen' => $request->input ('namaDokumen'),
-                'keterangan' => $request->input ('keterangan')
+            'namaDokumen' => $request->input('namaDokumen'),
+            'keterangan' => $request->input('keterangan')
         ]);
         if ($dokumen) {
             # code...
@@ -120,13 +125,13 @@ class DokumenController extends Controller
 
         return redirect()->route('dokumen.index');
     }
-    public function search(Request $request)
-    {   $cari = $request->search;
-        $post = DB::table('dokumen')
-        ->where('namaDokumen','like',"%".$cari."%")
-        ->paginate();
+    // public function search(Request $request)
+    // {   $cari = $request->search;
+    //     $post = DB::table('dokumen')
+    //     ->where('namaDokumen','like',"%".$cari."%")
+    //     ->paginate();
 
-        return view('dokumen.index',['dokumen' => $post]);
+    //     return view('dokumen.index',['dokumen' => $post]);
 
-      }
+    //   }
 }

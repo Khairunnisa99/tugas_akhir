@@ -15,15 +15,15 @@ class CreatePelaksanaanprogram extends Migration
     {
         Schema::create('pelaksanaanprogram', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('programkerja_idprogramkerja');
-            $table->bigInteger('typepelaksanaan_idtypepelaksanaan');
-            $table->string('NamaPelaksanaan');
-            $table->date('TanggalMulai');
-            $table->date('TanggalBerakhir');
-            $table->text('KeteranganPelaksanaan');
-            $table->bigInteger('statuspelaksanaan_idstatuspelaksanaan');
+            $table->bigInteger('programkerja_idprogramkerja')->nullable();
+            $table->bigInteger('typepelaksanaan_idtypepelaksanaan')->nullable();
+            $table->string('NamaPelaksanaan')->nullable();
+            $table->date('TanggalMulai')->nullable();
+            $table->date('TanggalBerakhir')->nullable();
+            $table->text('KeteranganPelaksanaan')->nullable();
+            $table->bigInteger('statuspelaksanaan_idstatuspelaksanaan')->nullable();
             $table->timestamps();
-            $table->bigInteger('lock');
+            $table->bigInteger('lock')->nullable();
 
         });
     }

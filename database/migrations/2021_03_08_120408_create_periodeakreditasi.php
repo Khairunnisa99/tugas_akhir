@@ -15,13 +15,13 @@ class CreatePeriodeakreditasi extends Migration
     {
         Schema::create('periodeakreditasi', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('namaPeriodeAkreditasi');
-            $table->string('tahunProgramAkreditasi');
-            $table->date('TanggalMulai');
-            $table->date('TanggalBerakhir');
-            $table->tinyInteger('periodeakreditasicStatus');
-            $table->text('deskripsiPeriodeAkreditasi');
-            $table->bigInteger('lock');
+            $table->string('namaPeriodeAkreditasi')->nullable();
+            $table->string('tahunProgramAkreditasi')->nullable();
+            $table->date('TanggalMulai')->nullable();
+            $table->date('TanggalBerakhir')->nullable();
+            $table->tinyInteger('periodeakreditasicStatus')->nullable();
+            $table->text('deskripsiPeriodeAkreditasi')->nullable();
+            $table->bigInteger('lock')->nullable();
             $table->timestamps();
 
         });

@@ -5,13 +5,18 @@
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')
-  <a href="/rapat/create" class="btn btn-primary my-3">Tambah Data</a>
-  <form action="/search" method="get">
+  <a href="{{ route('rapat.create') }}" class="btn btn-primary my-3">Tambah Data</a>
+  {{-- <form action="/search" method="get"> --}}
 
-    <input type="search" name="search" class="form-control">
-    <span class="input-group-prepend">
-        <button type="submit" class="btn btn-success">Search</button>
-    </span>                 </form>
+    <div class="card">
+      {{-- <div class="card-header">Data Rapat</div> --}}
+      <div class="card-head">
+        <form action="{{ route('rapat.index') }}" method="get">
+        <button type="submit" class="btn btn-primary btn-sm text-center" style="float: right;">CARI</button>
+        <input class="form-control" type="text" name="q" placeholder="Search.." style="width: 200px; float:right">
+        </form>
+      </div>
+    </div>
   <!-- Default box -->
   <table class="table">
       <thead class="thead-dark">

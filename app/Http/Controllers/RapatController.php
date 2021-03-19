@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\rapat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,8 +15,10 @@ class RapatController extends Controller
      */
     public function index()
     {
-        $rapat= rapat::all();
-        return view('rapat.index',['rapat'=>$rapat]);
+        $rapat = rapat::latest()->when(request()->q, function ($rapat) {
+            $rapat = $rapat->where(['namaRapatl', 'PesertaRapat'], 'like', '%' . request()->q . '%');
+        })->paginate(10);
+        return view('rapat.index', ['rapat' => $rapat]);
     }
 
     /**
@@ -64,7 +67,7 @@ class RapatController extends Controller
             'TindakLanjut' => $request->input('TindakLanjut')
 
         ]);
-            // dd($babs);
+        // dd($babs);
         if ($rapat) {
             # code...
             return redirect()->route('rapat.index')->with(['success' => 'Data Berhasil Disimpan']);
@@ -118,23 +121,23 @@ class RapatController extends Controller
         $rapat = rapat::findOrFail($id);
         $rapat->update([
 
-                'namaRapat' => $request->namaRapat,
-                'WaktuRapat' => $request->WaktuRapat,
-                'KeteranganRapat' => $request->KeteranganRapat,
-                'PesertaRapat' => $request->PesertaRapat,
-                'lock' => $request->lock,
-                'Umpan' => $request->Umpan,
-                'MateriRapat' => $request->MateriRapat,
-                'Rekomendasi' => $request->Rekomendasi,
-                'TindakLanjut' => $request->TindakLanjut
-            ]);
+            'namaRapat' => $request->namaRapat,
+            'WaktuRapat' => $request->WaktuRapat,
+            'KeteranganRapat' => $request->KeteranganRapat,
+            'PesertaRapat' => $request->PesertaRapat,
+            'lock' => $request->lock,
+            'Umpan' => $request->Umpan,
+            'MateriRapat' => $request->MateriRapat,
+            'Rekomendasi' => $request->Rekomendasi,
+            'TindakLanjut' => $request->TindakLanjut
+        ]);
 
-            if ($rapat) {
-                # code...
-                return redirect()->route('rapat.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('rapat.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
+        if ($rapat) {
+            # code...
+            return redirect()->route('rapat.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('rapat.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**
@@ -151,12 +154,12 @@ class RapatController extends Controller
         return redirect()->route('rapat.index');
     }
     public function searchsatu(Request $request)
-    {   $carisatu = $request->search;
+    {
+        $carisatu = $request->search;
         $posts = DB::table('rapat')
-        ->where('KeteranganRapat','like',"%".$carisatu."%")
-        ->paginate();
+            ->where('KeteranganRapat', 'like', "%" . $carisatu . "%")
+            ->paginate();
 
-        return view('rapat.index',['rapat' => $posts]);
-
-      }
+        return view('rapat.index', ['rapat' => $posts]);
+    }
 }

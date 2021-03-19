@@ -15,8 +15,8 @@ class CreateElementodoc extends Migration
     {
         Schema::create('elementodoc', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('elemen_idElemen');
-            $table->bigInteger('Dokumen_idDokumen');
+            $table->bigInteger('elemen_idElemen')->nullable();
+            $table->bigInteger('Dokumen_idDokumen')->nullable();
             $table->timestamps();
 
         });
