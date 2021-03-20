@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\tipepelaksanaan;
 use Illuminate\Http\Request;
 use App\tipeprogramkerja;
 class TipeprogramkerjaController extends Controller
@@ -13,7 +14,13 @@ class TipeprogramkerjaController extends Controller
      */
     public function index()
     {
-        $tipeprogramkerja= tipeprogramkerja::paginate(10);
+        $tipeprogramkerja = tipeprogramkerja::latest()->when(request()->q, function ($tipeprogramkerja) {
+            $tipeprogramkerja = $tipeprogramkerja->where(
+                'tipeprogram',
+                'like',
+                '%' . request()->q . '%'
+            );
+        })->paginate(10);
         return view('tipeprogramkerja.index',['tipeprogramkerja'=>$tipeprogramkerja]);
     }
 
@@ -40,8 +47,7 @@ class TipeprogramkerjaController extends Controller
             'keterangantipe' => 'required'
 
         ]);
-        $tipeprogramkerja = tipeprogramkerja::findOrFail($id);
-        $tipeprogramkerja->update([
+        $tipeprogramkerja = tipeprogramkerja::create([
             'tipeprogram' => $request->tipeprogram,
             'keterangantipe' => $request->keterangantipe
             ]);

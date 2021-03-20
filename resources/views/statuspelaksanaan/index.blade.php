@@ -5,15 +5,25 @@
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')
-  <a href="/statuspelaksanaan/create" class="btn btn-primary my-3">Tambah Data</a>
+  <a href="{{ route('statuspelaksanaan.create') }}" class="btn btn-primary my-3">Tambah Data</a>
+  <div class="card">
+    {{-- <div class="card-header">Data Rapat</div> --}}
+    <div class="card-head">
+      <form action="{{ route('statuspelaksanaan.index') }}" method="get">
+      <button type="submit" class="btn btn-primary btn-sm text-center" style="float: right;">CARI</button>
+      <input class="form-control" type="text" name="q" placeholder="Search.." style="width: 200px; float:right">
+      </form>
+    </div>
+  </div>
   <!-- Default box -->
   <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th scope="col"></th>
+          <th scope="col">#</th>
 
           <th scope="col">Status Pelaksanaan</th>
           <th scope="col">Keterangan Status</th>
+          <th scope="col">Aksi</th>
 
         </tr>
       </thead>
@@ -23,7 +33,7 @@
     <?php $no++ ;?>
     <tr>
     <td>{{ $no }}</td>
-    <td>{{ $spn->statuspelaksanaan }}</td>
+    <td>{{ $spn->statusPelaksanaan }}</td>
         <td>{{ $spn->keteranganStatus }}</td>
 
         <td>

@@ -5,15 +5,24 @@
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')
-  <a href="/statusprogramkerja/create" class="btn btn-primary my-3">Tambah Data</a>
+  <a href="{{ route('statusprogramkerja.create') }}" class="btn btn-primary my-3">Tambah Data</a>
   <!-- Default box -->
+  <div class="card">
+    {{-- <div class="card-header">Data Rapat</div> --}}
+    <div class="card-head">
+      <form action="{{ route('statusprogramkerja.index') }}" method="get">
+      <button type="submit" class="btn btn-primary btn-sm text-center" style="float: right;">CARI</button>
+      <input class="form-control" type="text" name="q" placeholder="Search.." style="width: 200px; float:right">
+      </form>
+    </div>
+  </div>
   <table class="table">
       <thead class="thead-dark">
         <tr>
           <th scope="col"></th>
 
-          <th scope="col">Status Proker</th>
-          <th scope="col">Keterangan Status</th>
+          <th scope="col">Status Program Kerja</th>
+          <th scope="col">Keterangan </th>
 
         </tr>
       </thead>

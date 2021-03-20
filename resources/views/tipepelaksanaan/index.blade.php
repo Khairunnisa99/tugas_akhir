@@ -5,15 +5,24 @@
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')
-  <a href="/tipepelaksanaan/create" class="btn btn-primary my-3">Tambah Data</a>
+  <a href="{{ route('tipepelaksanaan.create') }}" class="btn btn-primary my-3">Tambah Data</a>
+  <div class="card">
+    {{-- <div class="card-header">Data Rapat</div> --}}
+    <div class="card-head">
+      <form action="{{ route('tipepelaksanaan.index') }}" method="get">
+      <button type="submit" class="btn btn-primary btn-sm text-center" style="float: right;">CARI</button>
+      <input class="form-control" type="text" name="q" placeholder="Search.." style="width: 200px; float:right">
+      </form>
+    </div>
+  </div>
   <!-- Default box -->
   <table class="table">
       <thead class="thead-dark">
         <tr>
           <th scope="col"></th>
 
-          <th scope="col">namaTypePelaksanaan</th>
-          <th scope="col">keterangan</th>
+          <th scope="col">Tipe Pelaksanaan</th>
+          <th scope="col">Keterangan</th>
 
         </tr>
       </thead>
