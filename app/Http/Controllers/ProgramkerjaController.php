@@ -1,11 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\periodeprogramkerja;
 use App\programkerja;
+use App\statuspelaksanaan;
+use App\statusprogramkerja;
+use App\tipeprogramkerja;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProgramkerjaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:programkerja.index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,8 +23,14 @@ class ProgramkerjaController extends Controller
      */
     public function index()
     {
-        $programkerja= programkerja::latest()->paginate(10);
-        return view('programkerja.index',['programkerja'=>$programkerja]);
+        $programkerja = DB::table('programkerja')
+            ->leftJoin('statusprogramkerja', 'programkerja.statusprogramkerja_idstatusprogramkerja', '=', 'statusprogramkerja.id')
+            ->leftJoin('periodeprogramkerja', 'programkerja.periodeprogramkerja_idperiodeprogramkerja', '=', 'periodeprogramkerja.id')
+            ->leftJoin('tipeprogramkerja', 'programkerja.tipeprogramkerja_idtipeprogramkerja', '=', 'tipeprogramkerja.id')
+            ->select('programkerja.*', 'statusprogramkerja.statusProker', 'periodeprogramkerja.TahunProgramKerja', 'tipeprogramkerja.tipeprogram')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(10);
+        return view('programkerja.index', compact('programkerja'));
     }
 
     /**
@@ -24,7 +40,10 @@ class ProgramkerjaController extends Controller
      */
     public function create()
     {
-        return view('programkerja.create');
+        $periode = periodeprogramkerja::all();
+        $tipe = tipeprogramkerja::all();
+        $pelaksanaan = statusprogramkerja::all();
+        return view('programkerja.create', compact('periode', 'tipe', 'pelaksanaan'));
     }
 
     /**
@@ -33,36 +52,36 @@ class ProgramkerjaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'NamaProgramKerja' => 'required',
-            'peiodeprogramkerja_idperiodeprogramkerja' => 'required',
+            'periodeprogramkerja_idperiodeprogramkerja' => 'required',
             'tipeprogramkerja_idtipeprogramkerja' => 'required',
             'tanggalMulai' => 'required',
             'tanggalBerakhir' => 'required',
             'DeskripsiProgramKerja' => 'required',
             'statusprogramkerja_idstatusprogramkerja' => 'required',
-            'lock' => 'required'
+            // 'lock' => 'required'
 
         ]);
         $programkerja = programkerja::create([
-            'NamaProgramKerja' => $request->NamaProgramKerja,
-            'periodeprogramkerja_idperiodeprogramkerja' => $request->periodeprogramkerja_idperiodeprogramkerja,
-            'tipeprogramkerja_idtipeprogramkerja' => $request->tipeprogramkerja_idtipeprogramkerja,
-            'tanggalMulai' => $request->tanggalMulai,
-            'tanggalBerakhir' => $request->tanggalBerakhir,
-            'DeskripsiProgramKerja' => $request->DeskripsiProgramKerja,
-            'statusprogramkerja_idstatusprogramkerja' => $request->statusprogramkerja_idstatusprogramkerja,
-            'lock' => $request->lock
-            ]);
-            if ($programkerja) {
-                # code...
-                return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
-
+            'NamaProgramKerja' => $request->input('NamaProgramKerja'),
+            'periodeprogramkerja_idperiodeprogramkerja' => $request->input('periodeprogramkerja_idperiodeprogramkerja'),
+            'tipeprogramkerja_idtipeprogramkerja' => $request->input('tipeprogramkerja_idtipeprogramkerja'),
+            'tanggalMulai' => $request->input('tanggalMulai'),
+            'tanggalBerakhir' => $request->input('tanggalBerakhir'),
+            'DeskripsiProgramKerja' => $request->input('DeskripsiProgramKerja'),
+            'statusprogramkerja_idstatusprogramkerja' => $request->input('statusprogramkerja_idstatusprogramkerja'),
+            'lock' => $request->input('lock')
+        ]);
+        if ($programkerja) {
+            # code...
+            return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**
@@ -84,7 +103,11 @@ class ProgramkerjaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $programkerja = programkerja::findOrFail($id);
+        $periode = periodeprogramkerja::all();
+        $tipe = tipeprogramkerja::all();
+        $pelaksanaan = statusprogramkerja::all();
+        return view('programkerja.edit', compact('programkerja', 'periode', 'tipe', 'pelaksanaan'));
     }
 
     /**
@@ -96,36 +119,35 @@ class ProgramkerjaController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $request->validate([
             'NamaProgramKerja' => 'required',
-            'peiodeprogramkerja_idperiodeprogramkerja' => 'required',
+            'periodeprogramkerja_idperiodeprogramkerja' => 'required',
             'tipeprogramkerja_idtipeprogramkerja' => 'required',
             'tanggalMulai' => 'required',
             'tanggalBerakhir' => 'required',
             'DeskripsiProgramKerja' => 'required',
             'statusprogramkerja_idstatusprogramkerja' => 'required',
-            'lock' => 'required'
+            // 'lock' => 'required'
 
         ]);
         $programkerja = programkerja::findOrFail($id);
         $programkerja->update([
-
-            'NamaProgramKerja' => $request->NamaProgramKerja,
-            'peiodeprogramkerja_idperiodeprogramkerja' => $request->periodeprogramkerja_idperiodeprogramkerja,
-            'tipeprogramkerja_idtipeprogramkerja' => $request->tipeprogramkerja_idtipeprogramkerja,
-            'tanggalMulai' => $request->tanggalMulai,
-            'tanggalBerakhir' => $request->tanggalBerakhir,
-            'DeskripsiProgramKerja' => $request->DeskripsiProgramKerja,
-            'statusprogramkerja_idstatusprogramkerja' => $request->statusprogramkerja_idstatusprogramkerja,
-            'lock' => $request->lock
-            ]);
-            if ($programkerja) {
-                # code...
-                return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
-
+            'NamaProgramKerja' => $request->input('NamaProgramKerja'),
+            'periodeprogramkerja_idperiodeprogramkerja' => $request->input('periodeprogramkerja_idperiodeprogramkerja'),
+            'tipeprogramkerja_idtipeprogramkerja' => $request->input('tipeprogramkerja_idtipeprogramkerja'),
+            'tanggalMulai' => $request->input('tanggalMulai'),
+            'tanggalBerakhir' => $request->input('tanggalBerakhir'),
+            'DeskripsiProgramKerja' => $request->input('DeskripsiProgramKerja'),
+            'statusprogramkerja_idstatusprogramkerja' => $request->input('statusprogramkerja_idstatusprogramkerja'),
+            'lock' => $request->input('lock')
+        ]);
+        if ($programkerja) {
+            # code...
+            return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**

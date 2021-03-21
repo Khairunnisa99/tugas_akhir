@@ -11,7 +11,6 @@
         <h1 class="mt-10">Tambah Data </h1>
 
         <form method="post" action="{{ route('periodeprogramkerja.store') }}" enctype="multipart/form-data">
-
         @csrf
           <div class="form-group">
              <label for="TahunProgramKerja">Periode Program Kerja</label>
@@ -19,7 +18,7 @@
           </div>
           <div class="form-group">
              <label for="DeskripsiPeriodeProgramKerja">Deskripsi</label>
-             <input type="text" class="form-control" id="DeskripsiPeriodeProgramKerja" placeholder="Masukan Deskripsi" name="DeskripsiPeriodeProgramKerja">
+             <textarea name="DeskripsiPeriodeProgramKerja" id="" cols="30" rows="5" class="form-control"></textarea>
           </div>
 
 

@@ -10,5 +10,8 @@ class elemen extends Model
 
     protected $guarded = [];
 
-    
+    public function kriteria()
+    {
+        return $this->hasMany(kriteria::class);
+    }
 }

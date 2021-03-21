@@ -40,10 +40,9 @@ class PeriodeprogramkerjaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        //dokumen::create($request->all());
-        //return redirect('/dokumen')->with('status', 'Dokumen berhasil ditambahkan');
+        
         $this->validate($request, [
             'TahunProgramKerja' => 'required',
             'DeskripsiPeriodeProgramKerja' => 'required'
@@ -132,4 +131,4 @@ class PeriodeprogramkerjaController extends Controller
     //     ->paginate();
 
     //     return view('dokumen.index',['dokumen' => $post]);
-    }
+}

@@ -14,10 +14,7 @@
       <form method="post" action="{{ route('klinik.update', $klinik->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-         <div class="form-group">
-            <label for="">Edit Klinik</label>
-            {{-- <input type="text" name="NomorBab" id="" class="form-control" placeholder=""> --}}
-         </div>
+        
           <div class="form-group">
             <label for="">Nama Klinik</label>
             <input type="text" value="{{ $klinik->namaKlinik }}" name="namaKlinik" class="form-control" placeholder="">

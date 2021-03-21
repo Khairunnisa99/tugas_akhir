@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\dokumen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Response;
 
 class DokumenController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:dokumen.index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,6 +30,14 @@ class DokumenController extends Controller
         return view('dokumen.index', ['dokumen' => $dokumen]);
     }
 
+    public function getFile($filename)
+    {
+        $file = Storage::disk('public/surat_dokumen')->get($filename);
+
+        return (new Response($file, 200))
+            ->header('Content-Type', 'surat_dokumen/pdf');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -33,6 +47,7 @@ class DokumenController extends Controller
     {
         return view('dokumen.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -46,12 +61,15 @@ class DokumenController extends Controller
         //return redirect('/dokumen')->with('status', 'Dokumen berhasil ditambahkan');
         $this->validate($request, [
             'namaDokumen' => 'required',
-            'keterangan' => 'required'
+            'keterangan' => 'required',
+            'file' => 'required|mimes:pdf,doc'
         ]);
-
+        $file = $request->file('file');
+        $file->storeAs('public/surat_dokumen/', $file->getClientOriginalName());
         $dokumen = dokumen::create([
             'namaDokumen' => $request->input('namaDokumen'),
             'keterangan' => $request->input('keterangan'),
+            'file' => $file->getClientOriginalName(),
 
         ]);
         // dd($babs);
@@ -93,17 +111,36 @@ class DokumenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
+        // dd($request);
         $this->validate($request, [
             'namaDokumen' => 'required',
             'keterangan' => 'required'
         ]);
-        $dokumen = dokumen::findOrFail($id);
-        $dokumen->update([
-            'namaDokumen' => $request->input('namaDokumen'),
-            'keterangan' => $request->input('keterangan')
-        ]);
+
+
+        if (empty($request->file('file'))) {
+            $dokumen = dokumen::findOrFail($id);
+            $dokumen->update([
+                'namaDokumen' => $request->input('namaDokumen'),
+                'keterangan' => $request->input('keterangan')
+            ]);
+        } else {
+            Storage::disk('local')->delete('public/surat_dokumen' . $dokumen->file);
+
+            $dokumen = dokumen::findOrFail($id);
+            $file = $request->file('file');
+            $file->storeAs('public/surat_dokumen/', $file->getClientOriginalName());
+
+            $dokumen->update([
+                'namaDokumen' => $request->input('namaDokumen'),
+                'keterangan' => $request->input('keterangan'),
+                'file' => $file->getClientOriginalName(),
+
+            ]);
+        }
         if ($dokumen) {
             # code...
             return redirect()->route('dokumen.index')->with(['success' => 'Data Berhasil DiUpdate']);

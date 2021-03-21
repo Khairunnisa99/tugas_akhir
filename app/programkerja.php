@@ -6,14 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class programkerja extends Model
 {
-    protected $table='programkerja';
-    protected $guarded=[];
+    protected $table = 'programkerja';
+    protected $guarded = [];
 
 
-    public function statuspelaksanaan()
+    public function statusProgram()
     {
-        //return $this->hasMany('App\Models\SubBab');
-        return $this->hasMany(statuspelaksanaan::class, 'SubSubBab_idSubSubBab', 'id');
+        return $this->hasMany(statusprogramkerja::class);
     }
 
+    public function tipeProgram()
+    {
+        return $this->hasMany(tipeprogramkerja::class);
+    }
+    public function periodeProgram()
+    {
+        return $this->hasMany(periodeprogramkerja::class);
+    }
 }

@@ -5,37 +5,64 @@
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')
-    <div class="container mt-4">
-    <div class="row"> <div class="col-8">
-    <h1 class="mt-3">Form Ubah Data Dokumen</h1>
+<div class="container">
+ <div class="row">
+    <div class="col-8">
+        <h1 class="mt-10">Tambah Data </h1>
 
-<form method="post" action="{{route('programkerja.update', $programkerja)}}">
-    @csrf
-    @method('patch')
-    <div class="form-group">
-        <label for="NamaProgramKerja">Nama Program Kerja</label>
-        <input type="text" class="form-control @error('NamaProgramKerja') is-invalid @enderror" id="NamaProgramKerja" placeholder="NamaProgramKerja" name="NamaProgramKerja" value="{{ $programkerja->NamaProgramKerja }}">
+        <form action="{{ route('programkerja.update', $programkerja->id) }}" method="post"  enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+          <div class="form-group">
+             <label for="">Nama Program Kerja</label>
+             <input type="text"  name="NamaProgramKerja" value="{{ $programkerja->NamaProgramKerja }}" class="form-control" placeholder="Masukan Nama Program Kerja">
+          </div>
+          <div class="form-group">
+             <label for="">Periode Program Kerja</label>
+             <select name="periodeprogramkerja_idperiodeprogramkerja" class="form-control">
+                @foreach ($periode as $data)
+                    <option value="{{ $data->id }}">{{ $data->TahunProgramKerja }}</option>
+                @endforeach
+             </select>
+          </div>
+          <div class="form-group">
+             <label for="">Tipe Program Kerja</label>
+             <select name="tipeprogramkerja_idtipeprogramkerja" class="form-control">
+                @foreach ($tipe as $data)
+                    <option value="{{ $data->id }}">{{ $data->tipeprogram }}</option>
+                @endforeach
+             </select>
+          </div>
+          <div class="form-group">
+             <label for="">Tanggal Mulai</label>
+             <input type="date" name="tanggalMulai" value="{{ $programkerja->tanggalMulai }}" id="" class="form-control">
+          </div>
+          <div class="form-group">
+             <label for="">Tanggal Berakhir</label>
+             <input type="date" name="tanggalBerakhir" value="{{ $programkerja->tanggalBerakhir }}" id="" class="form-control">
+          </div>
+          <div class="form-group">
+             <label for="">Deskripsi</label>
+             <textarea name="DeskripsiProgramKerja" id="" cols="30" rows="5" class="form-control"> {{ $programkerja->NamaProgramKerja }}</textarea>
+          </div>
+          <div class="form-group">
+             <label for="">Status Pelaksanaan</label>
+             <select name="statusprogramkerja_idstatusprogramkerja" class="form-control">
+                @foreach ($pelaksanaan as $data)
+                    <option value="{{ $data->id }}">{{ $data->statusProker }}</option>
+                @endforeach
+             </select>
+          </div>
+          
+        
 
-            @error('NamaProgramKerja')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                    @enderror
+          <button type="submit" class="btn btn-primary">Simpan Data</button>
+                
+        </form>
+
+
     </div>
-        <div class="form-group">
-            <label for="tanggalMulai">Tanggal Mulai</label>
-            <input type="text" class="form-control @error('tanggalMulai') is-invalid @enderror" id="tanggalMulai" placeholder="tanggalMulai" name="tanggalMulai" value="{{ $programkerja->tanggalMulai }}">
-                @error('tanggalMulai')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                        @enderror
-        </div>
+ </div>
 
-                   <button type="submit" class="btn btn-primary">Ubah Data</button>
-</form>
-
-</div>
-</div>
 </div>
 @endsection

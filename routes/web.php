@@ -30,6 +30,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('dokumen', 'DokumenController');
+    // Route::get('get/{filename}', 'DokumenController@getFile')->name('getfile');
+    // Route::get('dokumen/pdf-document/{id}', 'DokumenController@getDocument');
     //Route::get('dokumen','DokumenController@search');
     //     Route::get('/dokumen', 'DokumenController@index')->name('dokumen.index');
     //     Route::get('/dokumen/create', 'DokumenController@create');
@@ -105,4 +107,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //elemen
     Route::resource('/elemen', 'ElemenController');
+
+    // user
+    Route::resource('/user', 'Admin\UserController');
 });

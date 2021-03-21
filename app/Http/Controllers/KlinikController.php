@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\klinik;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -8,6 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class KlinikController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['permission:klinik.index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +21,10 @@ class KlinikController extends Controller
      */
     public function index()
     {
-        $klinik= klinik::all();
-        return view('klinik.index',['klinik'=>$klinik]);
+        $klinik = klinik::latest()->when(request()->q, function ($klinik) {
+            $klinik = $klinik->where('namaKlinik', 'like', '%' . request()->q . '%');
+        })->paginate(10);
+        return view('klinik.index', ['klinik' => $klinik]);
     }
 
     /**
@@ -60,7 +68,7 @@ class KlinikController extends Controller
             'logo' => $image->hashName()
 
         ]);
-            // dd($babs);
+        // dd($babs);
         if ($klinik) {
             # code...
             return redirect()->route('klinik.index')->with(['success' => 'Data Berhasil Disimpan']);
@@ -109,7 +117,7 @@ class KlinikController extends Controller
             // 'logo' => 'required'
         ]);
 
-        if(empty($request->file('logo'))){
+        if (empty($request->file('logo'))) {
             $klinik = klinik::findOrFail($klinik->id);
             $klinik->update([
                 'namaKlinik' => $request->input('namaKlinik'),
@@ -118,15 +126,16 @@ class KlinikController extends Controller
                 'telponKlinik' => $request->input('telponKlinik'),
                 // 'logo' => $request->input('logo')
             ]);
-        }else{
+        } else {
             // remove foto
             Storage::disk('local')->delete('public/klinik' . $klinik->logo);
 
-             // syntax upload file image
+
+            $klinik = klinik::findOrFail($klinik->id);
+            // syntax upload file image
             $image = $request->file('logo');
             $image->storeAs('public/klinik/', $image->hashName());
 
-            $klinik = klinik::findOrFail($klinik->id);
             $klinik->update([
                 'namaKlinik' => $request->input('namaKlinik'),
                 'alamatKlinik' => $request->input('alamatKlinik'),
@@ -139,10 +148,10 @@ class KlinikController extends Controller
 
 
         if ($klinik) {
-                # code...
-             return redirect()->route('klinik.index')->with(['success' => 'Data Berhasil DiUpdate']);
+            # code...
+            return redirect()->route('klinik.index')->with(['success' => 'Data Berhasil DiUpdate']);
         } else {
-                return redirect()->route('klinik.index')->with(['error' => 'Data Gagal DiUpdate']);
+            return redirect()->route('klinik.index')->with(['error' => 'Data Gagal DiUpdate']);
         }
     }
 
@@ -161,12 +170,12 @@ class KlinikController extends Controller
         return redirect()->route('klinik.index');
     }
     public function search(Request $request)
-    {   $cari = $request->search;
+    {
+        $cari = $request->search;
         $post = DB::table('klinik')
-        ->where('namaKlinik','like',"%".$cari."%")
-        ->paginate();
+            ->where('namaKlinik', 'like', "%" . $cari . "%")
+            ->paginate();
 
-        return view('klinik.index',['klinik' => $post]);
-
-      }
+        return view('klinik.index', ['klinik' => $post]);
+    }
 }
