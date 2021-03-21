@@ -18,7 +18,7 @@
           </div>
           <div class="form-group">
              <label for="keterangan">Keterangan</label>
-             <input type="text" class="form-control" id="keterangan" placeholder="Masukan keterangan" name="keterangan">
+             <textarea name="keterangan" id="" cols="30" rows="5" class="form-control"></textarea>
           </div>
 
 

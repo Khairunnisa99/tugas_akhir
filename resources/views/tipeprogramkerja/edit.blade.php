@@ -14,7 +14,7 @@
     @method('patch')
     <div class="form-group">
         <label for="tipeprogram">Tipe Program</label>
-        <input type="text" class="form-control @error('tipeprogram') is-invalid @enderror" id="tipeprogram" placeholder="tipeprogram" name="tipeprogram" value="{{ $tipeprogram->tipeprogram }}">
+        <input type="text" class="form-control @error('tipeprogram') is-invalid @enderror" id="tipeprogram" placeholder="tipeprogram" name="tipeprogram" value="{{ $tipeprogramkerja->tipeprogram }}">
 
             @error('tipeprogram')
                 <div class="invalid-feedback">
@@ -23,9 +23,9 @@
                     @enderror
     </div>
         <div class="form-group">
-            <label for="keterangantipe">Keterangan Tipe</label>
-            <input type="text" class="form-control @error('keterangantipe') is-invalid @enderror" id="keterangantipe" placeholder="keterangantipe" name="keterangantipe" value="{{ $keterangantipe->keterangantipe}}">
-                @error('tanggalMulai')
+            <label for="keterangantipe">Keterangan</label>
+            <input type="text" class="form-control @error('keterangantipe') is-invalid @enderror" id="keterangantipe" placeholder="keterangantipe" name="keterangantipe" value="{{ $tipeprogramkerja->keterangantipe}}">
+                @error('keterangantipe')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>

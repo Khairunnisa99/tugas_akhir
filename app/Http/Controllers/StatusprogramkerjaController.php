@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\statuspelaksanaan;
 use Illuminate\Http\Request;
 use App\statusprogramkerja;
 
@@ -15,7 +16,13 @@ class StatusprogramkerjaController extends Controller
      */
     public function index()
     {
-        $statusprogramkerja= statusprogramkerja::paginate(10);
+        $statusprogramkerja = statusprogramkerja::latest()->when(request()->q, function ($statusprogramkerja) {
+            $statusprogramkerja = $statusprogramkerja->where(
+                'statusProker',
+                'like',
+                '%' . request()->q . '%'
+            );
+        })->paginate(10);
         return view('statusprogramkerja.index',['statusprogramkerja'=>$statusprogramkerja]);
     }
 
@@ -35,24 +42,23 @@ class StatusprogramkerjaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $request->validate([
+        $this->validate($request,[
             'statusProker' => 'required',
             'keteranganStatus' => 'required'
 
         ]);
-        $statusprogramkerja = statusprogramkerja::findOrFail($id);
-        $statusprogramkerja->update([
-            'statusProker' => $request->statusProker,
-            'keteranganStatus' => $request->keteranganStatus
+        $statusprogramkerja = statusprogramkerja::create([
+            'statusProker' => $request->input ('statusProker'),
+            'keteranganStatus' => $request->input ('keteranganStatus')
             ]);
-            if ($statusprogramkerja) {
-                # code...
-                return redirect()->route('statusprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('statusprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
+        if ($statusprogramkerja) {
+            # code...
+            return redirect()->route('statusprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('statusprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**

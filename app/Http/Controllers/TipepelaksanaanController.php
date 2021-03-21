@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\tipepelaksanaan;
-
+use App\tipeprogramkerja;
 
 class TipepelaksanaanController extends Controller
 {
@@ -15,7 +15,13 @@ class TipepelaksanaanController extends Controller
      */
     public function index()
     {
-        $tipepelaksanaan= tipepelaksanaan::paginate(10);
+        $tipepelaksanaan = tipepelaksanaan::latest()->when(request()->q, function ($tipepelaksanaan) {
+            $tipepelaksanaan = $tipepelaksanaan->where(
+                'namaTypePelaksanaan',
+                'like',
+                '%' . request()->q . '%'
+            );
+        })->paginate(10);
         return view('tipepelaksanaan.index',['tipepelaksanaan'=>$tipepelaksanaan]);
     }
 
@@ -35,17 +41,17 @@ class TipepelaksanaanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $request->validate([
+        $this->validate($request,[
             'namaTypePelaksanaan' => 'required',
             'keterangan' => 'required'
 
         ]);
-        $tipepelaksanaan = statusprogramkerja::findOrFail($id);
-        $tipepelaksanaan->update([
-            'namaTypePelaksanaan' => $request->namaTypePelaksanaan,
-            'keterangan' => $request->keterangan
+        $tipepelaksanaan = tipepelaksanaan::create([
+
+            'namaTypePelaksanaan' => $request->input ('namaTypePelaksanaan'),
+            'keterangan' => $request->input ('keterangan')
             ]);
             if ($tipepelaksanaan) {
                 # code...

@@ -12,7 +12,6 @@ class elemen extends Model
 
     public function kriteria()
     {
-        //return $this->hasMany('App\Models\SubBab');
-        return $this->hasMany(kriteria::class, 'SubSubBab_idSubSubBab', 'id');
+        return $this->hasMany(kriteria::class);
     }
 }

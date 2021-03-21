@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class kriteria extends Model
 {
-    protected $table = 'SubSubBab';
+    protected $table = 'subsubbab';
 
     protected $guarded = [];
 
@@ -20,5 +20,4 @@ class kriteria extends Model
     {
         return $this->belongsTo('App\elemen::class');
     }
-
 }

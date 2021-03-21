@@ -15,11 +15,15 @@
         @csrf
           <div class="form-group">
              <label for="namaDokumen">Nama Dokumen</label>
-             <input type="text" class="form-control" id="nama" placeholder="Masukan Nama Dokumen" name="namaDokumen">
+             <input type="text" class="form-control"  placeholder="Masukan Nama Dokumen" name="namaDokumen">
           </div>
           <div class="form-group">
              <label for="keterangan">Keterangan</label>
-             <input type="text" class="form-control" id="nim" placeholder="Masukan Keterangan" name="keterangan">
+             <input type="text" class="form-control"  placeholder="Masukan Keterangan" name="keterangan">
+          </div>
+          <div class="form-group">
+             <label for="">File Surat</label>
+             <input type="file" class="form-control" name="file" value="{{ $dokumen->file }}">
           </div>
 
 

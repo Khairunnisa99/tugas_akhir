@@ -10,7 +10,7 @@
     <div class="col-8">
         <h1 class="mt-10">Tambah Data </h1>
 
-        <form method="post" action="/tipeprogramkerja">
+        <form method="post" action="{{ route('tipeprogramkerja.store') }}" enctype="multipart/form-data">
         @csrf
           <div class="form-group">
              <label for="tipeprogram">Tipe Program</label>
@@ -18,7 +18,7 @@
           </div>
           <div class="form-group">
              <label for="keterangantipe">Keterangan Tipe</label>
-             <input type="text" class="form-control" id="keterangantipe" placeholder="Masukan keterangan" name="keterangantipe">
+             <textarea name="keterangantipe" id="" cols="30" rows="5" class="form-control"></textarea>
           </div>
 
 

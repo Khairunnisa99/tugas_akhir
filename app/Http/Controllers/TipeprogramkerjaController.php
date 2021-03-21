@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\tipepelaksanaan;
 use Illuminate\Http\Request;
 use App\tipeprogramkerja;
+
 class TipeprogramkerjaController extends Controller
 {
     /**
@@ -13,8 +15,14 @@ class TipeprogramkerjaController extends Controller
      */
     public function index()
     {
-        $tipeprogramkerja= tipeprogramkerja::paginate(10);
-        return view('tipeprogramkerja.index',['tipeprogramkerja'=>$tipeprogramkerja]);
+        $tipeprogramkerja = tipeprogramkerja::latest()->when(request()->q, function ($tipeprogramkerja) {
+            $tipeprogramkerja = $tipeprogramkerja->where(
+                'tipeprogram',
+                'like',
+                '%' . request()->q . '%'
+            );
+        })->paginate(10);
+        return view('tipeprogramkerja.index', ['tipeprogramkerja' => $tipeprogramkerja]);
     }
 
     /**
@@ -33,24 +41,23 @@ class TipeprogramkerjaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $request->validate([
             'tipeprogram' => 'required',
             'keterangantipe' => 'required'
 
         ]);
-        $tipeprogramkerja = tipeprogramkerja::findOrFail($id);
-        $tipeprogramkerja->update([
+        $tipeprogramkerja = tipeprogramkerja::create([
             'tipeprogram' => $request->tipeprogram,
             'keterangantipe' => $request->keterangantipe
-            ]);
-            if ($tipeprogramkerja) {
-                # code...
-                return redirect()->route('tipeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('tipeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
+        ]);
+        if ($tipeprogramkerja) {
+            # code...
+            return redirect()->route('tipeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('tipeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**
@@ -95,13 +102,13 @@ class TipeprogramkerjaController extends Controller
         $tipeprogramkerja->update([
             'tipeprogram' => $request->tipeprogram,
             'keterangantipe' => $request->keterangantipe
-            ]);
-            if ($tipeprogramkerja) {
-                # code...
-                return redirect()->route('tipeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('tipeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
+        ]);
+        if ($tipeprogramkerja) {
+            # code...
+            return redirect()->route('tipeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('tipeprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**

@@ -5,38 +5,60 @@
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')
-  <a href="/statusprogramkerja/create" class="btn btn-primary my-3">Tambah Data</a>
-  <!-- Default box -->
-  <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col"></th>
+    <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+                <a href="{{ route('statusprogramkerja.create') }}" class="btn btn-primary my-3">Tambah Data</a>
+        </div>
+                <!-- Default box -->
+                <div class="card">
+                  {{-- <div class="card-header">Data Rapat</div> --}}
+                  <div class="card-head">
+                    <form action="{{ route('statusprogramkerja.index') }}" method="get">
+                    <button type="submit" class="btn btn-primary btn-sm text-center" style="float: right;">CARI</button>
+                    <input class="form-control" type="text" name="q" placeholder="Search.." style="width: 200px; float:right">
+                    </form>
+                  </div>
+                </div>
 
-          <th scope="col">Status Proker</th>
-          <th scope="col">Keterangan Status</th>
+                <div class="box-body">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col"></th>
 
-        </tr>
-      </thead>
-  <tbody>
-  <?php $no = 0;?>
-    @foreach($statusprogramkerja as $spk)
-    <?php $no++ ;?>
-    <tr>
-    <td>{{ $no }}</td>
-    <td>{{ $spk->statusProker }}</td>
-        <td>{{ $spk->keteranganStatus }}</td>
+                        <th scope="col">Status Program Kerja</th>
+                        <th scope="col">Keterangan </th>
+                        <th scope="col">Aksi</th>
 
-        <td>
-            <form action="{{ route('statusprogramkerja.destroy', $spk->id) }}" method="POST">
-              @csrf
-              @method('DELETE')
-              <a href="{{ route('statusprogramkerja.edit', $spk->id) }}" class="btn btn-info">Edit</a>
-              <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
-            </form>
-          </td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
+                      </tr>
+                    </thead>
+                <tbody>
+                <?php $no = 0;?>
+                  @foreach($statusprogramkerja as $spk)
+                  <?php $no++ ;?>
+                  <tr>
+                  <td>{{ $no }}</td>
+                  <td>{{ $spk->statusProker }}</td>
+                      <td>{{ $spk->keteranganStatus }}</td>
+
+                      <td>
+                          <form action="{{ route('statusprogramkerja.destroy', $spk->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <a href="{{ route('statusprogramkerja.edit', $spk->id) }}" class="btn btn-info">Edit</a>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
+                          </form>
+                        </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+      </div>
+    </div>
+    </div>
+
 
 @endsection

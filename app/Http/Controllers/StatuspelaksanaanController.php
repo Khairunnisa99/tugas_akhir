@@ -13,7 +13,13 @@ class StatuspelaksanaanController extends Controller
      */
     public function index()
     {
-        $statuspelaksanaan= statuspelaksanaan::paginate(10);
+        $statuspelaksanaan = statuspelaksanaan::latest()->when(request()->q, function ($statuspelaksanaan) {
+            $statuspelaksanaan = $statuspelaksanaan->where(
+                'statusPelaksanaan',
+                'like',
+                '%' . request()->q . '%'
+            );
+        })->paginate(10);
         return view('statuspelaksanaan.index',['statuspelaksanaan'=>$statuspelaksanaan]);
     }
 
@@ -33,17 +39,16 @@ class StatuspelaksanaanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request , $id)
+    public function store(Request $request )
     {
-        $request->validate([
+        $this->validate($request, [
             'statusPelaksanaan' => 'required',
             'keteranganStatus' => 'required'
 
         ]);
-        $statuspelaksanaan = statuspelaksanaan::findOrFail($id);
-        $statuspelaksanaan->update([
-            'statusPelaksanaan' => $request->statusPelaksanaan,
-            'keteranganStatus' => $request->keteranganStatus
+        $statuspelaksanaan = statuspelaksanaan::create([
+            'statusPelaksanaan' => $request->input ('statusPelaksanaan'),
+            'keteranganStatus' => $request->input ('keteranganStatus')
             ]);
             if ($statuspelaksanaan) {
                 # code...
