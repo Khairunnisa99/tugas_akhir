@@ -23,6 +23,7 @@ class ProgramkerjaController extends Controller
      */
     public function index()
     {
+
         $programkerja = DB::table('programkerja')
             ->leftJoin('statusprogramkerja', 'programkerja.statusprogramkerja_idstatusprogramkerja', '=', 'statusprogramkerja.id')
             ->leftJoin('periodeprogramkerja', 'programkerja.periodeprogramkerja_idperiodeprogramkerja', '=', 'periodeprogramkerja.id')
@@ -31,6 +32,7 @@ class ProgramkerjaController extends Controller
             ->orderBy('created_at', 'DESC')
             ->paginate(10);
         return view('programkerja.index', compact('programkerja'));
+
     }
 
     /**
@@ -82,6 +84,7 @@ class ProgramkerjaController extends Controller
         } else {
             return redirect()->route('programkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
         }
+
     }
 
     /**

@@ -42,7 +42,6 @@ class PeriodeprogramkerjaController extends Controller
      */
     public function store(Request $request)
     {
-        
         $this->validate($request, [
             'TahunProgramKerja' => 'required',
             'DeskripsiPeriodeProgramKerja' => 'required'
@@ -124,11 +123,4 @@ class PeriodeprogramkerjaController extends Controller
 
         return redirect()->route('periodeprogramkerja.index');
     }
-    // public function search(Request $request)
-    // {   $cari = $request->search;
-    //     $post = DB::table('dokumen')
-    //     ->where('namaDokumen','like',"%".$cari."%")
-    //     ->paginate();
 
-    //     return view('dokumen.index',['dokumen' => $post]);
-}

@@ -176,6 +176,7 @@
                       <li class="{{ set_active(['statusprogramkerja.index', 'statusprogramkerja.create', 'statusprogramkerja.edit']) }}"><a href="{{ route('statusprogramkerja.index') }}">Status Program Kerja</a></li>
                       <li class="{{ set_active(['tipepelaksanaan.index', 'tipepelaksanaan.create', 'tipepelaksanaan.edit']) }}"><a href="{{ route('tipepelaksanaan.index') }}">Tipe Pelaksanaan</a></li>
                       <li class="{{ set_active(['statuspelaksanaan.index', 'statuspelaksanaan.create', 'statuspelaksanaan.edit']) }}"><a href="{{ route('statuspelaksanaan.index') }}">Status Pelaksanaan</a></li>
+
                     </ul>
                   </li>
                   @endcan

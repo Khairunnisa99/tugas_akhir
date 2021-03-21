@@ -6,6 +6,7 @@
   @section('page-title','Home')
   @section('content')
 
+
     <div class="row">
     <div class="col-xs-12">
       <div class="box">
@@ -28,7 +29,6 @@
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
-
                     <th scope="col">Status Pelaksanaan</th>
                     <th scope="col">Keterangan Status</th>
                     <th scope="col">Aksi</th>

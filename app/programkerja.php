@@ -10,6 +10,7 @@ class programkerja extends Model
     protected $guarded = [];
 
 
+
     public function statusProgram()
     {
         return $this->hasMany(statusprogramkerja::class);
@@ -23,4 +24,11 @@ class programkerja extends Model
     {
         return $this->hasMany(periodeprogramkerja::class);
     }
+
+    public function statuspelaksanaan()
+    {
+        //return $this->hasMany('App\Models\SubBab');
+        return $this->hasMany(statuspelaksanaan::class, 'SubSubBab_idSubSubBab', 'id');
+    }
+
 }

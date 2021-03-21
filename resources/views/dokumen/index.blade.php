@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 @push('customcss')
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
