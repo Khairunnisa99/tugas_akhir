@@ -4,9 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:users.index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::latest()->when(request()->q, function ($users) {
+            $users = $users->where('name', 'like', '%' . request()->q . '%');
+        })->paginate(5);
+
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -24,7 +34,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('user.create', compact('roles'));
     }
 
     /**
@@ -35,7 +46,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'password' => 'required|same:password_confirmation',
+            'roles' => 'required'
+        ]);
+
+        $users = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+
+        ]);
+
+        // asiggn ke role
+        $users->assignRole($request->input('roles'));
+
+        if ($users) {
+            # code...
+            return redirect()->route('user.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        } else {
+            return redirect()->route('users.index')->with(['error' => 'Data Gagal Disimpan!']);
+        }
     }
 
     /**
@@ -57,7 +90,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('user.edit', compact('user', 'roles'));
     }
 
     /**
@@ -67,9 +102,37 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|unique:users,email,' . $user->id,
+        ]);
+
+        $user = User::findOrFail($user->id);
+        if (!empty($request->input('password'))) {
+            $user->update([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+
+            ]);
+        } else {
+            $user->update([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'password' => bcrypt($request->input('password')),
+
+            ]);
+        }
+        $user->assignRole($request->input('roles'));
+
+        if ($user) {
+            # code...
+            return redirect()->route('user.index')->with(['success' => 'Data Berhasil DiUpdate!']);
+        } else {
+            return redirect()->route('user.index')->with(['success' => 'Data Gagal DiUpdate!']);
+        }
     }
 
     /**
@@ -80,6 +143,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrfail($id);
+
+        $user->delete();
+
+        return redirect()->route('user.index');
     }
 }

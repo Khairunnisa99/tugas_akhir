@@ -50,16 +50,15 @@ class StatusprogramkerjaController extends Controller
 
         ]);
         $statusprogramkerja = statusprogramkerja::create([
-
             'statusProker' => $request->input ('statusProker'),
             'keteranganStatus' => $request->input ('keteranganStatus')
             ]);
-            if ($statusprogramkerja) {
-                # code...
-                return redirect()->route('statusprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('statusprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
+        if ($statusprogramkerja) {
+            # code...
+            return redirect()->route('statusprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('statusprogramkerja.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**

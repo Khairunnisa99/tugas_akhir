@@ -4,39 +4,36 @@
 @endpush
   @section('title','Dahboard')
   @section('page-title','Home')
-  @section('content') 
-    <div class="container mt-4"> 
-    <div class="row"> <div class="col-8"> 
-    <h1 class="mt-3">Form Ubah Data Dokumen</h1> 
- 
-<form method="post" action="{{route('dokumen.update', $dokumen)}}"> 
-    @csrf 
-    @method('patch')
-    <div class="form-group">     
-        <label for="namaDokumen">Nama Dokumen</label>     
-        <input type="text" class="form-control @error('namaDokumen') is-invalid @enderror" id="namaDokumen" placeholder="namaDokumen" name="namaDokumen" value="{{ $dokumen->namaDokumen }}">     
-        
-            @error('namaDokumen')         
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>     
-                    @enderror   
-    </div>   
-        <div class="form-group">     
-            <label for="keterangan">Keterangan</label>     
-            <input type="text" class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" placeholder="keterangan" name="keterangan" value="{{ $dokumen->keterangan }}">     
-                @error('keterangan')         
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>    
-                        @enderror   
-        </div>   
-            
-                   <button type="submit" class="btn btn-primary">Ubah Data</button> 
-</form> 
- 
-</div> 
-</div> 
-</div> 
-@endsection 
- 
+  @section('content')
+<div class="container">
+ <div class="row">
+    <div class="col-8">
+        <h1 class="mt-10">Edit Data </h1>
+
+        <form action="{{ route('dokumen.update', $dokumen->id) }}" enctype="multipart/form-data" method="post">
+        @csrf
+        @method('PUT')
+          <div class="form-group">
+             <label for="">Nama Dokumen</label>
+             <input type="text" class="form-control" value="{{ $dokumen->namaDokumen }}" placeholder="Masukan Nama Dokumen" name="namaDokumen">
+          </div>
+          <div class="form-group">
+             <label for="">Keterangan</label>
+             <input type="text" class="form-control" value="{{ $dokumen->keterangan }}" placeholder="Masukan Keterangan" name="keterangan">
+          </div>
+          <div class="form-group">
+             <label for="">File Surat</label>
+             <input type="file" class="form-control" name="file" value="{{ $dokumen->file }}">
+          </div>
+
+
+          <button type="submit" class="btn btn-primary">Update Data</button>
+
+        </form>
+
+
+    </div>
+ </div>
+
+</div>
+@endsection

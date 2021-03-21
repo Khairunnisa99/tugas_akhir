@@ -16,13 +16,16 @@ class CreateProgramkerja extends Migration
         Schema::create('programkerja', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('NamaProgramKerja')->nullable();
-            $table->bigInteger('periodeprogramkerja_idperiodeprogramkerja')->nullable();
-            $table->bigInteger('tipeprogramkerja_idtipeprogramkerja')->nullable();
+            $table->bigInteger('periodeprogramkerja_idperiodeprogramkerja')->nullable()->unsigned();
+            $table->bigInteger('tipeprogramkerja_idtipeprogramkerja')->nullable()->unsigned();
             $table->date('tanggalMulai')->nullable();
             $table->date('tanggalBerakhir')->nullable();
             $table->text('DeskripsiProgramKerja')->nullable();
-            $table->bigInteger('statusprogramkerja_idstatusprogramkerja')->nullable();
+            $table->bigInteger('statusprogramkerja_idstatusprogramkerja')->nullable()->unsigned();
             $table->bigInteger('lock')->nullable();
+
+
+            // $table->foreign('statusprogramkerja_idstatusprogramkerja')->references('id')->on('statusprogramkerja')
             $table->timestamps();
         });
     }

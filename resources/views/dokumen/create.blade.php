@@ -21,6 +21,11 @@
              <label for="keterangan">Keterangan</label>
              <input type="text" class="form-control"  placeholder="Masukan Keterangan" name="keterangan">
           </div>
+          <div class="form-group">
+             <label for="">File Surat</label>
+             <input type="file" class="form-control" name="file" value="{{ $dokumen->file }}">
+
+          </div>
 
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>

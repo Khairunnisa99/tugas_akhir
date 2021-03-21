@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 //use Illuminate\Support\Facades\Storage;
 class RapatController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:rapat.index']);
+    }
     /**
      * Display a listing of the resource.
      *

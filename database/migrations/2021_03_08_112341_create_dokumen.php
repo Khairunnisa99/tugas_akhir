@@ -17,6 +17,7 @@ class CreateDokumen extends Migration
             $table->bigIncrements('id');
             $table->string('namaDokumen')->nullable();
             $table->text('keterangan')->nullable();
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

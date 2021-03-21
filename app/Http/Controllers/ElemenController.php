@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\SubBab;
 use App\Models\SubSubBab;
 use App\elemen;
@@ -39,6 +40,7 @@ class ElemenController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $this->validate($request, [
             'SubSubBab_idSubSubBab' => 'required',
             'NoElemen' => 'required',
@@ -49,17 +51,7 @@ class ElemenController extends Controller
             'DokumenEksternal' => 'required'
 
         ]);
-        //$table->bigIncrements('id');
-            //$table->bigInteger('SubSubBab_idSubSubBab');
-            //$table->string('NoElemen');
-            //$table->text('ElemenPenilaian');
-            //$table->text('TelusurSasaran');
-            //$table->text('MateriTelusur');
-            //$table->text('DokumentInternal');
-            //$table->text('DokumenEksternal');
-            //$table->bigInteger('Skor');
-            //$table->bigInteger('periodeakreditasi_idperiodeakreditasi');
-            //$table->bigInteger('lock');
+
         $kriteria = elemen::create([
             'SubSubBab_idSubSubBab' => $request->input('SubSubBab_idSubSubBab'),
             'NoElemen' => $request->input('NoElemen'),
@@ -73,7 +65,7 @@ class ElemenController extends Controller
             'lock' => $request->input('lock')
 
         ]);
-            // dd($babs);
+        // dd($babs);
         if ($kriteria) {
             # code...
             return redirect()->route('elemen.index')->with(['success' => 'Data Berhasil Disimpan']);
