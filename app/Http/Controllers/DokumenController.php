@@ -62,7 +62,7 @@ class DokumenController extends Controller
         $this->validate($request, [
             'namaDokumen' => 'required',
             'keterangan' => 'required',
-            'file' => 'required|mimes:pdf,doc'
+            'file' => 'required|mimes:pdf,doc, docx'
         ]);
         $file = $request->file('file');
         $file->storeAs('public/surat_dokumen/', $file->getClientOriginalName());
@@ -128,7 +128,7 @@ class DokumenController extends Controller
                 'keterangan' => $request->input('keterangan')
             ]);
         } else {
-            Storage::disk('local')->delete('public/surat_dokumen' . $dokumen->file);
+            Storage::disk('local')->delete('public/surat_dokumen' . $id);
 
             $dokumen = dokumen::findOrFail($id);
             $file = $request->file('file');

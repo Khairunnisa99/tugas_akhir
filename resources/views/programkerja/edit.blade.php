@@ -8,7 +8,7 @@
 <div class="container">
  <div class="row">
     <div class="col-8">
-        <h1 class="mt-10">Tambah Data </h1>
+        <h1 class="mt-10">Edit Data </h1>
 
         <form action="{{ route('programkerja.update', $programkerja->id) }}" method="post"  enctype="multipart/form-data">
         @csrf
@@ -43,7 +43,7 @@
           </div>
           <div class="form-group">
              <label for="">Deskripsi</label>
-             <textarea name="DeskripsiProgramKerja" id="" cols="30" rows="5" class="form-control"> {{ $programkerja->NamaProgramKerja }}</textarea>
+             <textarea name="DeskripsiProgramKerja" id="" cols="30" rows="5" class="form-control"> {{ $programkerja->DeskripsiProgramKerja }}</textarea>
           </div>
           <div class="form-group">
              <label for="">Status Pelaksanaan</label>
@@ -53,11 +53,11 @@
                 @endforeach
              </select>
           </div>
-          
-        
+
+
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
-                
+
         </form>
 
 

@@ -110,4 +110,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     // user
     Route::resource('/user', 'Admin\UserController');
+
+    //pelaksanaan program
+    Route::resource('/pelaksanaanprogram', 'PelaksanaanprogramController');
+
+    //periodeakreditasi
+    Route::resource('/periodeakreditasi', 'PeriodeakreditasiController');
 });
