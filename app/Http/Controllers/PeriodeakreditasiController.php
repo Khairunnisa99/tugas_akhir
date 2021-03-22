@@ -45,6 +45,7 @@ class PeriodeakreditasiController extends Controller
      */
     public function store(Request $request)
     {
+
         $this-> validate($request,[
             'namaPeriodeAkreditasi' =>'required',
             'tahunProgramAkreditasi'=> 'required',
