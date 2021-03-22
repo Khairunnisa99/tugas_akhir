@@ -44,6 +44,7 @@
           <div class="form-group">
              <label for="">Deskripsi</label>
              <textarea name="DeskripsiProgramKerja" id="" cols="30" rows="5" class="form-control"> {{ $programkerja->DeskripsiProgramKerja }}</textarea>
+
           </div>
           <div class="form-group">
              <label for="">Status Pelaksanaan</label>
@@ -53,8 +54,6 @@
                 @endforeach
              </select>
           </div>
-
-
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
 
@@ -66,3 +65,4 @@
 
 </div>
 @endsection
+

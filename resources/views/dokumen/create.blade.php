@@ -25,6 +25,7 @@
              <label for="">File Surat</label>
              <input type="file" class="form-control" name="file" value="">
 
+
           </div>
 
 

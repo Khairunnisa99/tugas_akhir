@@ -128,6 +128,7 @@ class DokumenController extends Controller
                 'keterangan' => $request->input('keterangan')
             ]);
         } else {
+
             Storage::disk('local')->delete('public/surat_dokumen' . $id);
 
             $dokumen = dokumen::findOrFail($id);
