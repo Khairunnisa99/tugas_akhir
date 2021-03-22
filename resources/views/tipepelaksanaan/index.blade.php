@@ -5,6 +5,7 @@
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')
+
   <div class="row">
     <div class="col-xs-12">
       <div class="box">
@@ -20,6 +21,7 @@
       </form>
     </div>
   </div>
+
         <div class="box-body">
           <!-- Default box -->
           <table class="table">
@@ -30,7 +32,6 @@
                   <th scope="col">Tipe Pelaksanaan</th>
                   <th scope="col">Keterangan</th>
                   <th scope="col">Aksi</th>
-
                 </tr>
               </thead>
           <tbody>

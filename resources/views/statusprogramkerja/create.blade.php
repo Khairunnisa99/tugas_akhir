@@ -18,7 +18,9 @@
           </div>
           <div class="form-group">
              <label for="keteranganStatus">Keterangan Status</label>
+
              <textarea name="keteranganStatus" id="" cols="30" rows="5" class="form-control"></textarea>
+
           </div>
 
 

@@ -5,6 +5,7 @@
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')
+
 <div class="row">
   <div class="col-xs-12">
     <div class="box">

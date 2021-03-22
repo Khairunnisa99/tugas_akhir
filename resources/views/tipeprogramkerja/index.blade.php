@@ -5,7 +5,6 @@
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')
-
 <div class="row">
     <div class="col-xs-12">
           <div class="box">
@@ -28,7 +27,6 @@
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col"></th>
-
                       <th scope="col">Tipe Program</th>
                       <th scope="col">Keterangan</th>
                       <th scope="col">Aksi</th>

@@ -23,7 +23,9 @@
           </div>
           <div class="form-group">
              <label for="">File Surat</label>
-             <input type="file" class="form-control" name="file" value="{{ $dokumen->file }}">
+             <input type="file" class="form-control" name="file" value="">
+
+
           </div>
 
 
