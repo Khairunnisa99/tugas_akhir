@@ -95,7 +95,8 @@
           'bab.index', 'bab.create', 'bab.edit', 
           'standar.index', 'standar.create', 'standar.edit',
           'kriteria.index', 'kriteria.create', 'kriteria.edit',
-          'elemen.index', 'elemen.create', 'elemen.edit'
+          'elemen.index', 'elemen.create', 'elemen.edit',
+          'periodeakreditasi.index', 'periodeakreditasi.create', 'periodeakreditasi.edit'
           ]) }}">
           <a href="#">
             <i class="fa fa-bookmark"></i>
@@ -115,7 +116,8 @@
                 'bab.index','bab.create', 'bab.edit',
                 'standar.index', 'standar.create', 'standar.edit',
                 'kriteria.index', 'kriteria.create', 'kriteria.edit',
-                'elemen.index', 'elemen.create', 'elemen.edit']) }}">
+                'elemen.index', 'elemen.create', 'elemen.edit',
+                'periodeakreditasi.index', 'periodeakreditasi.create', 'periodeakreditasi.edit']) }}">
                 <a href="#">
                   <i class="fa fa-bookmark"></i>
                   <span>Struktur Akreditasi</span>
@@ -146,6 +148,7 @@
             'statusprogramkerja.index', 'statusprogramkerja.create', 'statusprogramkerja.edit',
             'tipepelaksanaan.index', 'tipepelaksanaan.create', 'tipepelaksanaan.edit',
             'statuspelaksanaan.index', 'statuspelaksanaan.create', 'statuspelaksanaan.edit',
+            'pelaksanaanprogram.index', 'pelaksanaanprogram.create', 'pelaksanaanprogram.edit'
               ]) }}">
                 <a href="#">
                   <i class="fa fa-cogs"></i>

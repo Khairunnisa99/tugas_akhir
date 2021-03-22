@@ -15,10 +15,9 @@ class CreateStatuspelaksanaan extends Migration
     {
         Schema::create('statuspelaksanaan', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('statusPelaksanaan');
-            $table->text('keteranganStatus');
+            $table->string('statusPelaksanaan')->nullable();
+            $table->text('keteranganStatus')->nullable();
             $table->timestamps();
-
         });
     }
 

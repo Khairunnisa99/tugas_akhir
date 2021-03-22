@@ -37,6 +37,7 @@
                     <th scope="col">Materi Rapat</th>
                     <th scope="col">Rekomendasi</th>
                     <th scope="col">Tindak Lanjut</th>
+                    <th scope="col">Aksi</th>
 
 
                   </tr>
