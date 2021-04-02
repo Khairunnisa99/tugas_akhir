@@ -51,30 +51,53 @@ class KlinikController extends Controller
             'alamatKlinik' => 'required',
             'webKlinik' => 'required',
             'telponKlinik' => 'required',
-            'logo' => 'required|image',
+            //'logo' => 'required|image'
 
         ]);
 
-        // syntax upload file image
-        $image = $request->file('logo');
-        $image->storeAs('public/klinik/', $image->hashName());
+        if (empty($request->file('logo'))) {
+            $klinik = klinik::create([
+                'namaKlinik' => $request->input('namaKlinik'),
+                'alamatKlinik' => $request->input('alamatKlinik'),
+                'webKlinik' => $request->input('webKlinik'),
+                'telponKlinik' => $request->input('telponKlinik'),
+                //'logo' => $image->hashName()
 
+            ]);
+        } else{
+            $image = $request->file('logo');
+            $image->storeAs('public/klinik/', $image->hashName());
+            $klinik = klinik::create([
+                'namaKlinik' => $request->input('namaKlinik'),
+                'alamatKlinik' => $request->input('alamatKlinik'),
+                'webKlinik' => $request->input('webKlinik'),
+                'telponKlinik' => $request->input('telponKlinik'),
+                'logo' => $image->hashName()
+            ]);
 
-        $klinik = klinik::create([
-            'namaKlinik' => $request->input('namaKlinik'),
-            'alamatKlinik' => $request->input('alamatKlinik'),
-            'webKlinik' => $request->input('webKlinik'),
-            'telponKlinik' => $request->input('telponKlinik'),
-            'logo' => $image->hashName()
-
-        ]);
-        // dd($babs);
+        }
         if ($klinik) {
             # code...
             return redirect()->route('klinik.index')->with(['success' => 'Data Berhasil Disimpan']);
         } else {
             return redirect()->route('klinik.index')->with(['success' => 'Data Berhasil Disimpan']);
         }
+
+        // syntax upload file image
+        //$image = $request->file('logo');
+        //$image->storeAs('public/klinik/', $image->hashName());
+
+
+       // $klinik = klinik::create([
+            //'namaKlinik' => $request->input('namaKlinik'),
+            //'alamatKlinik' => $request->input('alamatKlinik'),
+            //'webKlinik' => $request->input('webKlinik'),
+            //'telponKlinik' => $request->input('telponKlinik'),
+            //'logo' => $image->hashName()
+
+        //]);
+        // dd($babs);
+
     }
 
     /**
@@ -85,7 +108,12 @@ class KlinikController extends Controller
      */
     public function show($id)
     {
-        //
+        $klinik = DB::table('klinik')
+
+        ->where('klinik.id', $id)
+        ->get();
+         // dd($kriteria);
+        return view('klinik.show', compact('klinik'));
     }
 
     /**

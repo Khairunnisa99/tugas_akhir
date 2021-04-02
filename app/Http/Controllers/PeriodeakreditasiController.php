@@ -6,6 +6,7 @@ use App\periodeakreditasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class PeriodeakreditasiController extends Controller
 {
@@ -82,7 +83,11 @@ class PeriodeakreditasiController extends Controller
      */
     public function show($id)
     {
-        //
+        $periodeakreditasi = DB::table('periodeakreditasi')
+            ->where('periodeakreditasi.id', $id)
+            ->get();
+        // dd($kriteria);
+        return view('periodeakreditasi.show', compact('periodeakreditasi'));
     }
 
     /**

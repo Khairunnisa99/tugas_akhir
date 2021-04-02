@@ -7,30 +7,21 @@
   @section('content')
     <div class="container mt-4">
     <div class="row"> <div class="col-8">
-    <h1 class="mt-3">Form Ubah Data Dokumen</h1>
+    <h1 class="mt-3">Form Ubah Data </h1>
 
 <form method="post" action="{{route('tipeprogramkerja.update', $tipeprogramkerja)}}">
     @csrf
     @method('patch')
     <div class="form-group">
-        <label for="tipeprogram">Tipe Program</label>
-        <input type="text" class="form-control @error('tipeprogram') is-invalid @enderror" id="tipeprogram" placeholder="tipeprogram" name="tipeprogram" value="{{ $tipeprogramkerja->tipeprogram }}">
 
-            @error('tipeprogram')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                    @enderror
-    </div>
         <div class="form-group">
-            <label for="keterangantipe">Keterangan</label>
-            <input type="text" class="form-control @error('keterangantipe') is-invalid @enderror" id="keterangantipe" placeholder="keterangantipe" name="keterangantipe" value="{{ $tipeprogramkerja->keterangantipe}}">
-                @error('keterangantipe')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                        @enderror
-        </div>
+            <label for="">tipe program</label>
+            <input type="text" name="tipeprogram" value="{{ $tipeprogramkerja->tipeprogram }}" id="" class="form-control">
+         </div>
+         <div class="form-group">
+            <label for="">keterangan tipe</label>
+            <textarea name="keterangantipe" id="" cols="30" rows="5" class="form-control"> {{ $tipeprogramkerja->keterangantipe }}</textarea>
+         </div>
 
                    <button type="submit" class="btn btn-primary">Ubah Data</button>
 </form>

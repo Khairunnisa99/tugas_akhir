@@ -28,26 +28,31 @@
             <label for="">Nomor elemen</label>
             <input type="text" value="{{ $elemen->NoElemen }}" name="NoElemen" class="form-control" placeholder="">
           </div>
-          <div class="form-group">
+
+        <div class="form-group">
             <label for="">Elemen penilaian</label>
-            <input type="text" value="{{ $elemen->ElemenPenilaian }}" name="ElemenPenilaian" class="form-control" placeholder="">
-          </div>
-          <div class="form-group">
-             <label for="">Telusur Sasaran</label>
-             <input type="text" value="{{ $elemen->TelusurSasaran }}" class="form-control" name="TelusurSasaran" placeholder="">
-          </div>
-          <div class="form-group">
-            <label for="">Materi Telusur</label>
-            <input type="text" value="{{ $elemen->MateriTelusur }}" name="MateriTelusur" class="form-control" placeholder="">
-          </div>
-          <div class="form-group">
-            <label for="">Dokument Internal</label>
-            <input type="text" value="{{ $elemen->DokumentInternal }}" name="DokumentInternal" class="form-control" placeholder="">
-          </div>
-          <div class="form-group">
-            <label for="">Dokument External</label>
-            <input type="text" value="{{ $elemen->DokumenEksternal }}" name="DokumenEksternal" class="form-control" placeholder="">
-          </div>
+            <textarea name="ElemenPenilaian" id="" cols="30" rows="5" class="form-control"> {{ $elemen->ElemenPenilaian }}</textarea>
+         </div>
+
+         <div class="form-group">
+          <label for="">Telusur Sasaran</label>
+          <textarea name="TelusurSasaran" id="" cols="30" rows="5" class="form-control"> {{ $elemen->TelusurSasaran }}</textarea>
+         </div>
+
+         <div class="form-group">
+          <label for="">Materi Telusur</label>
+          <textarea name="MateriTelusur" id="" cols="30" rows="5" class="form-control"> {{ $elemen->MateriTelusur }}</textarea>
+         </div>
+
+         <div class="form-group">
+          <label for="">Dokument Internal</label>
+          <textarea name="DokumentInternal" id="" cols="30" rows="5" class="form-control"> {{ $elemen->DokumentInternal }}</textarea>
+         </div>
+
+         <div class="form-group">
+          <label for="">Dokument External</label>
+          <textarea name="DokumenEksternal" id="" cols="30" rows="5" class="form-control"> {{ $elemen->DokumenEksternal }}</textarea>
+         </div>
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
 

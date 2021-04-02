@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\tipepelaksanaan;
 use Illuminate\Http\Request;
 use App\tipeprogramkerja;
+use Illuminate\Support\Facades\DB;
 
 class TipeprogramkerjaController extends Controller
 {
@@ -68,7 +69,12 @@ class TipeprogramkerjaController extends Controller
      */
     public function show($id)
     {
-        //
+        $tipeprogramkerja = DB::table('tipeprogramkerja')
+
+            ->where('tipeprogramkerja.id', $id)
+            ->get();
+        // dd($standar);
+        return view('tipeprogramkerja.show', compact('tipeprogramkerja'));
     }
 
     /**

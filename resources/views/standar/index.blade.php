@@ -2,7 +2,7 @@
 @push('customcss')
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
 @endpush
-  @section('title','Bab')
+  @section('title','Standar')
   @section('page-title','Standar')
   @section('content')
   <!-- Default box -->
@@ -16,7 +16,7 @@
             <div class="box-body">
 
                 <table class="table table-bordered">
-                
+
                     <thead class="thead-dark">
                       <tr>
                         <th scope="col">#</th>
@@ -24,8 +24,8 @@
                         <th scope="col">Nama</th>
                         <th scope="col">Deskripsi</th>
                         <th scope="col">Aksi</th>
-                        
-                      
+
+
                       </tr>
                     </thead>
                 <tbody>
@@ -44,6 +44,7 @@
                               @method('DELETE')
                               <a href="{{ route('standar.edit', $bab->id) }}" class="btn btn-info">Edit</a>
                               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
+                              <a href="{{ route('standar.show', $bab->id) }}" class="btn btn-warning">View</a>
                             </form>
                           </td>
                        </tr>

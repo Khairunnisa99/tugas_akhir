@@ -57,7 +57,7 @@ class ProgramkerjaController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $request->validate([
+        $this->validate($request,[
             'NamaProgramKerja' => 'required',
             'periodeprogramkerja_idperiodeprogramkerja' => 'required',
             'tipeprogramkerja_idtipeprogramkerja' => 'required',
@@ -95,7 +95,15 @@ class ProgramkerjaController extends Controller
      */
     public function show($id)
     {
-        //
+        $programkerja = DB::table('programkerja')
+         ->leftJoin('statusprogramkerja', 'programkerja.statusprogramkerja_idstatusprogramkerja', '=', 'statusprogramkerja.id')
+         ->leftJoin('periodeprogramkerja', 'programkerja.periodeprogramkerja_idperiodeprogramkerja', '=', 'periodeprogramkerja.id')
+         ->leftJoin('tipeprogramkerja', 'programkerja.tipeprogramkerja_idtipeprogramkerja', '=', 'tipeprogramkerja.id')
+         ->select('programkerja.*', 'statusprogramkerja.statusProker', 'periodeprogramkerja.TahunProgramKerja', 'tipeprogramkerja.tipeprogram')
+            ->where('programkerja.id', $id)
+            ->get();
+        // dd($kriteria);
+        return view('programkerja.show', compact('programkerja'));
     }
 
     /**

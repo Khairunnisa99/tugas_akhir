@@ -2,8 +2,8 @@
 @push('customcss')
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
 @endpush
-  @section('title','Dahboard')
-  @section('page-title','Home')
+  @section('title','Rapat')
+  @section('page-title','Rapat')
   @section('content')
 
 <div class="row">
@@ -27,7 +27,7 @@
             <table class="table table-bordered">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col"></th>
+                    <th scope="col">#</th>
 
                     <th scope="col">Nama Rapat</th>
                     <th scope="col">Waktu Rapat</th>
@@ -37,6 +37,7 @@
                     <th scope="col">Materi Rapat</th>
                     <th scope="col">Rekomendasi</th>
                     <th scope="col">Tindak Lanjut</th>
+                    <th scope="col">Aksi</th>
 
 
                   </tr>
@@ -62,6 +63,7 @@
                         @method('DELETE')
                         <a href="{{ route('rapat.edit', $rpt->id) }}" class="btn btn-info">Edit</a>
                         <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
+                        <a href="{{ route('rapat.show', $rpt->id) }}" class="btn btn-warning">View</a>
                       </form>
                     </td>
               </tr>

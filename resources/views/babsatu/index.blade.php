@@ -3,7 +3,7 @@
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
 @endpush --}}
   @section('title','Dahboard')
-  @section('page-title','Home')
+  @section('page-title','Krieria I')
   @section('content')
 
   <div class="row">

@@ -2,8 +2,8 @@
 @push('customcss')
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
 @endpush
-  @section('title','Dahboard')
-  @section('page-title','Home')
+  @section('title','Klinik')
+  @section('page-title','Klinik')
   @section('content')
 
 <div class="row">
@@ -52,6 +52,7 @@
                         @method('DELETE')
                         <a href="{{ route('klinik.edit', $kli->id) }}" class="btn btn-info">Edit</a>
                         <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
+                        <a href="{{ route('klinik.show', $kli->id) }}" class="btn btn-warning">View</a>
                       </form>
                     </td>
               </tr>

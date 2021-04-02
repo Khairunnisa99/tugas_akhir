@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\tipepelaksanaan;
 use App\tipeprogramkerja;
+use Illuminate\Support\Facades\DB;
 
 class TipepelaksanaanController extends Controller
 {
@@ -69,7 +70,15 @@ class TipepelaksanaanController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $tipepelaksanaan = DB::table('typepelaksanaan')
+
+         ->where('typepelaksanaan.id', $id)
+         ->get();
+            // dd($standar);
+        return view('tipepelaksanaan.show', compact('tipepelaksanaan'));
+
+
     }
 
     /**

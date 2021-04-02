@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\periodeprogramkerja;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class PeriodeprogramkerjaController extends Controller
 {
     /**
@@ -69,7 +69,12 @@ class PeriodeprogramkerjaController extends Controller
      */
     public function show($id)
     {
-        //
+        $periodeprogramkerja = DB::table('periodeprogramkerja')
+
+            ->where('periodeprogramkerja.id', $id)
+            ->get();
+        // dd($standar);
+        return view('periodeprogramkerja.show', compact('periodeprogramkerja'));
     }
 
     /**

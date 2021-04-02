@@ -16,6 +16,7 @@ class CreateElemen extends Migration
         Schema::create('elemen', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('SubSubBab_idSubSubBab')->nullable();
+            // $table->bigInteger('Documen_idDocumen')->nullable();
             $table->string('NoElemen')->nullable();
             $table->text('ElemenPenilaian')->nullable();
             $table->text('TelusurSasaran')->nullable();
@@ -26,6 +27,11 @@ class CreateElemen extends Migration
             $table->bigInteger('periodeakreditasi_idperiodeakreditasi')->nullable();
             $table->bigInteger('lock')->nullable();
             $table->timestamps();
+        });
+
+        Schema::create('dokumen_elemen', function(Blueprint $table){
+            $table->integer('elemen_id')->nullable();
+            $table->integer('dokumen_id')->nullable();
         });
     }
 

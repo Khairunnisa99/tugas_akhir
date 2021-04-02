@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\rapat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
 //use Illuminate\Support\Facades\Storage;
 class RapatController extends Controller
 {
@@ -54,7 +55,7 @@ class RapatController extends Controller
             // 'Umpan' => 'required',
             'MateriRapat' => 'required',
             'Rekomendasi' => 'required',
-            // 'TindakLanjut' => 'required'
+            'TindakLanjut' => 'required'
 
         ]);
 
@@ -88,7 +89,20 @@ class RapatController extends Controller
      */
     public function show($id)
     {
-        //
+        $rapat = DB::table('rapat')
+
+            ->where('rapat.id', $id)
+            ->get();
+        // dd($kriteria);
+        return view('rapat.show', compact('rapat'));
+    }
+
+    public function print_all()
+    {
+        $rapat = rapat::all();
+        $pdf = PDF::loadview('rapat.print_all',['rapat' => $rapat]);
+        // return $pdf->download('laporan-pegawai-pdf');
+        return $pdf->stream();
     }
 
     /**

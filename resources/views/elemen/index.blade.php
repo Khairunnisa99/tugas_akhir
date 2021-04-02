@@ -2,8 +2,8 @@
 @push('customcss')
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
 @endpush
-  @section('title','kriteria')
-  @section('page-title','elemen')
+  @section('title','Elemen')
+  @section('page-title','Elemen')
   @section('content')
   <!-- Default box -->
    <div class="row">
@@ -25,6 +25,7 @@
                         <th scope="col">Materi Telusur</th>
                         <th scope="col">Dokumen Internal</th>
                         <th scope="col">Dokumen External</th>
+                        <th>Dokumen</th>
                         <th scope="col">Aksi</th>
 
                       </tr>
@@ -43,11 +44,17 @@
                           <td>{{ $bab->DokumenEksternal }}</td>
                           {{-- <td>{{ $bab->Skor }}</td> --}}
                           <td>
+                            @foreach ($bab->dokumen as $item)
+                                <a href="{{ Storage::url('surat_dokumen/'. $item->file) }}">{{ $item->file }} <br></a>
+                            @endforeach
+                          </td>
+                          <td>
                             <form action="{{ route('elemen.destroy', $bab->id) }}" method="post">
                               @csrf
                               @method('DELETE')
                               <a href="{{ route('elemen.edit', $bab->id) }}" class="btn btn-info">Edit</a>
                               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
+                              <a href="{{ route('elemen.show', $bab->id) }}" class="btn btn-warning">View</a>
                             </form>
                           </td>
                        </tr>

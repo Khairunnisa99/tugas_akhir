@@ -36,13 +36,14 @@
                           <td>{{ $bab->NomerKriteria }}</td>
                           <td>{{ $bab->namaKriteria }}</td>
                           <td>{{ $bab->MaksudDanTujuan }}</td>
-                          <td>{{ $bab->Skor }}</td>
+                          <!--<td>{{ $bab->Skor }}</td>-->
                           <td>
                             <form action="{{ route('kriteria.destroy', $bab->id) }}" method="post">
                               @csrf
                               @method('DELETE')
                               <a href="{{ route('kriteria.edit', $bab->id) }}" class="btn btn-info">Edit</a>
                               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
+                              <a href="{{ route('kriteria.show', $bab->id) }}" class="btn btn-warning">View</a>
                             </form>
                           </td>
                        </tr>

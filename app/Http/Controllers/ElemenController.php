@@ -6,7 +6,9 @@ use App\Models\SubBab;
 use App\Models\SubSubBab;
 use App\elemen;
 use App\kriteria;
+USE App\dokumen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ElemenController extends Controller
 {
@@ -17,7 +19,7 @@ class ElemenController extends Controller
      */
     public function index()
     {
-        $elemen = elemen::latest()->paginate(10);
+        $elemen = elemen::with('dokumen')->paginate(10);
         return view('elemen.index', ['elemen' => $elemen]);
     }
 
@@ -29,7 +31,8 @@ class ElemenController extends Controller
     public function create()
     {
         $kriteria = kriteria::all();
-        return view('elemen.create', compact('kriteria'));
+        $dokumen = dokumen::all();
+        return view('elemen.create', compact('kriteria','dokumen'));
     }
 
     /**
@@ -43,6 +46,7 @@ class ElemenController extends Controller
         // dd($request);
         $this->validate($request, [
             'SubSubBab_idSubSubBab' => 'required',
+            // 'Documen_idDocumen' => 'required',
             'NoElemen' => 'required',
             'ElemenPenilaian' => 'required',
             'TelusurSasaran' => 'required',
@@ -52,8 +56,9 @@ class ElemenController extends Controller
 
         ]);
 
-        $kriteria = elemen::create([
+        $elemen = elemen::create([
             'SubSubBab_idSubSubBab' => $request->input('SubSubBab_idSubSubBab'),
+            'Documen_idDocumen' => $request->input('Documen_idDocumen'),
             'NoElemen' => $request->input('NoElemen'),
             'ElemenPenilaian' => $request->input('ElemenPenilaian'),
             'TelusurSasaran' => $request->input('TelusurSasaran'),
@@ -65,8 +70,13 @@ class ElemenController extends Controller
             'lock' => $request->input('lock')
 
         ]);
-        // dd($babs);
-        if ($kriteria) {
+
+        //  asign ke dokumen
+        $elemen->dokumen()->attach($request->input('dokumen'));
+        $elemen->save();
+
+         //dd($babs);
+        if ($elemen) {
             # code...
             return redirect()->route('elemen.index')->with(['success' => 'Data Berhasil Disimpan']);
         } else {
@@ -82,7 +92,11 @@ class ElemenController extends Controller
      */
     public function show($id)
     {
-        //
+        $elemen = elemen::find($id)->with('dokumen')->get();
+        // dd($standar);
+        return view('elemen.show', compact('elemen'));
+
+
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SubBab;
 use App\Models\Bab;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SubBabController extends Controller
 {
@@ -81,7 +82,17 @@ class SubBabController extends Controller
      */
     public function show($id)
     {
-        //    
+
+        $standar = DB::table('subbab')
+            ->leftJoin('babAkreditasi', 'subbab.BabAkreditasi_idBabAkreditasi', '=', 'babAkreditasi.id')
+            ->select('subbab.*', 'babAkreditasi.NamaBab')
+            ->where('subbab.id', $id)
+            ->get();
+        // dd($standar);
+        return view('standar.show', compact('standar'));
+
+
+
     }
 
     /**

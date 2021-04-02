@@ -27,7 +27,7 @@
           <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col"></th>
+                  <th scope="col">#</th>
 
                   <th scope="col">Tipe Pelaksanaan</th>
                   <th scope="col">Keterangan</th>
@@ -49,6 +49,7 @@
                       @method('DELETE')
                       <a href="{{ route('tipepelaksanaan.edit', $tp->id) }}" class="btn btn-info">Edit</a>
                       <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
+                      <a href="{{ route('tipepelaksanaan.show', $tp->id) }}" class="btn btn-warning">Show</a>
                     </form>
                   </td>
             </tr>

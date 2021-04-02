@@ -23,19 +23,22 @@
                @endforeach
             </select>
          </div>
-         
+
           <div class="form-group">
             <label for="">Nomor</label>
             <input type="text" value="{{ $kriteria->NomerKriteria }}" name="NomerKriteria" class="form-control" placeholder="">
           </div>
+
           <div class="form-group">
             <label for="">Nama Kriteria</label>
-            <input type="text" value="{{ $kriteria->namaKriteria }}" name="namaKriteria" class="form-control" placeholder="">
+            <textarea name="namaKriteria" id="" cols="30" rows="5" class="form-control"> {{ $kriteria->namaKriteria }}</textarea>
           </div>
+
           <div class="form-group">
-             <label for="">Maksud Dan Tujuan</label>
-             <input type="text" value="{{ $kriteria->MaksudDanTujuan }}" class="form-control" name="MaksudDanTujuan" placeholder="">
+            <label for="">Maksud Dan Tujuan</label>
+            <textarea name="MaksudDanTujuan" id="" cols="30" rows="5" class="form-control"> {{ $kriteria->MaksudDanTujuan }}</textarea>
           </div>
+
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
 

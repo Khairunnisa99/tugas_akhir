@@ -42,12 +42,14 @@ Route::group(['middleware' => 'auth'], function () {
     //Rapat
     Route::resource('rapat', 'RapatController');
     Route::get('/searchsatu', 'RapatController@searchsatu');
+    Route::get('/print_all', 'RapatController@print_all');
     // Route::get('/rapat', 'RapatController@index')->name('rapat.index');
     // Route::get('/rapat/create', 'RapatController@create');
 
     //Klinik
     Route::resource('klinik', 'KlinikController');
     Route::get('/search', 'KlinikController@search');
+    // Route::get('/klinik/{id}','KlinikController@show');
     // Route::get('/klinik', 'KlinikController@index')->name('klinik.index');
     // Route::get('/klinik/create', 'KlinikController@create');
     // Route::get('/klinik/edit/{klinik}', 'KlinikController@edit');

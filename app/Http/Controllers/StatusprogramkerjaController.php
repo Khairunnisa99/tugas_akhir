@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\statuspelaksanaan;
 use Illuminate\Http\Request;
 use App\statusprogramkerja;
+use Illuminate\Support\Facades\DB;
 
 
 class StatusprogramkerjaController extends Controller
@@ -69,7 +70,12 @@ class StatusprogramkerjaController extends Controller
      */
     public function show($id)
     {
-        //
+        $statusprogramkerja = DB::table('statusprogramkerja')
+
+            ->where('statusprogramkerja.id', $id)
+            ->get();
+        // dd($standar);
+         return view('statusprogramkerja.show', compact('statusprogramkerja'));
     }
 
     /**

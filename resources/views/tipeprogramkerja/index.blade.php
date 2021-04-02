@@ -42,12 +42,13 @@
                     <td>{{ $tp->tipeprogram }}</td>
                     <td>{{ $tp->keterangantipe }}</td>
 
-                    <td>
+                      <td>
                         <form action="{{ route('tipeprogramkerja.destroy', $tp->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
                           <a href="{{ route('tipeprogramkerja.edit', $tp->id) }}" class="btn btn-info">Edit</a>
                           <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
+                          <a href="{{ route('tipeprogramkerja.show', $tp->id) }}" class="btn btn-warning">Show</a>
                         </form>
                       </td>
                 </tr>

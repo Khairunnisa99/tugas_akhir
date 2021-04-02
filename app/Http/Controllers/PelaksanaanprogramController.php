@@ -90,7 +90,17 @@ class PelaksanaanprogramController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $pelaksanaanprogram = DB::table('pelaksanaanprogram')
+            ->leftJoin('programkerja', 'pelaksanaanprogram.programkerja_idprogramkerja', '=', 'programkerja.id')
+            ->leftJoin('typepelaksanaan', 'pelaksanaanprogram.typepelaksanaan_idtypepelaksanaan', '=', 'typepelaksanaan.id')
+            ->leftJoin('statuspelaksanaan', 'pelaksanaanprogram.statuspelaksanaan_idstatuspelaksanaan', '=', 'statuspelaksanaan.id')
+
+            ->select('pelaksanaanprogram.*', 'programkerja.NamaProgramKerja', 'typepelaksanaan.namaTypePelaksanaan', 'statuspelaksanaan.statusPelaksanaan')
+            ->where('pelaksanaanprogram.id', $id)
+            ->get();
+          // dd($kriteria);
+        return view('pelaksanaanprogram.show', compact('pelaksanaanprogram'));
     }
 
     /**

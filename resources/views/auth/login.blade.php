@@ -3,11 +3,11 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Laravel</b>Blog</a>
+    <a href="#"><b>Silahkan</b>Login</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Aplikasi Laravel Blog</p>
+    <p class="login-box-msg">Aplikasi Klinik Muhammadiyah</p>
 
     <form method="POST" action="{{ route('login') }}">
                         @csrf

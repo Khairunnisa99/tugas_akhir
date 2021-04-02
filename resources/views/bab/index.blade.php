@@ -3,7 +3,7 @@
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
 @endpush
   @section('title','Bab')
-  @section('page-title','Home')
+  @section('page-title','BAB')
   @section('content')
   <!-- Default box -->
    <div class="row">
@@ -16,16 +16,16 @@
             <div class="box-body">
 
                 <table class="table table-bordered">
-                
+
                     <thead class="thead-dark">
                       <tr>
-                        <th scope="col">#</th>
+                        <th scope="col"># </th>
                         <th scope="col">Nomor Bab</th>
                         <th scope="col">Kode Bab</th>
                         <th scope="col">Nama Bab</th>
                         <th scope="col">Aksi</th>
-                        
-                      
+
+
                       </tr>
                     </thead>
                 <tbody>
@@ -37,13 +37,14 @@
                                 <td>{{ $bb->NomorBab }}</td>
                                 <td>{{ $bb->KodeBab }}</td>
                                 <td>{{ $bb->NamaBab }}</td>
-                                
+
                                 <td>
                                   <form action="{{ route('bab.destroy', $bb->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <a href="{{ route('bab.edit', $bb->id) }}" class="btn btn-info">Edit</a>
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
+                                    <a href="{{ route('bab.show', $bb->id) }}" class="btn btn-warning">View</a>
                                   </form>
                                 </td>
                           </tr>

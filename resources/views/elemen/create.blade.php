@@ -3,8 +3,9 @@
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
 @endpush --}}
   @section('title','Tambah Data')
-  @section('page-title','Home')
+  @section('page-title','Elemen')
   @section('content')
+
 <div class="container">
  <div class="row">
     <div class="card-title">
@@ -45,15 +46,38 @@
             <textarea name="DokumentInternal" class="form-control" cols="30" rows="5"></textarea>
           </div>
           <div class="form-group">
-            <label for="">Dokumen Enternal</label>
+            <label for="">Dokumen External</label>
             <textarea name="DokumenEksternal" class="form-control" cols="30" rows="5"></textarea>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">
+                <div class="form-group">
+                  <label for="">Dokumen</label>
+                  <select class="selectpicker form-control" name="dokumen[]" multiple data-live-search="true">
+                      <option data-icon="icon-heart" disabled></option>
+                      @foreach ($dokumen as $item)
+                            <option value="{{ $item->id }}">{{ $item->file }} </option>
+                        @endforeach
+                  </select>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
           </div>
 
 
-          <button type="submit" class="btn btn-primary">Simpan Data</button>
+        <button type="submit" class="btn btn-primary">Simpan Data</button>
 
         </form>
+
     </div>
+
  </div>
 
+
 @endsection
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>

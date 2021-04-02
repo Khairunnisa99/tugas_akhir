@@ -18,7 +18,7 @@
                   <table class="table table-bordered">
                       <thead class="thead-dark">
                         <tr>
-                          <th scope="col"></th>
+                          <th scope="col">#</th>
 
                           <th scope="col">Nama Program Kerja</th>
                           <th scope="col">Periode</th>
@@ -51,6 +51,7 @@
                               @method('DELETE')
                               <a href="{{ route('programkerja.edit', $pkj->id) }}" class="btn btn-info">Edit</a>
                               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ingin mengahapus?')">Delete</button>
+                              <a href="{{ route('programkerja.show', $pkj->id) }}" class="btn btn-warning">View</a>
                             </form>
                           </td>
                     </tr>
@@ -61,6 +62,6 @@
           </div>
         </div>
      </div>
-    
+
 
 @endsection

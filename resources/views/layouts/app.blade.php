@@ -122,11 +122,11 @@
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                  <li class="{{ set_active(['bab.index', 'bab.create', 'bab.edit']) }}"><a href="{{ route('bab.index') }}">BAB </a></li>
-                  <li class="{{ set_active(['standar.index', 'standar.create', 'standar.edit']) }}"><a href="{{ route('standar.index') }}">Standart</a></li>
-                  <li class="{{ set_active(['kriteria.index', 'kriteria.create', 'kriteria.edit']) }}"><a href="{{ route('kriteria.index') }}">Kriteria</a></li>
-                  <li class="{{ set_active(['elemen.index', 'elemen.create', 'elemen.edit']) }}"><a href="{{ route('elemen.index') }}">Elemen</a></li>
-                  <li class="{{ set_active(['periodeakreditasi.index', 'periodeakreditasi.create', 'periodeakreditasi.edit']) }}"><a href="{{ route('periodeakreditasi.index') }}">Periode Akreditasi</a></li>
+                  <li class="{{ set_active(['bab.index', 'bab.create', 'bab.edit','bab.show']) }}"><a href="{{ route('bab.index') }}">BAB </a></li>
+                  <li class="{{ set_active(['standar.index', 'standar.create', 'standar.edit','standar.show']) }}"><a href="{{ route('standar.index') }}">Standart</a></li>
+                  <li class="{{ set_active(['kriteria.index', 'kriteria.create', 'kriteria.edit','kriteria.show']) }}"><a href="{{ route('kriteria.index') }}">Kriteria</a></li>
+                  <li class="{{ set_active(['elemen.index', 'elemen.create', 'elemen.edit','elemen.show']) }}"><a href="{{ route('elemen.index') }}">Elemen</a></li>
+                  <li class="{{ set_active(['periodeakreditasi.index', 'periodeakreditasi.create', 'periodeakreditasi.edit','periodeakreditasi.show']) }}"><a href="{{ route('periodeakreditasi.index') }}">Periode Akreditasi</a></li>
                 </ul>
               </li>
               @endcan
@@ -135,13 +135,13 @@
             @endcan
             @can('dokumen.index')
 
-              <li class="{{ set_active(['dokumen.index', 'dokumen.create', 'dokumen.edit']) }}"><a href="{{route('dokumen.index')}}"><i class="fa fa-file" aria-hidden="true"></i> Dokumen</a></li>
+              <li class="{{ set_active(['dokumen.index', 'dokumen.create', 'dokumen.edit','dokumen.show']) }}"><a href="{{route('dokumen.index')}}"><i class="fa fa-file" aria-hidden="true"></i> Dokumen</a></li>
               @endcan
             @can('programkerja.index')
 
             <li class="treeview {{ set_active(['programkerja.index', 'programkerja.create', 'programkerja.edit',
             'periodeprogramkerja.index', 'periodeprogramkerja.create', 'periodeprogramkerja.edit',
-            'tipeprogramkerja.index',
+            'tipeprogramkerja.index','tipeprogramkerja.create','tipeprogramkerja.edit',
             'statusprogramkerja.index', 'statusprogramkerja.create', 'statusprogramkerja.edit',
             'tipepelaksanaan.index', 'tipepelaksanaan.create', 'tipepelaksanaan.edit',
             'statuspelaksanaan.index', 'statuspelaksanaan.create', 'statuspelaksanaan.edit',
@@ -154,8 +154,8 @@
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                  <li class="{{ set_active(['programkerja.index', 'programkerja.create', 'programkerja.edit']) }}"><a href="{{ route('programkerja.index') }}">Program Kerja </a></li>
-                  <li class="{{ set_active(['pelaksanaanprogram.index', 'pelaksanaanprogram.create', 'pelaksanaanprogram.edit']) }}"><a href="{{ route('pelaksanaanprogram.index') }}">Pelaksanaan</a></li>
+                  <li class="{{ set_active(['programkerja.index', 'programkerja.create', 'programkerja.edit','programkerja.show']) }}"><a href="{{ route('programkerja.index') }}">Program Kerja </a></li>
+                  <li class="{{ set_active(['pelaksanaanprogram.index', 'pelaksanaanprogram.create', 'pelaksanaanprogram.edit', 'pelaksanaanprogram.show']) }}"><a href="{{ route('pelaksanaanprogram.index') }}">Pelaksanaan</a></li>
                   @can('dataproker.index')
                     <li class="treeview {{ set_active([ 'periodeprogramkerja.index', 'periodeprogramkerja.create', 'periodeprogramkerja.edit',
                     'tipeprogramkerja.index',
@@ -171,11 +171,11 @@
                     </a>
 
                     <ul class="treeview-menu">
-                      <li class="{{ set_active(['periodeprogramkerja.index', 'periodeprogramkerja.create', 'periodeprogramkerja.edit']) }}"><a href="{{ route('periodeprogramkerja.index') }}">Periode Program Kerja</a></li>
-                      <li class="{{ set_active(['tipeprogramkerja.index']) }}"><a href="{{route('tipeprogramkerja.index')}}"> Tipe Program Kerja</a></li>
-                      <li class="{{ set_active(['statusprogramkerja.index', 'statusprogramkerja.create', 'statusprogramkerja.edit']) }}"><a href="{{ route('statusprogramkerja.index') }}">Status Program Kerja</a></li>
-                      <li class="{{ set_active(['tipepelaksanaan.index', 'tipepelaksanaan.create', 'tipepelaksanaan.edit']) }}"><a href="{{ route('tipepelaksanaan.index') }}">Tipe Pelaksanaan</a></li>
-                      <li class="{{ set_active(['statuspelaksanaan.index', 'statuspelaksanaan.create', 'statuspelaksanaan.edit']) }}"><a href="{{ route('statuspelaksanaan.index') }}">Status Pelaksanaan</a></li>
+                      <li class="{{ set_active(['periodeprogramkerja.index', 'periodeprogramkerja.create', 'periodeprogramkerja.edit','periodeprogramkerja.show']) }}"><a href="{{ route('periodeprogramkerja.index') }}">Periode Program Kerja</a></li>
+                      <li class="{{ set_active(['tipeprogramkerja.index','tipeprogramkerja.create','tipeprogramkerja.edit','tipeprogramkerja.show']) }}"><a href="{{route('tipeprogramkerja.index')}}"> Tipe Program Kerja</a></li>
+                      <li class="{{ set_active(['statusprogramkerja.index', 'statusprogramkerja.create', 'statusprogramkerja.edit','statusprogramkerja.show']) }}"><a href="{{ route('statusprogramkerja.index') }}">Status Program Kerja</a></li>
+                      <li class="{{ set_active(['tipepelaksanaan.index', 'tipepelaksanaan.create', 'tipepelaksanaan.edit','tipepelaksanaan.show']) }}"><a href="{{ route('tipepelaksanaan.index') }}">Tipe Pelaksanaan</a></li>
+                      <li class="{{ set_active(['statuspelaksanaan.index', 'statuspelaksanaan.create', 'statuspelaksanaan.edit','statuspelaksanaan.show']) }}"><a href="{{ route('statuspelaksanaan.index') }}">Status Pelaksanaan</a></li>
 
                     </ul>
                   </li>
@@ -185,7 +185,7 @@
               @endcan
 
               @can('rapat.index')
-              <li class="{{ set_active(['rapat.index','rapat.create','rapat.edit']) }}"><a href="{{route('rapat.index')}}"><i class="fa fa-wechat"></i>Rapat</a></li>
+              <li class="{{ set_active(['rapat.index','rapat.create','rapat.edit','rapat.show','rapat.print_all']) }}"><a href="{{route('rapat.index')}}"><i class="fa fa-wechat"></i>Rapat</a></li>
               @endcan
               @can('users.index')
 
@@ -207,7 +207,7 @@
                 @endcan
                 @can('klinik.index')
 
-                <li class="{{ set_active(['klinik.index', 'klinik.edit', 'klinik.create']) }}"><a href="{{route('klinik.index')}}"><i class="fa fa-hospital-o "></i>Klinik</a></li>
+                <li class="{{ set_active(['klinik.index', 'klinik.edit', 'klinik.create','klinik.show']) }}"><a href="{{route('klinik.index')}}"><i class="fa fa-hospital-o "></i>Klinik</a></li>
                 @endcan
         </li>
       </ul>

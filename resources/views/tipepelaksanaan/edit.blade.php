@@ -7,7 +7,7 @@
   @section('content')
     <div class="container mt-4">
     <div class="row"> <div class="col-8">
-    <h1 class="mt-3">Form Ubah Data Dokumen</h1>
+    <h1 class="mt-3">Form Tipe Pelaksanaan</h1>
 
 <form method="post" action="{{route('tipepelaksanaan.update', $tipepelaksanaan)}}">
     @csrf
@@ -22,15 +22,10 @@
                 </div>
                     @enderror
     </div>
-        <div class="form-group">
-            <label for="keterangan">Keterangan</label>
-            <input type="text" class="form-control @error('keterangan') is-invalid @enderror"  placeholder="keterangan" name="keterangan" value="{{ $tipepelaksanaan->keterangan}}">
-                @error('keterangan')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                        @enderror
-        </div>
+    <div class="form-group">
+        <label for="">keterangan</label>
+        <textarea name="keterangan" id="" cols="30" rows="5" class="form-control"> {{ $tipepelaksanaan->keterangan }}</textarea>
+     </div>
 
                    <button type="submit" class="btn btn-primary">Ubah Data</button>
 </form>

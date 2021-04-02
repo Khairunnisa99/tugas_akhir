@@ -87,7 +87,15 @@ class KriteriaController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $kriteria = DB::table('subsubbab')
+            ->leftJoin('subbab', 'subsubbab.id_subbab', '=', 'subbab.id')
+            ->select('subsubbab.*', 'subbab.SubBabNama')
+            ->where('subsubbab.id', $id)
+            ->get();
+        // dd($kriteria);
+        return view('kriteria.show', compact('kriteria'));
+
     }
 
     /**

@@ -22,15 +22,10 @@
                 </div>
                     @enderror
     </div>
-        <div class="form-group">
-            <label for="keteranganStatus">Keterangan Status</label>
-            <input type="text" class="form-control @error('keteranganStatus') is-invalid @enderror" id="keteranganStatus" placeholder="keteranganStatus" name="keteranganStatus" value="{{ $statusprogramkerja->keteranganStatus }}">
-                @error('keteranganStatus')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                        @enderror
-        </div>
+    <div class="form-group">
+        <label for="">keterangan Status</label>
+        <textarea name="keteranganStatus" id="" cols="30" rows="5" class="form-control"> {{ $statusprogramkerja->keteranganStatus }}</textarea>
+     </div>
 
                    <button type="submit" class="btn btn-primary">Ubah Data</button>
 </form>

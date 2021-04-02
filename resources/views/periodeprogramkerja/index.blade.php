@@ -28,7 +28,7 @@
 
                           <thead class="thead-dark">
                             <tr>
-                              <th scope="col"></th>
+                              <th scope="col">#</th>
 
                               <th scope="col">Periode Program Kerja</th>
                               <th scope="col">Deskripsi</th>
@@ -51,6 +51,7 @@
                                   @method('DELETE')
                                   <a href="{{ route('periodeprogramkerja.edit', $pre->id) }}" class="btn btn-info">Edit</a>
                                   <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
+                                  <a href="{{ route('periodeprogramkerja.show', $pre->id) }}" class="btn btn-warning">Show</a>
                                 </form>
                               </td>
                         </tr>

@@ -44,7 +44,7 @@ class BabController extends Controller
             'NamaBab' => 'required'
         ]);
 
-        $babs = Bab::create([
+        $babAkreditasi = Bab::create([
             'NomorBab' => $request->input('NomorBab'),
             'KodeBab' => $request->input('KodeBab'),
             'NamaBab' => $request->input('NamaBab'),
@@ -52,7 +52,7 @@ class BabController extends Controller
             'periodeakreditasi_idperiodeakreditasi' => $request->input('periodeakreditasi_idperiodeakreditasi')
         ]);
             // dd($babs);
-        if ($babs) {
+        if ($babAkreditasi) {
             # code...
             return redirect()->route('bab.index')->with(['success' => 'Data Berhasil Disimpan']);
         } else {
@@ -68,7 +68,8 @@ class BabController extends Controller
      */
     public function show($id)
     {
-        //
+        $babAkreditasi = Bab::findOrFail($id);
+        return view('bab.show', compact('babAkreditasi'));
     }
 
     /**
@@ -79,9 +80,9 @@ class BabController extends Controller
      */
     public function edit($id)
     {
-        $bab = Bab::find($id);
+        $babAkreditasi = Bab::find($id);
 
-        return view('bab.edit', compact('bab'));
+        return view('bab.edit', compact('babAkreditasi'));
     }
 
     /**
@@ -98,8 +99,8 @@ class BabController extends Controller
             'KodeBab' => 'required',
             'NamaBab' => 'required'
         ]);
-        $babs = Bab::findOrFail($id);
-        $babs->update([
+        $babAkreditasi = Bab::findOrFail($id);
+        $babAkreditasi->update([
             'NomorBab' => $request->input('NomorBab'),
             'KodeBab' => $request->input('KodeBab'),
             'NamaBab' => $request->input('NamaBab'),
@@ -107,7 +108,7 @@ class BabController extends Controller
             'periodeakreditasi_idperiodeakreditasi' => $request->input('periodeakreditasi_idperiodeakreditasi')
         ]);
 
-        if ($babs) {
+        if ($babAkreditasi) {
             # code...
             return redirect()->route('bab.index')->with(['success' => 'Data Berhasil Disimpan']);
         } else {

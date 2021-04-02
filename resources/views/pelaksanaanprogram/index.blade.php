@@ -51,6 +51,7 @@
                               @method('DELETE')
                               <a href="{{ route('pelaksanaanprogram.edit', $pkj->id) }}" class="btn btn-info">Edit</a>
                               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ingin mengahapus?')">Delete</button>
+                              <a href="{{ route('pelaksanaanprogram.show', $pkj->id) }}" class="btn btn-warning">View</a>
                             </form>
                           </td>
                     </tr>

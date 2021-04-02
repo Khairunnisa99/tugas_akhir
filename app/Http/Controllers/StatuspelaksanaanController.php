@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\statuspelaksanaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StatuspelaksanaanController extends Controller
 {
@@ -66,7 +67,12 @@ class StatuspelaksanaanController extends Controller
      */
     public function show($id)
     {
-        //
+        $statuspelaksanaan = DB::table('statuspelaksanaan')
+
+         ->where('statuspelaksanaan.id', $id)
+         ->get();
+    // dd($standar);
+         return view('statuspelaksanaan.show', compact('statuspelaksanaan'));
     }
 
     /**

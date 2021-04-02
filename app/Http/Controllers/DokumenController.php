@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 
+use Illuminate\Support\Facades\DB;
+
 class DokumenController extends Controller
 {
     public function __construct()
@@ -89,7 +91,15 @@ class DokumenController extends Controller
      */
     public function show($id)
     {
-        //
+
+
+        $dokumen = DB::table('dokumen')
+
+            ->where('dokumen.id', $id)
+            ->get();
+        // dd($standar);
+        return view('dokumen.show', compact('dokumen'));
+
     }
 
     /**

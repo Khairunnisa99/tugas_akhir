@@ -32,7 +32,7 @@
 
                     <th scope="col">Nama Dokumen</th>
                     <th scope="col">Keterangan</th>
-                    <th scope="col">File</th>
+                    <!--<th scope="col">File</th>-->
                     <th scope="col">Aksi</th>
 
                   </tr>
@@ -45,9 +45,9 @@
               <td>{{ ($dokumen ->currentpage()-1) * $dokumen ->perpage() + $loop->index + 1 }}</td>
                   <td>{{ $dok->namaDokumen }}</td>
                   <td>{{ $dok->keterangan }}</td>
-                  <td>
+                  <!--<td>
                     <a href="{{ Storage::url('surat_dokumen/'. $dok->file) }}">{{ $dok->file }}</a>
-                  </td>
+                  </td>-->
 
                   <td>
                       <form action="{{ route('dokumen.destroy', $dok->id) }}" method="POST">
@@ -55,6 +55,7 @@
                         @method('DELETE')
                         <a href="{{ route('dokumen.edit', $dok->id) }}" class="btn btn-info">Edit</a>
                         <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
+                        <a href="{{ route('dokumen.show', $dok->id) }}" class="btn btn-warning">View</a>
                       </form>
                     </td>
               </tr>

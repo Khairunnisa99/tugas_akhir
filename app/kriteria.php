@@ -18,6 +18,6 @@ class kriteria extends Model
 
     public function Elemen()
     {
-        return $this->belongsTo('App\elemen::class');
+        return $this->belongsToMany(elemen::class);
     }
 }
