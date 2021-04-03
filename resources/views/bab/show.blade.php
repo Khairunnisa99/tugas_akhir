@@ -15,7 +15,7 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <tbody>
-                  <?php $no= 0; ?>
+                  <?php $no = 0; ?>
                     @foreach ($babAkreditasi as $bab)
                        <?php $no++ ;?>
             <table class="table table-bordered">
