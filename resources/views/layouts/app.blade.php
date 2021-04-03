@@ -110,10 +110,10 @@
               <li class="{{ set_active(['bab_empat.index','bab_empat.create', 'bab_empat.edit']) }}"><a href="{{route('bab_empat.index')}}">BAB 4</a></li>
               @can('struktur.index')
               <li class="treeview {{ set_active([
-                'bab.index','bab.create', 'bab.edit',
-                'standar.index', 'standar.create', 'standar.edit',
-                'kriteria.index', 'kriteria.create', 'kriteria.edit',
-                'elemen.index', 'elemen.create', 'elemen.edit']) }}">
+                'bab.index','bab.create', 'bab.edit','bab.show',
+                'standar.index', 'standar.create', 'standar.edit', 'standar.show',
+                'kriteria.index', 'kriteria.create', 'kriteria.edit', 'kriteria.show',
+                'elemen.index', 'elemen.create', 'elemen.edit', 'elemen.show']) }}">
                 <a href="#">
                   <i class="fa fa-bookmark"></i>
                   <span>Struktur Akreditasi</span>

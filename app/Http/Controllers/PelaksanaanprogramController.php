@@ -59,7 +59,7 @@ class PelaksanaanprogramController extends Controller
             'NamaPelaksanaan' => 'required',
             'TanggalMulai' => 'required',
             'TanggalBerakhir' => 'required',
-            'KeteranganPelaksanaan' => 'required',
+            //'KeteranganPelaksanaan' => 'required',
             'statuspelaksanaan_idstatuspelaksanaan' => 'required'
         ]);
 

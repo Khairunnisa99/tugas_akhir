@@ -48,9 +48,9 @@ class KlinikController extends Controller
         // dd($request);
         $this->validate($request, [
             'namaKlinik' => 'required',
-            'alamatKlinik' => 'required',
-            'webKlinik' => 'required',
-            'telponKlinik' => 'required',
+            //'alamatKlinik' => 'required',
+            //'webKlinik' => 'required',
+            //'telponKlinik' => 'required',
             //'logo' => 'required|image'
 
         ]);
@@ -139,9 +139,9 @@ class KlinikController extends Controller
     {
         $request->validate([
             'namaKlinik' => 'required',
-            'alamatKlinik' => 'required',
-            'webKlinik' => 'required',
-            'telponKlinik' => 'required',
+            //'alamatKlinik' => 'required',
+            //'webKlinik' => 'required',
+            //'telponKlinik' => 'required',
             // 'logo' => 'required'
         ]);
 

@@ -6,7 +6,7 @@ use App\rapat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
-//use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 class RapatController extends Controller
 {
     public function __construct()
@@ -21,7 +21,7 @@ class RapatController extends Controller
     public function index()
     {
         $rapat = rapat::latest()->when(request()->q, function ($rapat) {
-            $rapat = $rapat->where(['namaRapatl', 'PesertaRapat'], 'like', '%' . request()->q . '%');
+            $rapat = $rapat->where('namaRapat', 'like', '%' . request()->q . '%');
         })->paginate(10);
         return view('rapat.index', ['rapat' => $rapat]);
     }
@@ -48,14 +48,14 @@ class RapatController extends Controller
         $this->validate($request, [
             'namaRapat' => 'required',
             'WaktuRapat' => 'required',
-            'KeteranganRapat' => 'required',
-            'PesertaRapat' => 'required',
-            'NotulenRapat' => 'required',
+            //'KeteranganRapat' => 'required',
+            //'PesertaRapat' => 'required',
+            //'NotulenRapat' => 'required',
             // 'lock' => 'required',
             // 'Umpan' => 'required',
-            'MateriRapat' => 'required',
-            'Rekomendasi' => 'required',
-            'TindakLanjut' => 'required'
+            //'MateriRapat' => 'required',
+            //'Rekomendasi' => 'required',
+            //'TindakLanjut' => 'required'
 
         ]);
 
@@ -89,6 +89,7 @@ class RapatController extends Controller
      */
     public function show($id)
     {
+
         $rapat = DB::table('rapat')
 
             ->where('rapat.id', $id)

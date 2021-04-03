@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Bab;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BabController extends Controller
 {
@@ -68,7 +69,11 @@ class BabController extends Controller
      */
     public function show($id)
     {
-        $babAkreditasi = Bab::findOrFail($id);
+        $babAkreditasi = DB::table('babAkreditasi')
+
+            ->where('babAkreditasi.id', $id)
+            ->get();
+        // dd($standar);
         return view('bab.show', compact('babAkreditasi'));
     }
 

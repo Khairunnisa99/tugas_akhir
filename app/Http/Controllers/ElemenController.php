@@ -130,6 +130,8 @@ class ElemenController extends Controller
             'DokumentInternal' => 'required',
             'DokumenEksternal' => 'required'
         ]);
+
+
         $elemen = elemen::findOrFail($id);
         $elemen->update([
             'SubSubBab_idSubSubBab' => $request->input('SubSubBab_idSubSubBab'),
@@ -141,6 +143,8 @@ class ElemenController extends Controller
             'DokumenEksternal' => $request->input('DokumenEksternal')
         ]);
         // dd($bab);
+        $elemen->dokumen()->attach($request->input('dokumen'));
+        $elemen->save();
 
         if ($elemen) {
             # code...

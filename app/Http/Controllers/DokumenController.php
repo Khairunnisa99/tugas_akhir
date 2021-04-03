@@ -6,7 +6,6 @@ use App\dokumen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
-
 use Illuminate\Support\Facades\DB;
 
 class DokumenController extends Controller
@@ -23,13 +22,10 @@ class DokumenController extends Controller
     public function index()
     {
         $dokumen = dokumen::latest()->when(request()->q, function ($dokumen) {
-            $dokumen = $dokumen->where(
-                'namaDokumen',
-                'like',
-                '%' . request()->q . '%'
-            );
+            $dokumen = $dokumen->where('namaDokumen','like', '%' . request()->q . '%');
         })->paginate(5);
         return view('dokumen.index', ['dokumen' => $dokumen]);
+
     }
 
     public function getFile($filename)
@@ -63,7 +59,7 @@ class DokumenController extends Controller
         //return redirect('/dokumen')->with('status', 'Dokumen berhasil ditambahkan');
         $this->validate($request, [
             'namaDokumen' => 'required',
-            'keterangan' => 'required',
+            //'keterangan' => 'required',
             'file' => 'required|mimes:pdf,doc, docx'
         ]);
         $file = $request->file('file');

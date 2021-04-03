@@ -2,8 +2,8 @@
 @push('customcss')
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
 @endpush
-  @section('title','Kriteria')
-  @section('page-title','Kriteria')
+  @section('title','Dokumen')
+  @section('page-title','Dokumen')
   @section('content')
   <!-- Default box -->
    <div class="row">
@@ -21,10 +21,6 @@
             <table class="table table-bordered">
                        <thead class="thead-dark">
                         <tr>
-                            <tr>
-                                <th scope="col">#</th>
-                                <td>{{ $bab->id }}</td>
-                            </tr>
 
                             <tr>
                                 <th scope="col">Nama Dokumen</th>

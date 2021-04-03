@@ -2,62 +2,62 @@
 @push('customcss')
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}"></script>
 @endpush
-  @section('title','Dahboard')
-  @section('page-title','Home')
+  @section('title','Kriteria')
+  @section('page-title','Bab')
   @section('content')
-  <style>
-    table, th, td {
-      border: 1px solid black;
-      border-collapse: collapse;
-    }
-    th, td {
-      padding: 5px;
-      text-align: left;
-    }
+  <!-- Default box -->
+   <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              {{-- <a href="{{ route('standar.create') }}" class="btn btn-primary my-3">Tambah Data</a> --}}
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <tbody>
+                  <?php $no= 0; ?>
+                    @foreach ($babAkreditasi as $bab)
+                       <?php $no++ ;?>
+            <table class="table table-bordered">
+                       <thead class="thead-dark">
+                        <tr>
+                            <tr>
+                                <th scope="col">Nomor Bab</th>
+                                <td>{{ $bab->NomorBab }}</td>
+                            </tr>
 
-    </style>
+                            <tr>
+                                <th scope="col">Kode Bab</th>
+                                <td>{{ $bab->KodeBab }}</td>
+                            </tr>
 
-<body>
-<div class="container">
-  <h2>Daftar Rapat</h2>
-
-
-  <table class="table">
-    <thead>
-
-    <?php $table= $babAkreditasi;?>
-
-      <tr>
-        <th>Nomor Bab</th>
-        <td >{{ $table->NomorBab }}</td>
-
-      </tr>
-      <tr>
-        <th>Kode Bab</th>
-        <td >{{ $table->KodeBab }}</td>
-
-      </tr>
-      <tr>
-        <th>Nama Bab</th>
-        <td>{{ $table->NamaBab }}</td>
-
-      </tr>
+                            <tr>
+                                <th scope="col">NamaBab</th>
+                                <td>{{ $bab->NamaBab }}</td>
+                            </tr>
+                            {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
 
 
-    </thead>
-  </table>
-  <td>
-    <form action="{{ route('bab.destroy', $table->id) }}" method="POST">
-      @csrf
-      @method('DELETE')
-      <a href="{{ route('bab.edit', $table->id) }}" class="btn btn-info">Edit</a>
-      <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
-      <a href="{{ route('bab.index', $table->id) }}" class="btn btn-warning">Cancel</a>
-    </form>
-  </td>
+                       </tr>
+                    @endforeach
+                </tbody>
+
+            </table>
+          <div class="box-body">
+            <form action="{{ route('bab.destroy', $bab->id) }}" method="post">
+              @csrf
+              @method('DELETE')
+              <a href="{{ route('bab.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
+              <a href="{{ route('bab.index', $bab->id) }}" class="btn btn-warning">Calcel</a>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-</body>
+
 
 @endsection

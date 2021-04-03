@@ -21,10 +21,6 @@
             <table class="table table-bordered">
                        <thead class="thead-dark">
                         <tr>
-                            <tr>
-                                <th scope="col">#</th>
-                                <td>{{ $bab->id }}</td>
-                            </tr>
 
                             <tr>
                                 <th scope="col">Nomor</th>
