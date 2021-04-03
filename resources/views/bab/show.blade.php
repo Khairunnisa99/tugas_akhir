@@ -22,7 +22,7 @@
                        <thead class="thead-dark">
                         <tr>
                             <tr>
-                                <th scope="col">Nomor Bab</th>
+                                <th scope="col">Nomor Bab </th>
                                 <td>{{ $bab->NomorBab }}</td>
                             </tr>
 
