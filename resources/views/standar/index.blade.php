@@ -51,6 +51,8 @@
                     @endforeach
                 </tbody>
             </table>
+          {{ $subbab->links() }}
+
       </div>
     </div>
   </div>

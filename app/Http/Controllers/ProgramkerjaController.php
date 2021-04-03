@@ -101,7 +101,7 @@ class ProgramkerjaController extends Controller
          ->leftJoin('tipeprogramkerja', 'programkerja.tipeprogramkerja_idtipeprogramkerja', '=', 'tipeprogramkerja.id')
          ->select('programkerja.*', 'statusprogramkerja.statusProker', 'periodeprogramkerja.TahunProgramKerja', 'tipeprogramkerja.tipeprogram')
             ->where('programkerja.id', $id)
-            ->get();
+            ->first();
         // dd($kriteria);
         return view('programkerja.show', compact('programkerja'));
     }

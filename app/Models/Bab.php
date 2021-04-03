@@ -7,7 +7,7 @@ use App\Models\SubBab;
 
 class Bab extends Model
 {
-    protected $table = 'babAkreditasi';
+    protected $table = 'babakreditasi';
 
     protected $guarded = [];
 

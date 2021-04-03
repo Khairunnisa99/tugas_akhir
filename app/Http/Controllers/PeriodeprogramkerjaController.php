@@ -72,7 +72,7 @@ class PeriodeprogramkerjaController extends Controller
         $periodeprogramkerja = DB::table('periodeprogramkerja')
 
             ->where('periodeprogramkerja.id', $id)
-            ->get();
+            ->first();
         // dd($standar);
         return view('periodeprogramkerja.show', compact('periodeprogramkerja'));
     }

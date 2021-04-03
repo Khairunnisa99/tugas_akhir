@@ -6,7 +6,7 @@ use App\Models\SubBab;
 use App\Models\SubSubBab;
 use App\elemen;
 use App\kriteria;
-USE App\dokumen;
+use App\dokumen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -32,7 +32,7 @@ class ElemenController extends Controller
     {
         $kriteria = kriteria::all();
         $dokumen = dokumen::all();
-        return view('elemen.create', compact('kriteria','dokumen'));
+        return view('elemen.create', compact('kriteria', 'dokumen'));
     }
 
     /**
@@ -75,7 +75,7 @@ class ElemenController extends Controller
         $elemen->dokumen()->attach($request->input('dokumen'));
         $elemen->save();
 
-         //dd($babs);
+        //dd($babs);
         if ($elemen) {
             # code...
             return redirect()->route('elemen.index')->with(['success' => 'Data Berhasil Disimpan']);
@@ -92,11 +92,14 @@ class ElemenController extends Controller
      */
     public function show($id)
     {
-        $elemen = elemen::find($id)->with('dokumen')->get();
+        $elemen = DB::table('elemen')
+            ->join('subsubbab', 'elemen.SubSubBab_idSubSubBab', '=', 'subsubbab.id')
+            ->join('dokumen', 'elemen.id', '=', 'dokumen.id')
+            ->select('elemen.*', 'subsubbab.*', 'dokumen.*')
+            ->where('elemen.id', $id)
+            ->first();
         // dd($standar);
         return view('elemen.show', compact('elemen'));
-
-
     }
 
     /**
@@ -108,7 +111,8 @@ class ElemenController extends Controller
     public function edit($id)
     {
         $elemen = elemen::findOrFail($id);
-        $kriteria = kriteria::all();
+        $kriteria = kriteria::latest()->get();
+        $dokumen = dokumen::latest()->get();
         return view('elemen.edit', compact('kriteria', 'elemen'));
     }
 
@@ -143,8 +147,7 @@ class ElemenController extends Controller
             'DokumenEksternal' => $request->input('DokumenEksternal')
         ]);
         // dd($bab);
-        $elemen->dokumen()->attach($request->input('dokumen'));
-        $elemen->save();
+        $elemen->dokumen()->sync($request->input('dokumen'));
 
         if ($elemen) {
             # code...

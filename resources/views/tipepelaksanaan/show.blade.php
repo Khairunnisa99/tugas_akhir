@@ -15,37 +15,33 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <tbody>
-                  <?php $no= 0; ?>
-                    @foreach ($tipepelaksanaan as $bab)
-                       <?php $no++ ;?>
             <table class="table table-bordered">
                        <thead class="thead-dark">
                         <tr>
 
                             <tr>
                                 <th scope="col">Nama TypePelaksanaan </th>
-                                <td>{{ $bab->namaTypePelaksanaan }}</td>
+                                <td>{{ $tipepelaksanaan->namaTypePelaksanaan }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Keterangan</th>
-                                <td>{{ $bab->keterangan}}</td>
+                                <td>{{ $tipepelaksanaan->keterangan}}</td>
                             </tr>
                             {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
 
 
                        </tr>
-                    @endforeach
                 </tbody>
 
             </table>
           <div class="box-body">
-            <form action="{{ route('tipepelaksanaan.destroy', $bab->id) }}" method="post">
+            <form action="{{ route('tipepelaksanaan.destroy', $tipepelaksanaan->id) }}" method="post">
               @csrf
               @method('DELETE')
-              <a href="{{ route('tipepelaksanaan.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+              <a href="{{ route('tipepelaksanaan.edit', $tipepelaksanaan->id) }}" class="btn btn-info">Edit</a>
               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('tipepelaksanaan.index', $bab->id) }}" class="btn btn-warning">Calcel</a>
+              <a href="{{ route('tipepelaksanaan.index', $tipepelaksanaan->id) }}" class="btn btn-warning">Calcel</a>
             </form>
           </div>
       </div>

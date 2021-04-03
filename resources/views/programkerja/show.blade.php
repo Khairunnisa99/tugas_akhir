@@ -15,60 +15,56 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <tbody>
-                  <?php $no= 0; ?>
-                    @foreach ($programkerja as $bab)
-                       <?php $no++ ;?>
             <table class="table table-bordered">
                        <thead class="thead-dark">
                         <tr>
 
                             <tr>
                                 <th scope="col">Nama ProgramKerja</th>
-                                <td>{{ $bab->NamaProgramKerja }}</td>
+                                <td>{{ $programkerja->NamaProgramKerja }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Tahun ProgramKerja</th>
-                                <td>{{ $bab->TahunProgramKerja }}</td>
+                                <td>{{ $programkerja->TahunProgramKerja }}</td>
                             </tr>
                             {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
                             <tr>
                                 <th scope="col">Tipe program</th>
-                                <td>{{ $bab->tipeprogram }}</td>
+                                <td>{{ $programkerja->tipeprogram }}</td>
                             </tr>
                             <tr>
                                 <th scope="col">Tanggal Mulai</th>
-                                <td>{{ $bab->tanggalMulai}}</td>
+                                <td>{{ $programkerja->tanggalMulai}}</td>
                             </tr>
 
 
                             <tr>
                                 <th scope="col">Tanggal Berakhir</th>
-                                <td>{{ $bab->tanggalBerakhir}}</td>
+                                <td>{{ $programkerja->tanggalBerakhir}}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Deskripsi ProgramKerja </th>
-                                <td>{{ $bab->DeskripsiProgramKerja }}</td>
+                                <td>{{ $programkerja->DeskripsiProgramKerja }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Status Proker</th>
-                                <td>{{ $bab->statusProker}}</td>
+                                <td>{{ $programkerja->statusProker}}</td>
                             </tr>
 
                        </tr>
-                    @endforeach
                 </tbody>
 
             </table>
           <div class="box-body">
-            <form action="{{ route('programkerja.destroy', $bab->id) }}" method="post">
+            <form action="{{ route('programkerja.destroy', $programkerja->id) }}" method="post">
               @csrf
               @method('DELETE')
-              <a href="{{ route('programkerja.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+              <a href="{{ route('programkerja.edit', $programkerja->id) }}" class="btn btn-info">Edit</a>
               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('programkerja.index', $bab->id) }}" class="btn btn-warning">Calcel</a>
+              <a href="{{ route('programkerja.index', $programkerja->id) }}" class="btn btn-warning">Calcel</a>
             </form>
           </div>
       </div>

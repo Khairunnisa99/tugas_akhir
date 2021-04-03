@@ -58,6 +58,8 @@
                     @endforeach
                   </tbody>
                 </table>
+                 {{ $programkerja->links() }}
+
             </div>
           </div>
         </div>

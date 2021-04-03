@@ -15,50 +15,46 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <tbody>
-                  <?php $no= 0; ?>
-                    @foreach ($periodeakreditasi as $bab)
-                       <?php $no++ ;?>
             <table class="table table-bordered">
                        <thead class="thead-dark">
                         <tr>
 
                             <tr>
                                 <th scope="col">Nama PeriodeAkreditasi</th>
-                                <td>{{ $bab->namaPeriodeAkreditasi }}</td>
+                                <td>{{ $periodeakreditasi->namaPeriodeAkreditasi }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Tahun ProgramAkreditasi</th>
-                                <td>{{ $bab->tahunProgramAkreditasi }}</td>
+                                <td>{{ $periodeakreditasi->tahunProgramAkreditasi }}</td>
                             </tr>
                             {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
                             <tr>
                                 <th scope="col">Tanggal Mulai</th>
-                                <td>{{ $bab->TanggalMulai }}</td>
+                                <td>{{ $periodeakreditasi->TanggalMulai }}</td>
                             </tr>
                             <tr>
                                 <th scope="col">Tanggal Berakhir</th>
-                                <td>{{ $bab->TanggalBerakhir }}</td>
+                                <td>{{ $periodeakreditasi->TanggalBerakhir }}</td>
                             </tr>
 
 
                             <tr>
                                 <th scope="col">Deskripsi PeriodeAkreditasi</th>
-                                <td>{{ $bab->deskripsiPeriodeAkreditasi }}</td>
+                                <td>{{ $periodeakreditasi->deskripsiPeriodeAkreditasi }}</td>
                             </tr>
 
                        </tr>
-                    @endforeach
                 </tbody>
 
             </table>
           <div class="box-body">
-            <form action="{{ route('periodeakreditasi.destroy', $bab->id) }}" method="post">
+            <form action="{{ route('periodeakreditasi.destroy', $periodeakreditasi->id) }}" method="post">
               @csrf
               @method('DELETE')
-              <a href="{{ route('periodeakreditasi.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+              <a href="{{ route('periodeakreditasi.edit', $periodeakreditasi->id) }}" class="btn btn-info">Edit</a>
               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('periodeakreditasi.index', $bab->id) }}" class="btn btn-warning">Calcel</a>
+              <a href="{{ route('periodeakreditasi.index', $periodeakreditasi->id) }}" class="btn btn-warning">Calcel</a>
             </form>
           </div>
       </div>

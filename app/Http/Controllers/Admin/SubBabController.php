@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\SubBab;
 use App\Models\Bab;
+use App\Models\SubBabDua;
+use App\Models\SubBabTiga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,6 +21,12 @@ class SubBabController extends Controller
     {
         $subbab = SubBab::latest()->paginate(10);
 
+        // $subbab = DB::table('subbab')
+        //     ->join('subsubbabdua', 'subbab.id', '=', 'subsubbabdua.id')
+        //     ->join('subsubbabtiga', 'subbab.id', '=', 'subsubbabtiga.id')
+        //     ->join('subsubbabempat', 'subbab.id', '=', 'subsubbabempat.id')
+        //     ->select('subbab.*', 'subsubbabdua.*', 'subsubbabtiga.*', 'subsubbabempat.*')
+        //     ->paginate(10);
         return view('standar.index', compact('subbab'));
     }
 
@@ -84,15 +92,12 @@ class SubBabController extends Controller
     {
 
         $standar = DB::table('subbab')
-            ->leftJoin('babAkreditasi', 'subbab.BabAkreditasi_idBabAkreditasi', '=', 'babAkreditasi.id')
-            ->select('subbab.*', 'babAkreditasi.NamaBab')
+            ->leftJoin('babakreditasi', 'subbab.BabAkreditasi_idBabAkreditasi', '=', 'babakreditasi.id')
+            ->select('subbab.*', 'babakreditasi.*')
             ->where('subbab.id', $id)
-            ->get();
+            ->first();
         // dd($standar);
         return view('standar.show', compact('standar'));
-
-
-
     }
 
     /**

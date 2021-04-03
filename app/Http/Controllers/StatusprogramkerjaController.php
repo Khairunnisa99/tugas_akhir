@@ -73,7 +73,7 @@ class StatusprogramkerjaController extends Controller
         $statusprogramkerja = DB::table('statusprogramkerja')
 
             ->where('statusprogramkerja.id', $id)
-            ->get();
+            ->first();
         // dd($standar);
          return view('statusprogramkerja.show', compact('statusprogramkerja'));
     }

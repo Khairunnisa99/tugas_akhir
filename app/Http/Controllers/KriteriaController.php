@@ -10,6 +10,9 @@ use App\Models\standar;
 use App\Models\Bab;
 use App\Models\SubBab;
 use App\Models\SubSubBab;
+use App\Models\SubBabDua;
+use App\Models\SubBabEmpat;
+use App\Models\SubBabTiga;
 
 class KriteriaController extends Controller
 {
@@ -21,7 +24,10 @@ class KriteriaController extends Controller
     public function index()
     {
         $kriteria = SubSubBab::latest()->paginate(10);
-        return view('kriteria.index', ['kriteria' => $kriteria]);
+        $subbab_dua = SubBabDua::latest()->get();
+        $subbab_tiga = SubBabTiga::latest()->get();
+        $subbab_empat = SubBabEmpat::latest()->get();
+        return view('kriteria.index', compact('kriteria', 'subbab_dua', 'subbab_tiga', 'subbab_empat'));
     }
 
     /**
@@ -90,12 +96,11 @@ class KriteriaController extends Controller
 
         $kriteria = DB::table('subsubbab')
             ->leftJoin('subbab', 'subsubbab.id_subbab', '=', 'subbab.id')
-            ->select('subsubbab.*', 'subbab.SubBabNama')
+            ->select('subsubbab.*', 'subbab.*')
             ->where('subsubbab.id', $id)
-            ->get();
+            ->first();
         // dd($kriteria);
         return view('kriteria.show', compact('kriteria'));
-
     }
 
     /**
@@ -120,8 +125,8 @@ class KriteriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-         // dd($request);
-         $this->validate($request, [
+        // dd($request);
+        $this->validate($request, [
             'id_subbab' => 'required',
             'NomerKriteria' => 'required',
             'namaKriteria' => 'required',

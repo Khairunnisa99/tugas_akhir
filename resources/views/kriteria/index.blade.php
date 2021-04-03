@@ -32,11 +32,67 @@
                     @foreach ($kriteria as $bab)
                        <?php $no++ ;?>
                         <tr>
-                            <td>{{ ($kriteria ->currentpage()-1) * $kriteria ->perpage() + $loop->index + 1 }}</td>
+                          <td>{{ ($kriteria ->currentpage()-1) * $kriteria ->perpage() + $loop->index + 1 }}</td>
                           <td>{{ $bab->NomerKriteria }}</td>
                           <td>{{ $bab->namaKriteria }}</td>
                           <td>{{ $bab->MaksudDanTujuan }}</td>
-                          <!--<td>{{ $bab->Skor }}</td>-->
+                          <td>
+                            <form action="{{ route('kriteria.destroy', $bab->id) }}" method="post">
+                              @csrf
+                              @method('DELETE')
+                              <a href="{{ route('kriteria.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
+                              <a href="{{ route('kriteria.show', $bab->id) }}" class="btn btn-warning">View</a>
+                            </form>
+                          </td>
+                       </tr>
+                    @endforeach
+                    @foreach ($subbab_dua as $bab)
+                       <?php $no++ ;?>
+                        <tr>
+                          {{-- <td>{{ ($subbab_dua->currentpage()-1) * $subbab_dua ->perpage() + $loop->index + 1 }}</td> --}}
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $bab->NomerKriteria }}</td>
+                          <td>{{ $bab->namaKriteria }}</td>
+                          <td>{{ $bab->MaksudDanTujuan }}</td>
+                          <td>
+                            <form action="{{ route('kriteria.destroy', $bab->id) }}" method="post">
+                              @csrf
+                              @method('DELETE')
+                              <a href="{{ route('kriteria.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
+                              <a href="{{ route('kriteria.show', $bab->id) }}" class="btn btn-warning">View</a>
+                            </form>
+                          </td>
+                       </tr>
+                    @endforeach
+                    @foreach ($subbab_tiga as $bab)
+                       <?php $no++ ;?>
+                        <tr>
+                          {{-- <td>{{ ($subbab_dua->currentpage()-1) * $subbab_dua ->perpage() + $loop->index + 1 }}</td> --}}
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $bab->NomerKriteria }}</td>
+                          <td>{{ $bab->namaKriteria }}</td>
+                          <td>{{ $bab->MaksudDanTujuan }}</td>
+                          <td>
+                            <form action="{{ route('kriteria.destroy', $bab->id) }}" method="post">
+                              @csrf
+                              @method('DELETE')
+                              <a href="{{ route('kriteria.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
+                              <a href="{{ route('kriteria.show', $bab->id) }}" class="btn btn-warning">View</a>
+                            </form>
+                          </td>
+                       </tr>
+                    @endforeach
+                    @foreach ($subbab_empat as $bab)
+                       <?php $no++ ;?>
+                        <tr>
+                          {{-- <td>{{ ($subbab_dua->currentpage()-1) * $subbab_dua ->perpage() + $loop->index + 1 }}</td> --}}
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $bab->NomerKriteria }}</td>
+                          <td>{{ $bab->namaKriteria }}</td>
+                          <td>{{ $bab->MaksudDanTujuan }}</td>
                           <td>
                             <form action="{{ route('kriteria.destroy', $bab->id) }}" method="post">
                               @csrf
@@ -50,6 +106,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $kriteria->links() }}
       </div>
     </div>
   </div>

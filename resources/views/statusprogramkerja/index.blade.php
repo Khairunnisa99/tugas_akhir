@@ -55,6 +55,8 @@
                   @endforeach
                 </tbody>
               </table>
+          {{ $statusprogramkerja->links() }}
+
             </div>
       </div>
     </div>

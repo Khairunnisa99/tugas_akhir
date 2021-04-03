@@ -57,6 +57,7 @@
               @endforeach
             </tbody>
           </table>
+          {{ $statuspelaksanaan->links() }}
             </div>
       </div>
     </div>

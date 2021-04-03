@@ -15,37 +15,33 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <tbody>
-                  <?php $no= 0; ?>
-                    @foreach ($statusprogramkerja as $bab)
-                       <?php $no++ ;?>
             <table class="table table-bordered">
                        <thead class="thead-dark">
                         <tr>
 
                             <tr>
                                 <th scope="col">Status Proker </th>
-                                <td>{{ $bab->statusProker }}</td>
+                                <td>{{ $statusprogramkerja->statusProker }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Keterangan</th>
-                                <td>{{ $bab->keteranganStatus}}</td>
+                                <td>{{ $statusprogramkerja->keteranganStatus}}</td>
                             </tr>
                             {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
 
 
                        </tr>
-                    @endforeach
                 </tbody>
 
             </table>
           <div class="box-body">
-            <form action="{{ route('statusprogramkerja.destroy', $bab->id) }}" method="post">
+            <form action="{{ route('statusprogramkerja.destroy', $statusprogramkerja->id) }}" method="post">
               @csrf
               @method('DELETE')
-              <a href="{{ route('statusprogramkerja.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+              <a href="{{ route('statusprogramkerja.edit', $statusprogramkerja->id) }}" class="btn btn-info">Edit</a>
               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('statusprogramkerja.index', $bab->id) }}" class="btn btn-warning">Calcel</a>
+              <a href="{{ route('statusprogramkerja.index', $statusprogramkerja->id) }}" class="btn btn-warning">Calcel</a>
             </form>
           </div>
       </div>

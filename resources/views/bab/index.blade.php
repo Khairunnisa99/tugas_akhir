@@ -51,6 +51,7 @@
               @endforeach
             </tbody>
           </table>
+          {{ $babAkreditasi->links() }}
       </div>
     </div>
   </div>

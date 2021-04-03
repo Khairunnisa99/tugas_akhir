@@ -70,6 +70,7 @@
               @endforeach
             </tbody>
           </table>
+          {{ $rapat->links() }}
     </div>
     </div>
   </div>

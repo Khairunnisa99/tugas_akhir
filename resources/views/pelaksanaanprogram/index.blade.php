@@ -58,6 +58,7 @@
                     @endforeach
                   </tbody>
                 </table>
+                 {{ $pelaksanaanprogram->links() }}
             </div>
           </div>
         </div>

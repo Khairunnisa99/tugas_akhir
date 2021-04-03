@@ -85,7 +85,7 @@ class PeriodeakreditasiController extends Controller
     {
         $periodeakreditasi = DB::table('periodeakreditasi')
             ->where('periodeakreditasi.id', $id)
-            ->get();
+            ->first();
         // dd($kriteria);
         return view('periodeakreditasi.show', compact('periodeakreditasi'));
     }

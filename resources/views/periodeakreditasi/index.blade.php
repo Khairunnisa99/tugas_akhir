@@ -64,6 +64,8 @@
               @endforeach
             </tbody>
           </table>
+                 {{ $periodeakreditasi->links() }}
+
     </div>
     </div>
   </div>

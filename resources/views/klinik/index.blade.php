@@ -59,6 +59,7 @@
               @endforeach
             </tbody>
           </table>
+           {{ $klinik->links() }}
         </div>
     </div>
   </div>

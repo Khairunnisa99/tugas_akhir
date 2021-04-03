@@ -15,66 +15,62 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <tbody>
-                  <?php $no= 0; ?>
-                    @foreach ($rapat as $bab)
-                       <?php $no++ ;?>
             <table class="table table-bordered">
                        <thead class="thead-dark">
                         <tr>
 
                             <tr>
                                 <th scope="col">Nama Rapat</th>
-                                <td>{{ $bab->namaRapat }}</td>
+                                <td>{{ $rapat->namaRapat }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Waktu Rapat</th>
-                                <td>{{ $bab->WaktuRapat }}</td>
+                                <td>{{ $rapat->WaktuRapat }}</td>
                             </tr>
                             {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
                             <tr>
                                 <th scope="col">Keterangan Rapat</th>
-                                <td>{{ $bab->KeteranganRapat }}</td>
+                                <td>{{ $rapat->KeteranganRapat }}</td>
                             </tr>
                             <tr>
                                 <th scope="col">Peserta Rapat</th>
-                                <td>{{ $bab->PesertaRapat}}</td>
+                                <td>{{ $rapat->PesertaRapat}}</td>
                             </tr>
 
 
                             <tr>
                                 <th scope="col">Notulen Rapat</th>
-                                <td>{{ $bab->NotulenRapat}}</td>
+                                <td>{{ $rapat->NotulenRapat}}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Materi Rapat </th>
-                                <td>{{ $bab->MateriRapat }}</td>
+                                <td>{{ $rapat->MateriRapat }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Rekomendasi</th>
-                                <td>{{ $bab->Rekomendasi}}</td>
+                                <td>{{ $rapat->Rekomendasi}}</td>
                             </tr>
 
 
                             <tr>
                                 <th scope="col">TindakLanjut</th>
-                                <td>{{ $bab->TindakLanjut}}</td>
+                                <td>{{ $rapat->TindakLanjut}}</td>
                             </tr>
 
                        </tr>
-                    @endforeach
                 </tbody>
 
             </table>
           <div class="box-body">
-            <form action="{{ route('rapat.destroy', $bab->id) }}" method="post">
+            <form action="{{ route('rapat.destroy', $rapat->id) }}" method="post">
               @csrf
               @method('DELETE')
-              <a href="{{ route('rapat.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+              <a href="{{ route('rapat.edit', $rapat->id) }}" class="btn btn-info">Edit</a>
               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('rapat.index', $bab->id) }}" class="btn btn-warning">Calcel</a>
+              <a href="{{ route('rapat.index', $rapat->id) }}" class="btn btn-warning">Calcel</a>
               <a href="{{ url('/print_all') }}" class="btn btn-primary mt-4" target="_blank">Export all to PDF</a>
             </form>
           </div>

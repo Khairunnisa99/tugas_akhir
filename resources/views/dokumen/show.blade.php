@@ -15,42 +15,38 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <tbody>
-                  <?php $no= 0; ?>
-                    @foreach ($dokumen as $bab)
-                       <?php $no++ ;?>
             <table class="table table-bordered">
                        <thead class="thead-dark">
                         <tr>
 
                             <tr>
                                 <th scope="col">Nama Dokumen</th>
-                                <td>{{ $bab->namaDokumen }}</td>
+                                <td>{{ $dokumen->namaDokumen }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">keterangan</th>
-                                <td>{{ $bab->keterangan }}</td>
+                                <td>{{ $dokumen->keterangan }}</td>
                             </tr>
                             {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
                             <tr>
                                 <th>File</th>
                                 <td>
-                                  <a href="{{ Storage::url('surat_dokumen/'. $bab->file) }}">{{ $bab->file }}</a>
+                                  <a href="{{ Storage::url('surat_dokumen/'. $dokumen->file) }}">{{ $dokumen->file }}</a>
                                 </td>
                             </tr>
 
                        </tr>
-                    @endforeach
                 </tbody>
 
             </table>
           <div class="box-body">
-            <form action="{{ route('dokumen.destroy', $bab->id) }}" method="post">
+            <form action="{{ route('dokumen.destroy', $dokumen->id) }}" method="post">
               @csrf
               @method('DELETE')
-              <a href="{{ route('dokumen.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+              <a href="{{ route('dokumen.edit', $dokumen->id) }}" class="btn btn-info">Edit</a>
               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('dokumen.index', $bab->id) }}" class="btn btn-warning">Calcel</a>
+              <a href="{{ route('dokumen.index', $dokumen->id) }}" class="btn btn-warning">Calcel</a>
             </form>
           </div>
       </div>

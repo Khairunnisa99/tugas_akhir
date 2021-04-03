@@ -23,7 +23,7 @@ class TipepelaksanaanController extends Controller
                 '%' . request()->q . '%'
             );
         })->paginate(10);
-        return view('tipepelaksanaan.index',['tipepelaksanaan'=>$tipepelaksanaan]);
+        return view('tipepelaksanaan.index', ['tipepelaksanaan' => $tipepelaksanaan]);
     }
 
     /**
@@ -44,22 +44,22 @@ class TipepelaksanaanController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'namaTypePelaksanaan' => 'required',
             'keterangan' => 'required'
 
         ]);
         $tipepelaksanaan = tipepelaksanaan::create([
 
-            'namaTypePelaksanaan' => $request->input ('namaTypePelaksanaan'),
-            'keterangan' => $request->input ('keterangan')
-            ]);
-            if ($tipepelaksanaan) {
-                # code...
-                return redirect()->route('tipepelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('tipepelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
+            'namaTypePelaksanaan' => $request->input('namaTypePelaksanaan'),
+            'keterangan' => $request->input('keterangan')
+        ]);
+        if ($tipepelaksanaan) {
+            # code...
+            return redirect()->route('tipepelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('tipepelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**
@@ -73,12 +73,10 @@ class TipepelaksanaanController extends Controller
 
         $tipepelaksanaan = DB::table('typepelaksanaan')
 
-         ->where('typepelaksanaan.id', $id)
-         ->get();
-            // dd($standar);
+            ->where('typepelaksanaan.id', $id)
+            ->first();
+        // dd($standar);
         return view('tipepelaksanaan.show', compact('tipepelaksanaan'));
-
-
     }
 
     /**
@@ -112,13 +110,13 @@ class TipepelaksanaanController extends Controller
         $tipepelaksanaan->update([
             'namaTypePelaksanaan' => $request->namaTypePelaksanaan,
             'keterangan' => $request->keterangan
-            ]);
-            if ($tipepelaksanaan) {
-                # code...
-                return redirect()->route('tipepelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('tipepelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
+        ]);
+        if ($tipepelaksanaan) {
+            # code...
+            return redirect()->route('tipepelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('tipepelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**

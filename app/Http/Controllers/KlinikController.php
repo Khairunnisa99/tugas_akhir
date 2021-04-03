@@ -64,7 +64,7 @@ class KlinikController extends Controller
                 //'logo' => $image->hashName()
 
             ]);
-        } else{
+        } else {
             $image = $request->file('logo');
             $image->storeAs('public/klinik/', $image->hashName());
             $klinik = klinik::create([
@@ -74,7 +74,6 @@ class KlinikController extends Controller
                 'telponKlinik' => $request->input('telponKlinik'),
                 'logo' => $image->hashName()
             ]);
-
         }
         if ($klinik) {
             # code...
@@ -88,12 +87,12 @@ class KlinikController extends Controller
         //$image->storeAs('public/klinik/', $image->hashName());
 
 
-       // $klinik = klinik::create([
-            //'namaKlinik' => $request->input('namaKlinik'),
-            //'alamatKlinik' => $request->input('alamatKlinik'),
-            //'webKlinik' => $request->input('webKlinik'),
-            //'telponKlinik' => $request->input('telponKlinik'),
-            //'logo' => $image->hashName()
+        // $klinik = klinik::create([
+        //'namaKlinik' => $request->input('namaKlinik'),
+        //'alamatKlinik' => $request->input('alamatKlinik'),
+        //'webKlinik' => $request->input('webKlinik'),
+        //'telponKlinik' => $request->input('telponKlinik'),
+        //'logo' => $image->hashName()
 
         //]);
         // dd($babs);
@@ -110,9 +109,9 @@ class KlinikController extends Controller
     {
         $klinik = DB::table('klinik')
 
-        ->where('klinik.id', $id)
-        ->get();
-         // dd($kriteria);
+            ->where('klinik.id', $id)
+            ->first();
+        // dd($kriteria);
         return view('klinik.show', compact('klinik'));
     }
 

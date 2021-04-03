@@ -72,7 +72,7 @@ class TipeprogramkerjaController extends Controller
         $tipeprogramkerja = DB::table('tipeprogramkerja')
 
             ->where('tipeprogramkerja.id', $id)
-            ->get();
+            ->first();
         // dd($standar);
         return view('tipeprogramkerja.show', compact('tipeprogramkerja'));
     }

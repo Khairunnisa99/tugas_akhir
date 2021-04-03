@@ -15,50 +15,46 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <tbody>
-                  <?php $no= 0; ?>
-                    @foreach ($kriteria as $bab)
-                       <?php $no++ ;?>
             <table class="table table-bordered">
                        <thead class="thead-dark">
                         <tr>
 
                             <tr>
                                 <th scope="col">Nomor Kriteria</th>
-                                <td>{{ $bab->NomerKriteria }}</td>
+                                <td>{{ $kriteria->NomerKriteria }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Nama</th>
-                                <td>{{ $bab->SubBabNama }}</td>
+                                <td>{{ $kriteria->SubBabNama }}</td>
                             </tr>
                             {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
                             <tr>
                                 <th scope="col">Nama Kriteria</th>
-                                <td>{{ $bab->namaKriteria }}</td>
+                                <td>{{ $kriteria->namaKriteria }}</td>
                             </tr>
                             <tr>
                                 <th scope="col">Maksud Dan Tujuan</th>
-                                <td>{{ $bab->MaksudDanTujuan }}</td>
+                                <td>{{ $kriteria->MaksudDanTujuan }}</td>
                             </tr>
 
 
                             <tr>
                                 <th scope="col">Standar</th>
-                                <td>{{ $bab->SubBabNama }}</td>
+                                <td>{{ $kriteria->SubBabNama }}</td>
                             </tr>
 
                        </tr>
-                    @endforeach
                 </tbody>
 
             </table>
           <div class="box-body">
-            <form action="{{ route('kriteria.destroy', $bab->id) }}" method="post">
+            <form action="{{ route('kriteria.destroy', $kriteria->id) }}" method="post">
               @csrf
               @method('DELETE')
-              <a href="{{ route('kriteria.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+              <a href="{{ route('kriteria.edit', $kriteria->id) }}" class="btn btn-info">Edit</a>
               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('kriteria.index', $bab->id) }}" class="btn btn-warning">Calcel</a>
+              <a href="{{ route('kriteria.index', $kriteria->id) }}" class="btn btn-warning">Calcel</a>
             </form>
           </div>
       </div>

@@ -98,7 +98,7 @@ class PelaksanaanprogramController extends Controller
 
             ->select('pelaksanaanprogram.*', 'programkerja.NamaProgramKerja', 'typepelaksanaan.namaTypePelaksanaan', 'statuspelaksanaan.statusPelaksanaan')
             ->where('pelaksanaanprogram.id', $id)
-            ->get();
+            ->first();
           // dd($kriteria);
         return view('pelaksanaanprogram.show', compact('pelaksanaanprogram'));
     }

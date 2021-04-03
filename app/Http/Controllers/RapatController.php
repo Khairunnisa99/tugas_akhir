@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Storage;
+
 class RapatController extends Controller
 {
     public function __construct()
@@ -93,7 +94,7 @@ class RapatController extends Controller
         $rapat = DB::table('rapat')
 
             ->where('rapat.id', $id)
-            ->get();
+            ->first();
         // dd($kriteria);
         return view('rapat.show', compact('rapat'));
     }
@@ -101,7 +102,7 @@ class RapatController extends Controller
     public function print_all()
     {
         $rapat = rapat::all();
-        $pdf = PDF::loadview('rapat.print_all',['rapat' => $rapat]);
+        $pdf = PDF::loadview('rapat.print_all', ['rapat' => $rapat]);
         // return $pdf->download('laporan-pegawai-pdf');
         return $pdf->stream();
     }

@@ -22,10 +22,9 @@ class DokumenController extends Controller
     public function index()
     {
         $dokumen = dokumen::latest()->when(request()->q, function ($dokumen) {
-            $dokumen = $dokumen->where('namaDokumen','like', '%' . request()->q . '%');
+            $dokumen = $dokumen->where('namaDokumen', 'like', '%' . request()->q . '%');
         })->paginate(5);
         return view('dokumen.index', ['dokumen' => $dokumen]);
-
     }
 
     public function getFile($filename)
@@ -92,10 +91,9 @@ class DokumenController extends Controller
         $dokumen = DB::table('dokumen')
 
             ->where('dokumen.id', $id)
-            ->get();
+            ->first();
         // dd($standar);
         return view('dokumen.show', compact('dokumen'));
-
     }
 
     /**

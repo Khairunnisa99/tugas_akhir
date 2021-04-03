@@ -69,10 +69,7 @@ class BabController extends Controller
      */
     public function show($id)
     {
-        $babAkreditasi = DB::table('babAkreditasi')
-
-            ->where('babAkreditasi.id', $id)
-            ->get();
+        $babAkreditasi = Bab::findOrFail($id);
         // dd($standar);
         return view('bab.show', compact('babAkreditasi'));
     }

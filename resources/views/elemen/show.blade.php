@@ -15,63 +15,60 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <tbody>
-                  <?php $no= 0; ?>
-                    @foreach ($elemen as $bab)
                       <table class="table table-bordered">
                        <thead class="thead-dark">
                         <tr>
 
                             <tr>
                                 <th scope="col">No. Elemen</th>
-                                <td>{{ $bab->NoElemen }}</td>
+                                <td>{{ $elemen->NoElemen }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Elemen Penilaian</th>
-                                <td>{{ $bab->ElemenPenilaian }}</td>
+                                <td>{{ $elemen->ElemenPenilaian }}</td>
                             </tr>
                             {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
                             <tr>
                                 <th scope="col">Materi Telusur</th>
-                                <td>{{ $bab->MateriTelusur }}</td>
+                                <td>{{ $elemen->MateriTelusur }}</td>
                             </tr>
                             <tr>
                                 <th scope="col">Dokument Internal</th>
-                                <td>{{ $bab->DokumentInternal }}</td>
+                                <td>{{ $elemen->DokumentInternal }}</td>
                             </tr>
 
 
                             <tr>
                                 <th scope="col">Dokumen Eksternal</th>
-                                <td>{{ $bab->DokumenEksternal }}</td>
+                                <td>{{ $elemen->DokumenEksternal }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Kriteria</th>
-                                <td>{{ $bab->namaKriteria }}</td>
+                                <td>{{ $elemen->namaKriteria }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">File</th>
                                 <td>
-                                    @foreach ($bab->dokumen as $item)
-                                    <a href="{{ Storage::url('surat_dokumen/'. $item->file) }}">{{ $item->file }} <br></a>
-                                @endforeach
+                                    {{-- @foreach ($bab->dokumen as $item) --}}
+                                    <a href="{{ Storage::url('surat_dokumen/'. $elemen->file) }}">{{ $elemen->file }} <br></a>
+                                {{-- @endforeach --}}
                                 </td>
                             </tr>
 
                        </tr>
-                    @endforeach
                 </tbody>
 
             </table>
           <div class="box-body">
-            <form action="{{ route('elemen.destroy', $bab->id) }}" method="post">
+            <form action="{{ route('elemen.destroy', $elemen->id) }}" method="post">
               @csrf
               @method('DELETE')
-              <a href="{{ route('elemen.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+              <a href="{{ route('elemen.edit', $elemen->id) }}" class="btn btn-info">Edit</a>
               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('elemen.index', $bab->id) }}" class="btn btn-warning">Calcel</a>
+              <a href="{{ route('elemen.index', $elemen->id) }}" class="btn btn-warning">Calcel</a>
             </form>
           </div>
       </div>

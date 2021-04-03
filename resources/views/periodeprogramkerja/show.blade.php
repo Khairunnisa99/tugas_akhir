@@ -15,37 +15,33 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <tbody>
-                  <?php $no= 0; ?>
-                    @foreach ($periodeprogramkerja as $bab)
-                       <?php $no++ ;?>
-            <table class="table table-bordered">
+                   <table class="table table-bordered">
                        <thead class="thead-dark">
                         <tr>
 
                             <tr>
                                 <th scope="col">Tahun Programkerja</th>
-                                <td>{{ $bab->TahunProgramKerja }}</td>
+                                <td>{{ $periodeprogramkerja->TahunProgramKerja }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Deskripsi</th>
-                                <td>{{ $bab->DeskripsiPeriodeProgramKerja }}</td>
+                                <td>{{ $periodeprogramkerja->DeskripsiPeriodeProgramKerja }}</td>
                             </tr>
                             {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
 
 
                        </tr>
-                    @endforeach
                 </tbody>
 
             </table>
           <div class="box-body">
-            <form action="{{ route('periodeprogramkerja.destroy', $bab->id) }}" method="post">
+            <form action="{{ route('periodeprogramkerja.destroy', $periodeprogramkerja->id) }}" method="post">
               @csrf
               @method('DELETE')
-              <a href="{{ route('periodeprogramkerja.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+              <a href="{{ route('periodeprogramkerja.edit', $periodeprogramkerja->id) }}" class="btn btn-info">Edit</a>
               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('periodeprogramkerja.index', $bab->id) }}" class="btn btn-warning">Calcel</a>
+              <a href="{{ route('periodeprogramkerja.index', $periodeprogramkerja->id) }}" class="btn btn-warning">Calcel</a>
             </form>
           </div>
       </div>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\statuspelaksanaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,7 @@ class StatuspelaksanaanController extends Controller
                 '%' . request()->q . '%'
             );
         })->paginate(10);
-        return view('statuspelaksanaan.index',['statuspelaksanaan'=>$statuspelaksanaan]);
+        return view('statuspelaksanaan.index', ['statuspelaksanaan' => $statuspelaksanaan]);
     }
 
     /**
@@ -40,23 +41,24 @@ class StatuspelaksanaanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request )
+    public function store(Request $request)
     {
         $this->validate($request, [
             'statusPelaksanaan' => 'required',
             'keteranganStatus' => 'required'
 
         ]);
+        // dd($request);
         $statuspelaksanaan = statuspelaksanaan::create([
-            'statusPelaksanaan' => $request->input ('statusPelaksanaan'),
-            'keteranganStatus' => $request->input ('keteranganStatus')
-            ]);
-            if ($statuspelaksanaan) {
-                # code...
-                return redirect()->route('statuspelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('statuspelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
+            'statusPelaksanaan' => $request->input('statusPelaksanaan'),
+            'keteranganStatus' => $request->input('keteranganStatus')
+        ]);
+        if ($statuspelaksanaan) {
+            # code...
+            return redirect()->route('statuspelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('statuspelaksanaan.index')->with(['success' => 'Data error Disimpan']);
+        }
     }
 
     /**
@@ -69,10 +71,10 @@ class StatuspelaksanaanController extends Controller
     {
         $statuspelaksanaan = DB::table('statuspelaksanaan')
 
-         ->where('statuspelaksanaan.id', $id)
-         ->get();
-    // dd($standar);
-         return view('statuspelaksanaan.show', compact('statuspelaksanaan'));
+            ->where('statuspelaksanaan.id', $id)
+            ->first();
+        // dd($standar);
+        return view('statuspelaksanaan.show', compact('statuspelaksanaan'));
     }
 
     /**
@@ -106,13 +108,13 @@ class StatuspelaksanaanController extends Controller
         $statuspelaksanaan->update([
             'statusPelaksanaan' => $request->statusPelaksanaan,
             'keteranganStatus' => $request->keteranganStatus
-            ]);
-            if ($statuspelaksanaan) {
-                # code...
-                return redirect()->route('statuspelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
-            } else {
-                return redirect()->route('statuspelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
-            }
+        ]);
+        if ($statuspelaksanaan) {
+            # code...
+            return redirect()->route('statuspelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('statuspelaksanaan.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**

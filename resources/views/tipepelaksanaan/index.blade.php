@@ -56,7 +56,7 @@
             @endforeach
           </tbody>
         </table>
-
+        {{ $tipepelaksanaan->links() }}
       </div>
     </div>
   </div>

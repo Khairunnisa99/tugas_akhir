@@ -8,7 +8,13 @@ use App\programkerja;
 class statuspelaksanaan extends Model
 {
     protected $table='statuspelaksanaan';
-    protected $guarded=[];
+    // protected $guarded=[];
+    protected $fillable= [
+            'statusPelaksanaan', 'keteranganStatus'
+    ];
+    // protected $primarykey = 'id';
+
+    // public $timestamps = false;
 
 
 }

@@ -15,50 +15,46 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <tbody>
-                  <?php $no= 0; ?>
-                    @foreach ($standar as $bab)
-                       <?php $no++ ;?>
             <table class="table table-bordered">
                        <thead class="thead-dark">
                         <tr>
 
                             <tr>
                                 <th scope="col">Nomor</th>
-                                <td>{{ $bab->SubBabNomor }}</td>
+                                <td>{{ $standar->SubBabNomor }}</td>
                             </tr>
 
                             <tr>
                                 <th scope="col">Nama</th>
-                                <td>{{ $bab->SubBabNama }}</td>
+                                <td>{{ $standar->SubBabNama }}</td>
                             </tr>
                             {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
                             <tr>
                                 <th scope="col">Standar</th>
-                                <td>{{ $bab->SubBabStandard }}</td>
+                                <td>{{ $standar->SubBabStandard }}</td>
                             </tr>
                             <tr>
                                 <th scope="col">Deskripsi</th>
-                                <td>{{ $bab->SubBabDeskripsi }}</td>
+                                <td>{{ $standar->SubBabDeskripsi }}</td>
                             </tr>
 
 
                             <tr>
                                 <th scope="col">Bab</th>
-                                <td>{{ $bab->NamaBab }}</td>
+                                <td>{{ $standar->NamaBab }}</td>
                             </tr>
 
                        </tr>
-                    @endforeach
                 </tbody>
 
             </table>
           <div class="box-body">
-            <form action="{{ route('standar.destroy', $bab->id) }}" method="post">
+            <form action="{{ route('standar.destroy', $standar->id) }}" method="post">
               @csrf
               @method('DELETE')
-              <a href="{{ route('standar.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+              <a href="{{ route('standar.edit', $standar->id) }}" class="btn btn-info">Edit</a>
               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('standar.index', $bab->id) }}" class="btn btn-warning">Calcel</a>
+              <a href="{{ route('standar.index', $standar->id) }}" class="btn btn-warning">Calcel</a>
             </form>
           </div>
       </div>
