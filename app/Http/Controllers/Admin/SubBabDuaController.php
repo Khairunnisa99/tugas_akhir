@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SubBab;
 use App\Models\SubBabDua;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SubBabDuaController extends Controller
 {
@@ -27,8 +28,8 @@ class SubBabDuaController extends Controller
      */
     public function create()
     {
-
-        return view('babdua.create');
+        $standar = SubBab::all();
+        return view('babdua.create', compact('standar'));
     }
 
     /**
@@ -72,7 +73,13 @@ class SubBabDuaController extends Controller
      */
     public function show($id)
     {
-        //
+        $kriteria = DB::table('subsubbabdua')
+            ->leftJoin('subbab', 'subsubbabdua.id_subbab', '=', 'subbab.id')
+            ->select('subsubbabdua.*', 'subbab.*')
+            ->where('subsubbabdua.id', $id)
+            ->first();
+        // dd($kriteria);
+        return view('babdua.show', compact('kriteria'));
     }
 
     /**
@@ -84,7 +91,8 @@ class SubBabDuaController extends Controller
     public function edit($id)
     {
         $subbab = SubBabDua::findOrFail($id);
-        return view('babdua.edit', compact('subbab'));
+        $standar = SubBab::all();
+        return view('babdua.edit', compact('subbab', 'standar'));
     }
 
     /**

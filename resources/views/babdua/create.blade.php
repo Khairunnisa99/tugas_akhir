@@ -15,10 +15,12 @@
         @csrf
          <div class="form-group">
             <label for="">Standar</label>
-            <input type="number" name="id_subbab" id="" class="form-control">
-            {{-- <select name="id_subbab" class="form-control">
-               <option value="">Contoh</option>
-            </select> --}}
+            {{-- <input type="number" name="id_subbab" id="" class="form-control"> --}}
+            <select name="id_subbab" class="form-control">
+               @foreach ($standar as $item)
+                   <option value="{{ $item->id }}">{{ $item->SubBabNama }}</option>
+               @endforeach
+            </select>
          </div>
           <div class="form-group">
             <label for="">Nomor Kriteria</label>

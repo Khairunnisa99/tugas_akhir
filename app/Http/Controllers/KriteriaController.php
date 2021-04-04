@@ -111,9 +111,16 @@ class KriteriaController extends Controller
      */
     public function edit($id)
     {
-        $kriteria = kriteria::findOrFail($id);
-        $standar = SubBab::all();
-        return view('kriteria.edit', compact('standar', 'kriteria'));
+
+        if ($kriteria = kriteria::findOrFail($id)) {
+            $standar = SubBab::all();
+            return view('kriteria.edit', compact('standar', 'kriteria'));
+            # code...
+        } else {
+            $subbab_dua = SubBabDua::findOrFail($id);
+            $standar = SubBab::all();
+            return view('babdua.edit', compact('subbab_dua', 'standar'));
+        }
     }
 
     /**

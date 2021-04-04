@@ -14,4 +14,5 @@ class SubBabDua extends Model
     {
         return $this->hasMany(SubBab::class, 'id_subbab', 'id');
     }
+    
 }

@@ -4,11 +4,12 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Laravel</b>Blog</a>
+        <h2>Aplikasi Klinik Muhamammadiyah</h2>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Aplikasi Laravel Blog</p>
+    <p class="login-box-msg">Silahkan Register Untuk Masuk Ke Aplikasi</p>
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <div class="card-body">

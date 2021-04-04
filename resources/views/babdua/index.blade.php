@@ -46,6 +46,7 @@
             @csrf
             @method('DELETE')
             <a href="{{ route('bab_dua.edit', $btu->id) }}" class="btn btn-info">Edit</a>
+            <a href="{{ route('bab_dua.show', $btu->id) }}" class="btn btn-warning">View</a>
             <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
           </form>
         </td>

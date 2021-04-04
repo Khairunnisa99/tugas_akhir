@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\SubBabEmpat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\SubBab;
 
 class SubBabEmpatController extends Controller
 {
@@ -26,8 +28,8 @@ class SubBabEmpatController extends Controller
      */
     public function create()
     {
-
-        return view('babempat.create');
+        $standar = SubBab::all();
+        return view('babempat.create', compact('standar'));
     }
 
     /**
@@ -71,7 +73,13 @@ class SubBabEmpatController extends Controller
      */
     public function show($id)
     {
-        //
+        $kriteria = DB::table('subsubbabempat')
+            ->leftJoin('subbab', 'subsubbabempat.id_subbab', '=', 'subbab.id')
+            ->select('subsubbabempat.*', 'subbab.*')
+            ->where('subsubbabempat.id', $id)
+            ->first();
+        // dd($kriteria);
+        return view('babtiga.show', compact('kriteria'));
     }
 
     /**
@@ -83,7 +91,8 @@ class SubBabEmpatController extends Controller
     public function edit($id)
     {
         $subbab = SubBabEmpat::findOrFail($id);
-        return view('babempat.edit', compact('subbab'));
+        $standar = SubBab::all();
+        return view('babempat.edit', compact('subbab', 'standar'));
     }
 
     /**

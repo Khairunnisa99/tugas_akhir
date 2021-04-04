@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\SubSubBab;
 use Illuminate\Http\Request;
+use App\Models\SubBab;
 
 class SubSubBabController extends Controller
 {
@@ -26,8 +27,8 @@ class SubSubBabController extends Controller
      */
     public function create()
     {
-
-        return view('babsatu.create');
+        $standar = SubBab::all();
+        return view('babsatu.create', compact('standar'));
     }
 
     /**
@@ -83,7 +84,8 @@ class SubSubBabController extends Controller
     public function edit($id)
     {
         $subbab = SubSubBab::findOrFail($id);
-        return view('babsatu.edit', compact('subbab'));
+        $standar = SubBab::all();
+        return view('babsatu.edit', compact('subbab', 'standar'));
     }
 
     /**

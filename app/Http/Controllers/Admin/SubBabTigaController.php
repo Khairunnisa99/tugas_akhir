@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\SubBabTiga;
 use Illuminate\Http\Request;
+use App\Models\SubBab;
+use Illuminate\Support\Facades\DB;
 
 class SubBabTigaController extends Controller
 {
@@ -26,8 +28,8 @@ class SubBabTigaController extends Controller
      */
     public function create()
     {
-
-        return view('babtiga.create');
+        $standar = SubBab::all();
+        return view('babtiga.create', compact('standar'));
     }
 
     /**
@@ -71,7 +73,13 @@ class SubBabTigaController extends Controller
      */
     public function show($id)
     {
-        //
+        $kriteria = DB::table('subsubbabtiga')
+        ->leftJoin('subbab', 'subsubbabtiga.id_subbab', '=', 'subbab.id')
+        ->select('subsubbabtiga.*', 'subbab.*')
+        ->where('subsubbabtiga.id', $id)
+        ->first();
+        // dd($kriteria);
+        return view('babtiga.show', compact('kriteria'));
     }
 
     /**
@@ -83,7 +91,8 @@ class SubBabTigaController extends Controller
     public function edit($id)
     {
         $subbab = SubBabTiga::findOrFail($id);
-        return view('babtiga.edit', compact('subbab'));
+        $standar = SubBab::all();
+        return view('babtiga.edit', compact('subbab', 'standar'));
     }
 
     /**

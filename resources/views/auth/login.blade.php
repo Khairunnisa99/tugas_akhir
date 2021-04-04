@@ -3,11 +3,11 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Silahkan</b>Login</a>
+    <h2>Aplikasi Klinik Muhamammadiyah</h2>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Aplikasi Klinik Muhammadiyah</p>
+    <p class="login-box-msg">Silahkan Login Untuk Masuk Ke Aplikasi</p>
 
     <form method="POST" action="{{ route('login') }}">
                         @csrf

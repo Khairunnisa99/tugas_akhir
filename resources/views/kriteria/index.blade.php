@@ -56,12 +56,12 @@
                           <td>{{ $bab->namaKriteria }}</td>
                           <td>{{ $bab->MaksudDanTujuan }}</td>
                           <td>
-                            <form action="{{ route('kriteria.destroy', $bab->id) }}" method="post">
+                            <form action="{{ route('bab_dua.destroy', $bab->id) }}" method="post">
                               @csrf
                               @method('DELETE')
-                              <a href="{{ route('kriteria.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+                              <a href="{{ route('bab_dua.edit', $bab->id) }}" class="btn btn-info">Edit</a>
                               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-                              <a href="{{ route('kriteria.show', $bab->id) }}" class="btn btn-warning">View</a>
+                              <a href="{{ route('bab_dua.show', $bab->id) }}" class="btn btn-warning">View</a>
                             </form>
                           </td>
                        </tr>
@@ -75,12 +75,12 @@
                           <td>{{ $bab->namaKriteria }}</td>
                           <td>{{ $bab->MaksudDanTujuan }}</td>
                           <td>
-                            <form action="{{ route('kriteria.destroy', $bab->id) }}" method="post">
+                            <form action="{{ route('bab_tiga.destroy', $bab->id) }}" method="post">
                               @csrf
                               @method('DELETE')
-                              <a href="{{ route('kriteria.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+                              <a href="{{ route('bab_tiga.edit', $bab->id) }}" class="btn btn-info">Edit</a>
                               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-                              <a href="{{ route('kriteria.show', $bab->id) }}" class="btn btn-warning">View</a>
+                              <a href="{{ route('bab_tiga.show', $bab->id) }}" class="btn btn-warning">View</a>
                             </form>
                           </td>
                        </tr>
@@ -94,12 +94,12 @@
                           <td>{{ $bab->namaKriteria }}</td>
                           <td>{{ $bab->MaksudDanTujuan }}</td>
                           <td>
-                            <form action="{{ route('kriteria.destroy', $bab->id) }}" method="post">
+                            <form action="{{ route('bab_empat.destroy', $bab->id) }}" method="post">
                               @csrf
                               @method('DELETE')
-                              <a href="{{ route('kriteria.edit', $bab->id) }}" class="btn btn-info">Edit</a>
+                              <a href="{{ route('bab_empat.edit', $bab->id) }}" class="btn btn-info">Edit</a>
                               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-                              <a href="{{ route('kriteria.show', $bab->id) }}" class="btn btn-warning">View</a>
+                              <a href="{{ route('bab_empat.show', $bab->id) }}" class="btn btn-warning">View</a>
                             </form>
                           </td>
                        </tr>
