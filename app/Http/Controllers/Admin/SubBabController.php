@@ -157,6 +157,9 @@ class SubBabController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $subbab = SubBab::findOrFail($id);
+        $subbab->delete();
+
+        return redirect()->route('standar.index');
     }
 }

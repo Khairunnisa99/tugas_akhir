@@ -41,6 +41,7 @@
 
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
+          <a href="{{ route('kriteria.index') }}" class="btn btn-danger">Kembali</a>
 
         </form>
     </div>

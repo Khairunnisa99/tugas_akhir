@@ -24,6 +24,7 @@
          </div>
 
                    <button type="submit" class="btn btn-primary">Ubah Data</button>
+                   <a href="{{ route('tipeprogramkerja.index') }}" class="btn btn-danger">Kembali</a>
 </form>
 
 </div>

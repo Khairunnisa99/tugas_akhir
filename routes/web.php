@@ -77,7 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/babtiga/create', 'BabtigaController@create');
 
     //Babempat
-    Route::resource('/bab_empat', 'Admin\SubBabEmpatController');
+    // Route::resource('/bab_empat', 'Admin\SubBabEmpatController');
     // Route::get('/babempat', 'BabempatController@index')->name('babempat.index');
     // Route::get('/babempat/create', 'BabempatController@create');
 

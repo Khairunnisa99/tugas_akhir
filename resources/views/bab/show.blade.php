@@ -41,13 +41,7 @@
 
             </table>
           <div class="box-body">
-            <form action="{{ route('bab.destroy', $babAkreditasi->id) }}" method="post">
-              @csrf
-              @method('DELETE')
-              <a href="{{ route('bab.edit', $babAkreditasi->id) }}" class="btn btn-info">Edit</a>
-              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('bab.index', $babAkreditasi->id) }}" class="btn btn-warning">Calcel</a>
-            </form>
+            <a href="{{ route('bab.index') }}" class="btn btn-danger">Kembali</a>
           </div>
       </div>
     </div>

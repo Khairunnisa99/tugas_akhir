@@ -19,7 +19,7 @@
           <div class="form-group">
              <label for="WaktuRapat">Waktu Rapat</label>
              <input type="date" class="form-control" name="WaktuRapat">
-          </div>    
+          </div>
           <div class="form-group">
             <label for="KeteranganRapat">Agenda Rapat</label>
             <textarea name="KeteranganRapat" class="form-control" cols="30" rows="5"></textarea>
@@ -48,6 +48,7 @@
 
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
+          <a href="{{ route('rapat.index') }}" class="btn btn-danger">Kembali</a>
 
         </form>
 

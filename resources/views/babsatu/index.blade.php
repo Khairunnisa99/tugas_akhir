@@ -25,6 +25,7 @@
           <th scope="col">Nomor Kriteria</th>
           <th scope="col">Nama Kriteria</th>
           <th scope="col">Maksud dan Tujuan</th>
+          <th scope="col">Gambaran Umum</th>
           <th scope="col">Aksi</th>
 
         </tr>
@@ -40,6 +41,7 @@
         <td>{{ $btu->NomerKriteria }}</td>
         <td>{{ $btu->namaKriteria }}</td>
         <td>{{ $btu->MaksudDanTujuan }}</td>
+        <td>{{ $btu->GambaranUmum }}</td>
 
         <td>
           <form action="{{ route('bab_satu.destroy', $btu->id) }}" method="POST">
@@ -47,6 +49,7 @@
             @method('DELETE')
             <a href="{{ route('bab_satu.edit', $btu->id) }}" class="btn btn-info">Edit</a>
             <button type="submit" class="btn btn-danger" onclick="return confirm('APakah Anda Yakin ingin mengahapus?')">Delete</button>
+            <a href="{{ route('bab_satu.show', $btu->id) }}" class="btn btn-warning">View</a>
           </form>
         </td>
       </tr>

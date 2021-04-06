@@ -24,7 +24,7 @@
            </select>
 
          </div>
-         
+
           <div class="form-group">
             <label for="">Nomor elemen</label>
             <input type="text" name="NoElemen" class="form-control" placeholder="Nomor elemen">
@@ -67,6 +67,7 @@
 
 
         <button type="submit" class="btn btn-primary">Simpan Data</button>
+        <a href="{{ route('elemen.index') }}" class="btn btn-danger">Kembali</a>
 
         </form>
 

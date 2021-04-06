@@ -156,8 +156,6 @@ class KlinikController extends Controller
         } else {
             // remove foto
             Storage::disk('local')->delete('public/klinik' . $klinik->logo);
-
-
             $klinik = klinik::findOrFail($klinik->id);
             // syntax upload file image
             $image = $request->file('logo');

@@ -41,7 +41,7 @@
             </div>
              <div class="form-group">
                 <label class="font-weight-bold">Role </label>
-                <select name="roles" class="form-control"> 
+                <select name="roles" class="form-control">
                 @foreach ($roles as $role)
                     <option value="{{ old('name', $role->name) }}" selected>{{ $role->name }}</option>
                 @endforeach
@@ -49,9 +49,10 @@
             </div>
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
-                
+          <a href="{{ route('user.index') }}" class="btn btn-danger">Kembali</a>
+
         </form>
-    </div> 
+    </div>
     </div>
  </div>
 </div>

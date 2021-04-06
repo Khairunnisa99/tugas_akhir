@@ -19,8 +19,11 @@ class ElemenController extends Controller
      */
     public function index()
     {
-        $elemen = elemen::with('dokumen')->paginate(10);
+        $elemen = elemen::with('dokumen')->when(request()->q, function($elemen){
+            $elemen = $elemen->where('NoElemen', 'like', '%' . request()->q . '%');
+        })->paginate(10);
         return view('elemen.index', ['elemen' => $elemen]);
+
     }
 
     /**
@@ -113,7 +116,7 @@ class ElemenController extends Controller
         $elemen = elemen::findOrFail($id);
         $kriteria = kriteria::latest()->get();
         $dokumen = dokumen::latest()->get();
-        return view('elemen.edit', compact('kriteria', 'elemen'));
+        return view('elemen.edit', compact('kriteria', 'elemen', 'dokumen'));
     }
 
     /**

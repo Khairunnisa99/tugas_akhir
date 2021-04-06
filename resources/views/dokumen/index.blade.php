@@ -13,7 +13,7 @@
         <div class="box-header">
             <a href="{{ route('dokumen.create') }}" class="btn btn-primary my-3">Tambah Data</a>
         </div>
-          <div class="card">
+             <div class="card">
                 {{-- <div class="card-header">Data Rapat</div> --}}
                 <div class="card-head">
                   <form action="{{ route('dokumen.index') }}" method="get">
@@ -23,7 +23,7 @@
                 </div>
               </div>
 
-              <div class="box-body">
+            <div class="box-body">
             <table class="table table-bordered">
 
                 <thead class="thead-dark">

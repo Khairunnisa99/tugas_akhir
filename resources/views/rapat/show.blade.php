@@ -65,14 +65,8 @@
 
             </table>
           <div class="box-body">
-            <form action="{{ route('rapat.destroy', $rapat->id) }}" method="post">
-              @csrf
-              @method('DELETE')
-              <a href="{{ route('rapat.edit', $rapat->id) }}" class="btn btn-info">Edit</a>
-              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('rapat.index', $rapat->id) }}" class="btn btn-warning">Calcel</a>
+              <a href="{{ route('rapat.index') }}" class="btn btn-danger">Kembali</a>
               <a href="{{ url('/print_all') }}" class="btn btn-primary mt-4" target="_blank">Export all to PDF</a>
-            </form>
           </div>
       </div>
     </div>

@@ -29,8 +29,11 @@
              <input type="text" class="form-control" name="NamaBab" placeholder="Nama Bab">
           </div>
 
+
           <button type="submit" class="btn btn-primary">Simpan Data</button>
-                
+          <a href="{{ route('bab.index') }}" class="btn btn-danger">Kembali</a>
+
+
         </form>
     </div>
  </div>

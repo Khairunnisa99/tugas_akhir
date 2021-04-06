@@ -59,16 +59,33 @@ class DokumenController extends Controller
         $this->validate($request, [
             'namaDokumen' => 'required',
             //'keterangan' => 'required',
-            'file' => 'required|mimes:pdf,doc, docx'
+            'file' => 'required|mimes:pdf,doc, docx,ppt,pptx'
         ]);
-        $file = $request->file('file');
-        $file->storeAs('public/surat_dokumen/', $file->getClientOriginalName());
-        $dokumen = dokumen::create([
-            'namaDokumen' => $request->input('namaDokumen'),
-            'keterangan' => $request->input('keterangan'),
-            'file' => $file->getClientOriginalName(),
+        if (empty($request->file('poto'))){
+            $file = $request->file('file');
+            $file->storeAs('public/surat_dokumen/', $file->getClientOriginalName());
+            $dokumen = dokumen::create([
+                'namaDokumen' => $request->input('namaDokumen'),
+                'keterangan' => $request->input('keterangan'),
+                'file' => $file->getClientOriginalName(),
+            ]);
 
-        ]);
+        }else{
+            $image = $request->file('poto');
+            $file = $request->file('file');
+            $image->storeAs('public/dokumen/', $image->hashName());
+            $file->storeAs('public/surat_dokumen/', $file->getClientOriginalName());
+            $dokumen = dokumen::create([
+                'namaDokumen' => $request->input('namaDokumen'),
+                'keterangan' => $request->input('keterangan'),
+                'file' => $file->getClientOriginalName(),
+                'poto' => $image->hashName()
+            ]);
+
+
+        }
+
+
         // dd($babs);
         if ($dokumen) {
             # code...

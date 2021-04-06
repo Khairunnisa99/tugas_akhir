@@ -8,7 +8,7 @@ class dokumen extends Model
 {
     protected $table='dokumen';
     // protected $guarded = [];
-    protected $fillable = ['namaDokumen', 'keterangan', 'file'];
+    protected $fillable = ['namaDokumen', 'keterangan', 'file','poto'];
 
     public function elemen()
     {

@@ -25,7 +25,7 @@
     <!-- Logo -->
     <a href="#" class="logo">
       <span class="logo-mini"><b>A</b>LT</span>
-      <span class="logo-lg">Laravel Blog<b>Admin</b>LTE</span>
+      <span class="logo-lg">KLINIK Blog<b>Admin</b>LTE</span>
     </a>
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
@@ -40,7 +40,7 @@
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+              <img src="{{ asset('dist/img/photo_1.jpg') }}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{Auth::user()->name}}</span>
             </a>
             <ul class="dropdown-menu">
@@ -73,7 +73,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset ('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+          <img src="{{ asset ('dist/img/photo_1.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{Auth::user()->name}}</p>
@@ -107,7 +107,7 @@
               <li class="{{ set_active(['bab_satu.index','bab_satu.create', 'bab_satu.edit']) }}"><a href="{{route('bab_satu.index')}}">BAB 1</a></li>
               <li class="{{ set_active(['bab_dua.index','bab_dua.create', 'bab_dua.edit']) }}"><a href="{{route('bab_dua.index')}}">BAB 2</a></li>
               <li class="{{ set_active(['bab_tiga.index','bab_tiga.create', 'bab_tiga.edit']) }}"><a href="{{route('bab_tiga.index')}}">BAB 3</a></li>
-              <li class="{{ set_active(['bab_empat.index','bab_empat.create', 'bab_empat.edit']) }}"><a href="{{route('bab_empat.index')}}">BAB 4</a></li>
+              {{-- <li class="{{ set_active(['bab_empat.index','bab_empat.create', 'bab_empat.edit']) }}"><a href="{{route('bab_empat.index')}}">BAB 4</a></li> --}}
               @can('struktur.index')
               <li class="treeview {{ set_active([
                 'bab.index','bab.create', 'bab.edit','bab.show',
@@ -232,9 +232,9 @@
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b><a href="#">Laravel Blog</a></b>
+      <b><a href="#">Klinik Muhammadiyah</a></b>
     </div>
-    <strong> <a href="#">Laravel Blog</a></strong>
+    <strong> <a href="#">Drs.dr.Arlina Dewi</a></strong>
   </footer>
 </div>
 <script src="{{ asset ('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>

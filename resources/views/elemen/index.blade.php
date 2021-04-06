@@ -12,6 +12,16 @@
             <div class="box-header">
               <a href="{{ route('elemen.create') }}" class="btn btn-primary my-3">Tambah Data</a>
             </div>
+
+            <div class="card">
+                {{-- <div class="card-header">Data Rapat</div> --}}
+                <div class="card-head">
+                  <form action="{{ route('elemen.index') }}" method="get">
+                  <button type="submit" class="btn btn-primary btn-sm text-center" style="float: right;">CARI</button>
+                  <input class="form-control" type="text" name="q" placeholder="Masukkan no.elemen" style="width: 200px; float:right">
+                  </form>
+                </div>
+            </div>
             <!-- /.box-header -->
             <div class="box-body">
 

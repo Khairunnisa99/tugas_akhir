@@ -18,6 +18,7 @@ class CreateDokumen extends Migration
             $table->string('namaDokumen')->nullable();
             $table->text('keterangan')->nullable();
             $table->string('file')->nullable();
+            $table->string('poto')->nullable();
             $table->timestamps();
         });
     }

@@ -26,9 +26,15 @@
              <input type="file" class="form-control" name="file" value="">
 
           </div>
+          <div class="form-group">
+            <label for="poto">Poto</label>
+            <input type="file" class="form-control" name="poto">
+         </div>
+
 
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
+          <a href="{{ route('dokumen.index') }}" class="btn btn-danger">Kembali</a>
 
         </form>
 

@@ -38,6 +38,11 @@
                                 <td>{{ $kriteria->MaksudDanTujuan }}</td>
                             </tr>
 
+                            <tr>
+                                <th scope="col">Gambaran Umum</th>
+                                <td>{{ $kriteria->GambaranUmum }}</td>
+                            </tr>
+
 
                             <tr>
                                 <th scope="col">Standar</th>
@@ -49,13 +54,7 @@
 
             </table>
           <div class="box-body">
-            <form action="{{ route('kriteria.destroy', $kriteria->id) }}" method="post">
-              @csrf
-              @method('DELETE')
-              <a href="{{ route('kriteria.edit', $kriteria->id) }}" class="btn btn-info">Edit</a>
-              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-              <a href="{{ route('kriteria.index', $kriteria->id) }}" class="btn btn-warning">Calcel</a>
-            </form>
+            <a href="{{ route('bab_tiga.index') }}" class="btn btn-danger">Kembali</a>
           </div>
       </div>
     </div>

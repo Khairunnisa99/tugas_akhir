@@ -24,6 +24,7 @@
 
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
+          <a href="{{ route('periodeprogramkerja.index') }}" class="btn btn-danger">Kembali</a>
 
         </form>
 

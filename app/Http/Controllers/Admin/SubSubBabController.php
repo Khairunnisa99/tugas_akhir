@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SubSubBab;
 use Illuminate\Http\Request;
 use App\Models\SubBab;
+use Illuminate\Support\Facades\DB;
 
 class SubSubBabController extends Controller
 {
@@ -43,7 +44,8 @@ class SubSubBabController extends Controller
             // 'id_subbab' => 'required',
             'NomerKriteria' => 'required',
             'namaKriteria' => 'required',
-            'MaksudDanTujuan' => 'required'
+            'MaksudDanTujuan' => 'required',
+            'GambaranUmum' => 'required'
         ]);
 
         $subbab = SubSubBab::create([
@@ -51,6 +53,7 @@ class SubSubBabController extends Controller
             'NomerKriteria' => $request->input('NomerKriteria'),
             'namaKriteria' => $request->input('namaKriteria'),
             'MaksudDanTujuan' => $request->input('MaksudDanTujuan'),
+            'GambaranUmum' => $request->input('GambaranUmum'),
             'Skor' => $request->input('Skor'),
             'periodeakreditasi_idperiodeakreditasi' => $request->input('Skor'),
             'lock' => $request->input('lock'),
@@ -72,7 +75,13 @@ class SubSubBabController extends Controller
      */
     public function show($id)
     {
-        //
+        $kriteria = DB::table('subsubbab')
+            ->leftJoin('subbab', 'subsubbab.id_subbab', '=', 'subbab.id')
+            ->select('subsubbab.*', 'subbab.*')
+            ->where('subsubbab.id', $id)
+            ->first();
+        // dd($kriteria);
+        return view('babsatu.show', compact('kriteria'));
     }
 
     /**
@@ -101,7 +110,8 @@ class SubSubBabController extends Controller
             // 'id_subbab' => 'required',
             'NomerKriteria' => 'required',
             'namaKriteria' => 'required',
-            'MaksudDanTujuan' => 'required'
+            'MaksudDanTujuan' => 'required',
+            'GambaranUmum' => 'required'
         ]);
         $subbab = SubSubBab::findOrFail($id);
         $subbab->update([
@@ -109,6 +119,7 @@ class SubSubBabController extends Controller
             'NomerKriteria' => $request->input('NomerKriteria'),
             'namaKriteria' => $request->input('namaKriteria'),
             'MaksudDanTujuan' => $request->input('MaksudDanTujuan'),
+            'GambaranUmum' =>  $request->input('GambaranUmum'),
             'Skor' => $request->input('Skor'),
             'periodeakreditasi_idperiodeakreditasi' => $request->input('Skor'),
             'lock' => $request->input('lock'),

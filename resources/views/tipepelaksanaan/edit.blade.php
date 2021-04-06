@@ -28,6 +28,8 @@
      </div>
 
                    <button type="submit" class="btn btn-primary">Ubah Data</button>
+                   <a href="{{ route('tipepelaksanaan.index') }}" class="btn btn-danger">Kembali</a>
+                   
 </form>
 
 </div>

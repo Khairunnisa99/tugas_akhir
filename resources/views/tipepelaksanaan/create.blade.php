@@ -10,7 +10,7 @@
     <div class="col-8">
         <h1 class="mt-10">Tambah Data </h1>
 
-        <form method="post" action="/tipepelaksanaan">
+        <form method="post" action="{{ route('tipepelaksanaan.store') }}" enctype="multipart/form-data">
         @csrf
           <div class="form-group">
              <label for="namaTypePelaksanaan">Tipe Pelaksanaan</label>
@@ -23,6 +23,7 @@
 
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
+          <a href="{{ route('tipepelaksanaan.index') }}" class="btn btn-danger">Kembali</a>
 
         </form>
 

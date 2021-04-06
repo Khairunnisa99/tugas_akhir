@@ -26,8 +26,8 @@ class KriteriaController extends Controller
         $kriteria = SubSubBab::latest()->paginate(10);
         $subbab_dua = SubBabDua::latest()->get();
         $subbab_tiga = SubBabTiga::latest()->get();
-        $subbab_empat = SubBabEmpat::latest()->get();
-        return view('kriteria.index', compact('kriteria', 'subbab_dua', 'subbab_tiga', 'subbab_empat'));
+        // $subbab_empat = SubBabEmpat::latest()->get();
+        return view('kriteria.index', compact('kriteria', 'subbab_dua', 'subbab_tiga'));
     }
 
     /**

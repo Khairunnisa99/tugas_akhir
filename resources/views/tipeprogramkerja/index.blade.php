@@ -26,7 +26,7 @@
               <table class="table table-bordered">
                   <thead class="thead-dark">
                     <tr>
-                      <th scope="col"></th>
+                      <th scope="col">#</th>
                       <th scope="col">Tipe Program</th>
                       <th scope="col">Keterangan</th>
                       <th scope="col">Aksi</th>

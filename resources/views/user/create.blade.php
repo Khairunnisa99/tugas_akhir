@@ -51,9 +51,10 @@
             </div>
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
-                
+          <a href="{{ route('user.index') }}" class="btn btn-danger">Kembali</a>
+
         </form>
-    </div> 
+    </div>
     </div>
  </div>
 </div>

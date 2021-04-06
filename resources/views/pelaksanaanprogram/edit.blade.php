@@ -64,6 +64,7 @@
 
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
+          <a href="{{ route('pelaksanaanprogram.index') }}" class="btn btn-danger">Kembali</a>
 
         </form>
 

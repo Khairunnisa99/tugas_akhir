@@ -23,6 +23,7 @@
                         <th scope="col">Nomor Kriteria</th>
                         <th scope="col">Nama Kriteria</th>
                         <th scope="col">Maksud dan Tujuan</th>
+                        <th scope="col">Gambaran Umum</th>
                         <th scope="col">Aksi</th>
 
                       </tr>
@@ -36,6 +37,7 @@
                           <td>{{ $bab->NomerKriteria }}</td>
                           <td>{{ $bab->namaKriteria }}</td>
                           <td>{{ $bab->MaksudDanTujuan }}</td>
+                          <td>{{ $bab->GambaranUmum }}</td>
                           <td>
                             <form action="{{ route('kriteria.destroy', $bab->id) }}" method="post">
                               @csrf
@@ -55,6 +57,7 @@
                           <td>{{ $bab->NomerKriteria }}</td>
                           <td>{{ $bab->namaKriteria }}</td>
                           <td>{{ $bab->MaksudDanTujuan }}</td>
+                          <td>{{ $bab->GambaranUmum }}</td>
                           <td>
                             <form action="{{ route('bab_dua.destroy', $bab->id) }}" method="post">
                               @csrf
@@ -74,6 +77,7 @@
                           <td>{{ $bab->NomerKriteria }}</td>
                           <td>{{ $bab->namaKriteria }}</td>
                           <td>{{ $bab->MaksudDanTujuan }}</td>
+                          <td>{{ $bab->GambaranUmum }}</td>
                           <td>
                             <form action="{{ route('bab_tiga.destroy', $bab->id) }}" method="post">
                               @csrf
@@ -81,25 +85,6 @@
                               <a href="{{ route('bab_tiga.edit', $bab->id) }}" class="btn btn-info">Edit</a>
                               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
                               <a href="{{ route('bab_tiga.show', $bab->id) }}" class="btn btn-warning">View</a>
-                            </form>
-                          </td>
-                       </tr>
-                    @endforeach
-                    @foreach ($subbab_empat as $bab)
-                       <?php $no++ ;?>
-                        <tr>
-                          {{-- <td>{{ ($subbab_dua->currentpage()-1) * $subbab_dua ->perpage() + $loop->index + 1 }}</td> --}}
-                          <td>{{ $loop->iteration }}</td>
-                          <td>{{ $bab->NomerKriteria }}</td>
-                          <td>{{ $bab->namaKriteria }}</td>
-                          <td>{{ $bab->MaksudDanTujuan }}</td>
-                          <td>
-                            <form action="{{ route('bab_empat.destroy', $bab->id) }}" method="post">
-                              @csrf
-                              @method('DELETE')
-                              <a href="{{ route('bab_empat.edit', $bab->id) }}" class="btn btn-info">Edit</a>
-                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')">Delete</button>
-                              <a href="{{ route('bab_empat.show', $bab->id) }}" class="btn btn-warning">View</a>
                             </form>
                           </td>
                        </tr>
