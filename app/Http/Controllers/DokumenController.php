@@ -54,14 +54,12 @@ class DokumenController extends Controller
      */
     public function store(Request $request)
     {
-        //dokumen::create($request->all());
-        //return redirect('/dokumen')->with('status', 'Dokumen berhasil ditambahkan');
         $this->validate($request, [
             'namaDokumen' => 'required',
-            //'keterangan' => 'required',
+            'keterangan' => 'required',
             'file' => 'required|mimes:pdf,doc, docx,ppt,pptx'
         ]);
-        if (empty($request->file('poto'))){
+        if (empty($request->file('poto'))) {
             $file = $request->file('file');
             $file->storeAs('public/surat_dokumen/', $file->getClientOriginalName());
             $dokumen = dokumen::create([
@@ -69,11 +67,10 @@ class DokumenController extends Controller
                 'keterangan' => $request->input('keterangan'),
                 'file' => $file->getClientOriginalName(),
             ]);
-
-        }else{
+        } else {
             $image = $request->file('poto');
-            $file = $request->file('file');
             $image->storeAs('public/dokumen/', $image->hashName());
+            $file = $request->file('file');
             $file->storeAs('public/surat_dokumen/', $file->getClientOriginalName());
             $dokumen = dokumen::create([
                 'namaDokumen' => $request->input('namaDokumen'),
@@ -81,12 +78,8 @@ class DokumenController extends Controller
                 'file' => $file->getClientOriginalName(),
                 'poto' => $image->hashName()
             ]);
-
-
         }
 
-
-        // dd($babs);
         if ($dokumen) {
             # code...
             return redirect()->route('dokumen.index')->with(['success' => 'Data Berhasil Disimpan']);
@@ -135,23 +128,26 @@ class DokumenController extends Controller
 
     public function update(Request $request, $id)
     {
-        // dd($request);
         $this->validate($request, [
             'namaDokumen' => 'required',
-            'keterangan' => 'required'
-        ]);
+            'keterangan' => 'required',
+            // 'file' => 'required|mimes:pdf,doc, docx,ppt,pptx'    
 
+        ]);
 
         if (empty($request->file('file'))) {
             $dokumen = dokumen::findOrFail($id);
+            $image = $request->file('poto');
+            $image->storeAs('public/dokumen/', $image->hashName());
             $dokumen->update([
                 'namaDokumen' => $request->input('namaDokumen'),
-                'keterangan' => $request->input('keterangan')
+                'keterangan' => $request->input('keterangan'),
+                'poto' => $image->hashName(),
             ]);
         } else {
-            Storage::disk('local')->delete('public/surat_dokumen' . $id);
-
             $dokumen = dokumen::findOrFail($id);
+            $image = $request->file('poto');
+            $image->storeAs('public/dokumen/', $image->hashName());
             $file = $request->file('file');
             $file->storeAs('public/surat_dokumen/', $file->getClientOriginalName());
 
@@ -159,6 +155,7 @@ class DokumenController extends Controller
                 'namaDokumen' => $request->input('namaDokumen'),
                 'keterangan' => $request->input('keterangan'),
                 'file' => $file->getClientOriginalName(),
+                'poto' => $image->hashName(),
 
             ]);
         }

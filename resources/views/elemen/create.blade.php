@@ -27,28 +27,28 @@
 
           <div class="form-group">
             <label for="">Nomor elemen</label>
-            <input type="text" name="NoElemen" class="form-control" placeholder="Nomor elemen">
+            <input type="text" name="NoElemen" class="form-control" placeholder="Nomor elemen" required>
           </div>
           <div class="form-group">
              <label for="">Elemen penilaian</label>
-             <textarea class="form-control" name="ElemenPenilaian" cols="30" rows="5"></textarea>
+             <textarea class="form-control" name="ElemenPenilaian" cols="30" rows="5" required ></textarea>
           </div>
           <div class="form-group">
             <label for="">Telusur Sasaran</label>
-            <textarea name="TelusurSasaran" class="form-control" cols="30" rows="5"></textarea>
+            <textarea name="TelusurSasaran" class="form-control" cols="30" rows="5" required ></textarea>
           </div>
 
           <div class="form-group">
              <label for="">Materi Telusur</label>
-             <textarea class="form-control" name="MateriTelusur" cols="30" rows="5"></textarea>
+             <textarea class="form-control" name="MateriTelusur" cols="30" rows="5" required ></textarea>
           </div>
           <div class="form-group">
             <label for="">Dokumen Internal</label>
-            <textarea name="DokumentInternal" class="form-control" cols="30" rows="5"></textarea>
+            <textarea name="DokumentInternal" class="form-control" cols="30" rows="5" required ></textarea>
           </div>
           <div class="form-group">
             <label for="">Dokumen External</label>
-            <textarea name="DokumenEksternal" class="form-control" cols="30" rows="5"></textarea>
+            <textarea name="DokumenEksternal" class="form-control" cols="30" rows="5" required ></textarea>
           </div>
           <div class="row">
             <div class="col-sm-8">

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class dokumen extends Model
 {
-    protected $table='dokumen';
+    protected $table = 'dokumen';
     // protected $guarded = [];
-    protected $fillable = ['namaDokumen', 'keterangan', 'file','poto'];
+    protected $fillable = ['namaDokumen', 'keterangan', 'file', 'poto'];
 
     public function elemen()
     {

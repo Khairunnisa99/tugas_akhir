@@ -24,19 +24,19 @@
          </div>
           <div class="form-group">
             <label for="">Nomor Kriteria</label>
-            <input type="text" name="NomerKriteria" class="form-control" placeholder="Nomor Kriteria">
+            <input type="text" name="NomerKriteria" class="form-control" placeholder="Nomor Kriteria" required>
           </div>
           <div class="form-group">
              <label for="">Nama Kriteria</label>
-             <textarea class="form-control" name="namaKriteria" cols="30" rows="5"></textarea>
+             <textarea class="form-control" name="namaKriteria" cols="30" rows="5" req<input type="text" name="NomerKriteria" class="form-control" placeholder="Nomor Kriteria" required></textarea>
           </div>
           <div class="form-group">
             <label for="">Maksud dan Tujuan</label>
-            <textarea name="MaksudDanTujuan" class="form-control" cols="30" rows="5"></textarea>
+            <textarea name="MaksudDanTujuan" class="form-control" cols="30" rows="5" req<input type="text" name="NomerKriteria" class="form-control" placeholder="Nomor Kriteria" required></textarea>
           </div>
           <div class="form-group">
             <label for="">Gamabaran Umum</label>
-            <textarea name="GambaranUmum" class="form-control" cols="30" rows="5"></textarea>
+            <textarea name="GambaranUmum" class="form-control" cols="30" rows="5" req<input type="text" name="NomerKriteria" class="form-control" placeholder="Nomor Kriteria" required></textarea>
           </div>
 
 

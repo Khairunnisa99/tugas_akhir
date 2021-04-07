@@ -45,9 +45,7 @@
               <td>{{ ($dokumen ->currentpage()-1) * $dokumen ->perpage() + $loop->index + 1 }}</td>
                   <td>{{ $dok->namaDokumen }}</td>
                   <td>{{ $dok->keterangan }}</td>
-                  <!--<td>
-                    <a href="{{ Storage::url('surat_dokumen/'. $dok->file) }}">{{ $dok->file }}</a>
-                  </td>-->
+                 
 
                   <td>
                       <form action="{{ route('dokumen.destroy', $dok->id) }}" method="POST">

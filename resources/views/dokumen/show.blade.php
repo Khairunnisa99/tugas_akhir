@@ -30,9 +30,25 @@
                             </tr>
                             {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
                             <tr>
+                                <th>Foto</th>
+                                <td>
+                                 {{-- @empty($dokumen->foto)
+                                  Tidak Ada Foto
+                                 @else --}}
+                                 <img src="{{ Storage::url('dokumen/' . $dokumen->poto) }}" width="100px">
+                                 {{-- @endempty --}}
+                                 
+                                  
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>File</th>
                                 <td>
-                                  <a href="{{ Storage::url('surat_dokumen/'. $dokumen->file) }}">{{ $dokumen->file }}</a>
+                                  @empty($dokumen->file)
+                                     Tidak Ada Dokumen
+                                  @else
+                                  <a href="{{ Storage::url('surat_dokumen/'. $dokumen->file) }}">{{ $dokumen->file }}
+                                  @endempty
                                 </td>
                             </tr>
 

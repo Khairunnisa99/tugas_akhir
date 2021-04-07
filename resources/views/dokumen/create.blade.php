@@ -15,19 +15,21 @@
         @csrf
           <div class="form-group">
              <label for="namaDokumen">Nama Dokumen</label>
-             <input type="text" class="form-control"  placeholder="Masukan Nama Dokumen" name="namaDokumen">
+             <input type="text" class="form-control"  placeholder="Masukan Nama Dokumen" name="namaDokumen" required>
           </div>
           <div class="form-group">
              <label for="keterangan">Keterangan</label>
-             <input type="text" class="form-control"  placeholder="Masukan Keterangan" name="keterangan">
+             <input type="text" class="form-control"  placeholder="Masukan Keterangan" name="keterangan" required>
           </div>
           <div class="form-group">
              <label for="">File Surat</label>
-             <input type="file" class="form-control" name="file" value="">
+             <br><small>Format: pdf/docx/doc/pptx</small>
+             <input type="file" class="form-control" name="file" value="" required>
 
           </div>
           <div class="form-group">
             <label for="poto">Poto</label>
+            <br><small>Format: jpeg/png/jpg</small>
             <input type="file" class="form-control" name="poto">
          </div>
 

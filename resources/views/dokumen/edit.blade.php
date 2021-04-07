@@ -23,7 +23,16 @@
           </div>
           <div class="form-group">
              <label for="">File Surat</label>
-             <input type="file" class="form-control" name="file" value="{{ $dokumen->file }}" placeholder="jika lebih maka klkik dan tahan ctrl">
+             <br><small>Format: pdf/docx/doc/pptx</small>
+             @if(isset($dokumen->file))
+                <input type="file" class="form-control" name="file" value="{{ $dokumen->file }}"> {{ $dokumen->file }}
+            @endif
+          </div> 
+          <div class="form-group">
+             <label for="">Foto</label>
+             <br><small>Format: jpeg/png/jpg</small>
+             <input type="file" class="form-control" name="poto" value="{{ $dokumen->poto }}">
+             <img src="{{ Storage::url('dokumen/' . $dokumen->poto) }}" width="100px">
           </div>
 
 
