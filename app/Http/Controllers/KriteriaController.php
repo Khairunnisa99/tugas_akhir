@@ -23,9 +23,9 @@ class KriteriaController extends Controller
      */
     public function index()
     {
-        $kriteria = SubSubBab::latest()->paginate(10);
-        $subbab_dua = SubBabDua::latest()->get();
-        $subbab_tiga = SubBabTiga::latest()->get();
+        $kriteria = DB::table('SubSubBab')->paginate(10);
+        $subbab_dua = DB::table('subsubbabdua')->get();
+        $subbab_tiga = DB::table('subsubbabtiga')->get();
         // $subbab_empat = SubBabEmpat::latest()->get();
         return view('kriteria.index', compact('kriteria', 'subbab_dua', 'subbab_tiga'));
     }

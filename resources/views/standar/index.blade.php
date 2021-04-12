@@ -22,6 +22,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Nomor</th>
                         <th scope="col">Nama</th>
+                        <th scope="col">standar</th>
                         <th scope="col">Deskripsi</th>
                         <th scope="col">Aksi</th>
 

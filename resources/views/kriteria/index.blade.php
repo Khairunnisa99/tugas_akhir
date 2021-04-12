@@ -23,7 +23,7 @@
                         <th scope="col">Nomor Kriteria</th>
                         <th scope="col">Nama Kriteria</th>
                         <th scope="col">Maksud dan Tujuan</th>
-                        <th scope="col">Gambaran Umum</th>
+
                         <th scope="col">Aksi</th>
 
                       </tr>
@@ -37,7 +37,7 @@
                           <td>{{ $bab->NomerKriteria }}</td>
                           <td>{{ $bab->namaKriteria }}</td>
                           <td>{{ $bab->MaksudDanTujuan }}</td>
-                          <td>{{ $bab->GambaranUmum }}</td>
+
                           <td>
                             <form action="{{ route('kriteria.destroy', $bab->id) }}" method="post">
                               @csrf
@@ -57,7 +57,7 @@
                           <td>{{ $bab->NomerKriteria }}</td>
                           <td>{{ $bab->namaKriteria }}</td>
                           <td>{{ $bab->MaksudDanTujuan }}</td>
-                          <td>{{ $bab->GambaranUmum }}</td>
+
                           <td>
                             <form action="{{ route('bab_dua.destroy', $bab->id) }}" method="post">
                               @csrf
@@ -77,7 +77,7 @@
                           <td>{{ $bab->NomerKriteria }}</td>
                           <td>{{ $bab->namaKriteria }}</td>
                           <td>{{ $bab->MaksudDanTujuan }}</td>
-                          <td>{{ $bab->GambaranUmum }}</td>
+
                           <td>
                             <form action="{{ route('bab_tiga.destroy', $bab->id) }}" method="post">
                               @csrf

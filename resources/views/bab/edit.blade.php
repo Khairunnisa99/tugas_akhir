@@ -29,6 +29,10 @@
              <label for="">Nama Bab</label>
              <input type="text" class="form-control" value="{{ $babAkreditasi->NamaBab }}" name="NamaBab" placeholder="Nama Bab">
           </div>
+          <div class="form-group">
+            <label for="">Gambaran Umum</label>
+            <textarea type="text" class="form-control" name="GambaranUmum" cols="30" rows="5">{{ $babAkreditasi->GambaranUmum }}</textarea>
+         </div>
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>
           <a href="{{ route('bab.index') }}" class="btn btn-danger">Kembali</a>

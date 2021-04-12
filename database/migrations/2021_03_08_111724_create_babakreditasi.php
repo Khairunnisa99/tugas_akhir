@@ -18,6 +18,7 @@ class CreateBabakreditasi extends Migration
             $table->string('NomorBab')->nullable();
             $table->string('KodeBab')->nullable();
             $table->string('NamaBab')->nullable();
+            $table->string('GambaranUmum')->nullable();
             $table->bigInteger('periodeakreditasi_idperiodeakreditasi')->nullable();
             $table->bigInteger('lock')->nullable();
             $table->timestamps();

@@ -21,7 +21,8 @@ class DokumenController extends Controller
      */
     public function index()
     {
-        $dokumen = dokumen::latest()->when(request()->q, function ($dokumen) {
+
+        $dokumen = DB::table('dokumen')->when(request()->q, function ($dokumen) {
             $dokumen = $dokumen->where('namaDokumen', 'like', '%' . request()->q . '%');
         })->paginate(5);
         return view('dokumen.index', ['dokumen' => $dokumen]);
@@ -131,7 +132,7 @@ class DokumenController extends Controller
         $this->validate($request, [
             'namaDokumen' => 'required',
             'keterangan' => 'required',
-            // 'file' => 'required|mimes:pdf,doc, docx,ppt,pptx'    
+            // 'file' => 'required|mimes:pdf,doc, docx,ppt,pptx'
 
         ]);
 

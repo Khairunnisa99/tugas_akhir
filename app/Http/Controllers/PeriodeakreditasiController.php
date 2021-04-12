@@ -18,7 +18,7 @@ class PeriodeakreditasiController extends Controller
      */
     public function index()
     {
-        $periodeakreditasi = periodeakreditasi::latest()->when(request()->q, function ($periodeakreditasi) {
+        $periodeakreditasi = DB::table('periodeakreditasi')->when(request()->q, function ($periodeakreditasi) {
             $periodeakreditasi = $periodeakreditasi->where(
                 'namaPeriodeAkreditasi',
                 'like',

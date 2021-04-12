@@ -34,10 +34,7 @@
             <label for="">Maksud dan Tujuan</label>
             <textarea name="MaksudDanTujuan" class="form-control" cols="30" rows="5"></textarea>
           </div>
-          <div class="form-group">
-            <label for="">Gambaran Umum</label>
-            <textarea name="GambaranUmum" class="form-control" cols="30" rows="5"></textarea>
-          </div>
+          
 
 
           <button type="submit" class="btn btn-primary">Simpan Data</button>

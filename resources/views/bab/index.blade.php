@@ -23,6 +23,7 @@
                         <th scope="col">Nomor Bab</th>
                         <th scope="col">Kode Bab</th>
                         <th scope="col">Nama Bab</th>
+                        <th scope="col">Gambaran Umum</th>
                         <th scope="col">Aksi</th>
 
 
@@ -37,6 +38,7 @@
                                 <td>{{ $bb->NomorBab }}</td>
                                 <td>{{ $bb->KodeBab }}</td>
                                 <td>{{ $bb->NamaBab }}</td>
+                                <td>{{ $bb->GambaranUmum }}</td>
 
                                 <td>
                                   <form action="{{ route('bab.destroy', $bb->id) }}" method="POST">

@@ -35,10 +35,8 @@
                                  {{-- @empty($dokumen->foto)
                                   Tidak Ada Foto
                                  @else --}}
-                                 <img src="{{ Storage::url('dokumen/' . $dokumen->poto) }}" width="100px">
+                                 <img src="{{ Storage::url('dokumen/' . $dokumen->poto) }}"  width="100px">
                                  {{-- @endempty --}}
-                                 
-                                  
                                 </td>
                             </tr>
                             <tr>

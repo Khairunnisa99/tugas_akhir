@@ -21,7 +21,7 @@ class RapatController extends Controller
      */
     public function index()
     {
-        $rapat = rapat::latest()->when(request()->q, function ($rapat) {
+        $rapat = DB::table('rapat')->when(request()->q, function ($rapat) {
             $rapat = $rapat->where('namaRapat', 'like', '%' . request()->q . '%');
         })->paginate(10);
         return view('rapat.index', ['rapat' => $rapat]);
@@ -101,10 +101,16 @@ class RapatController extends Controller
 
     public function print_all()
     {
+
         $rapat = rapat::all();
         $pdf = PDF::loadview('rapat.print_all', ['rapat' => $rapat]);
         // return $pdf->download('laporan-pegawai-pdf');
         return $pdf->stream();
+
+        //$rapat = rapat::whare('rapat.id',$id);
+        //$pdf = PDF::loadview('rapat.print_all', compact('rapat'));
+
+        //return $pdf->stream();
     }
 
     /**

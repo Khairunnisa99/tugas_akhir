@@ -17,7 +17,8 @@ class SubBabTigaController extends Controller
      */
     public function index()
     {
-        $babs = SubBabTiga::latest()->paginate(10);
+        //$babs = SubBabTiga::latest()->paginate(10);
+        $babs = DB::table('subsubbabtiga')->paginate(10);
         return view('babtiga.index', compact('babs'));
     }
 
@@ -52,7 +53,7 @@ class SubBabTigaController extends Controller
             'NomerKriteria' => $request->input('NomerKriteria'),
             'namaKriteria' => $request->input('namaKriteria'),
             'MaksudDanTujuan' => $request->input('MaksudDanTujuan'),
-            'GambaranUmum' =>  $request->input('GambaranUmum'),
+
             'Skor' => $request->input('Skor'),
             'periodeakreditasi_idperiodeakreditasi' => $request->input('Skor'),
             'lock' => $request->input('lock'),
@@ -117,7 +118,7 @@ class SubBabTigaController extends Controller
             'NomerKriteria' => $request->input('NomerKriteria'),
             'namaKriteria' => $request->input('namaKriteria'),
             'MaksudDanTujuan' => $request->input('MaksudDanTujuan'),
-            'GambaranUmum' =>  $request->input('GambaranUmum'),
+
             'Skor' => $request->input('Skor'),
             'periodeakreditasi_idperiodeakreditasi' => $request->input('Skor'),
             'lock' => $request->input('lock'),

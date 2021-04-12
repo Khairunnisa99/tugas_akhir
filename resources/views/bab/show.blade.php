@@ -30,8 +30,13 @@
                             </tr>
 
                             <tr>
-                                <th scope="col">NamaBab</th>
+                                <th scope="col">Nama Bab</th>
                                 <td>{{ $babAkreditasi->NamaBab }}</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="col">Gambaran Umum</th>
+                                <td>{{ $babAkreditasi->GambaranUmum }}</td>
                             </tr>
                             {{-- <td>{{ ($standar ->currentpage()-1) * $standar ->perpage() + $loop->index + 1 }}</td> --}}
 

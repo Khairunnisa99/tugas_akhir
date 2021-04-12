@@ -21,7 +21,7 @@ class KlinikController extends Controller
      */
     public function index()
     {
-        $klinik = klinik::latest()->when(request()->q, function ($klinik) {
+        $klinik = DB::table('klinik')->when(request()->q, function ($klinik) {
             $klinik = $klinik->where('namaKlinik', 'like', '%' . request()->q . '%');
         })->paginate(10);
         return view('klinik.index', ['klinik' => $klinik]);

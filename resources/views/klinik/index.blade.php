@@ -21,7 +21,7 @@
             <table class="table table-bordered">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col"></th>
+                    <th scope="col">#</th>
 
                     <th scope="col">Nama Klinik</th>
                     <th scope="col">Alamat Klinik</th>

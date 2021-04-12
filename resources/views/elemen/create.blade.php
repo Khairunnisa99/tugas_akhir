@@ -54,6 +54,7 @@
             <div class="col-sm-8">
                 <div class="form-group">
                   <label for="">Dokumen</label>
+                  
                   <select class="selectpicker form-control" name="dokumen[]" multiple data-live-search="true">
                       <option data-icon="icon-heart" disabled></option>
                       @foreach ($dokumen as $item)
@@ -64,6 +65,7 @@
             </div>
             <div class="col-sm-4"></div>
           </div>
+
 
 
         <button type="submit" class="btn btn-primary">Simpan Data</button>

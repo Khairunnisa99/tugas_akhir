@@ -19,7 +19,7 @@ class CreateSubsubbab extends Migration
             $table->string('NomerKriteria')->nullable();
             $table->string('namaKriteria')->nullable();
             $table->string('MaksudDanTujuan')->nullable();
-            $table->string('GambaranUmum')->nullable();
+          
             $table->bigInteger('Skor')->nullable();
             $table->bigInteger('periodeakreditasi_idperiodeakreditasi')->nullable();
             $table->bigInteger('lock')->nullable();

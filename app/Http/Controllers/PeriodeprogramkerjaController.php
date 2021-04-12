@@ -14,7 +14,7 @@ class PeriodeprogramkerjaController extends Controller
      */
     public function index()
     {
-        $periodeprogramkerja = periodeprogramkerja::latest()->when(request()->q, function ($periodeprogramkerja) {
+        $periodeprogramkerja = DB::table('periodeprogramkerja')->when(request()->q, function ($periodeprogramkerja) {
             $periodeprogramkerja = $periodeprogramkerja->where(
                 'TahunProgramKerja',
                 'like',

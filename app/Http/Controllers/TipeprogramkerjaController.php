@@ -16,7 +16,7 @@ class TipeprogramkerjaController extends Controller
      */
     public function index()
     {
-        $tipeprogramkerja = tipeprogramkerja::latest()->when(request()->q, function ($tipeprogramkerja) {
+        $tipeprogramkerja = DB::table('tipeprogramkerja')->when(request()->q, function ($tipeprogramkerja) {
             $tipeprogramkerja = $tipeprogramkerja->where(
                 'tipeprogram',
                 'like',

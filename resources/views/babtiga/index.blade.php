@@ -25,7 +25,7 @@
           <th scope="col">Nomor Kriteria</th>
           <th scope="col">Nama Kriteria</th>
           <th scope="col">Maksud dan Tujuan</th>
-          <th scope="col">Gambaran Umum</th>
+
           <th scope="col">Aksi</th>
 
         </tr>
@@ -41,7 +41,7 @@
         <td>{{ $btu->NomerKriteria }}</td>
         <td>{{ $btu->namaKriteria }}</td>
         <td>{{ $btu->MaksudDanTujuan }}</td>
-        <td>{{ $btu->GambaranUmum }}</td>
+        
 
         <td>
           <form action="{{ route('bab_tiga.destroy', $btu->id) }}" method="POST">

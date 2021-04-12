@@ -19,7 +19,8 @@ class SubBabController extends Controller
      */
     public function index()
     {
-        $subbab = SubBab::latest()->paginate(10);
+        //$subbab = SubBab::latest()->paginate(10);
+        $subbab = DB::table('subbab')->paginate(10);
 
         // $subbab = DB::table('subbab')
         //     ->join('subsubbabdua', 'subbab.id', '=', 'subsubbabdua.id')

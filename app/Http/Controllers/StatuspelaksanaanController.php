@@ -15,7 +15,7 @@ class StatuspelaksanaanController extends Controller
      */
     public function index()
     {
-        $statuspelaksanaan = statuspelaksanaan::latest()->when(request()->q, function ($statuspelaksanaan) {
+        $statuspelaksanaan = DB::table('statuspelaksanaan')->when(request()->q, function ($statuspelaksanaan) {
             $statuspelaksanaan = $statuspelaksanaan->where(
                 'statusPelaksanaan',
                 'like',

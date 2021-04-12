@@ -19,6 +19,7 @@ class ElemenController extends Controller
      */
     public function index()
     {
+
         $elemen = elemen::with('dokumen')->when(request()->q, function($elemen){
             $elemen = $elemen->where('NoElemen', 'like', '%' . request()->q . '%');
         })->paginate(10);

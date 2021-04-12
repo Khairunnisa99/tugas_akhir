@@ -17,7 +17,7 @@ class StatusprogramkerjaController extends Controller
      */
     public function index()
     {
-        $statusprogramkerja = statusprogramkerja::latest()->when(request()->q, function ($statusprogramkerja) {
+        $statusprogramkerja = DB::table('statusprogramkerja')->when(request()->q, function ($statusprogramkerja) {
             $statusprogramkerja = $statusprogramkerja->where(
                 'statusProker',
                 'like',

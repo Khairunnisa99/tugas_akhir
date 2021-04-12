@@ -16,7 +16,8 @@ class BabController extends Controller
      */
     public function index()
     {
-        $babAkreditasi = Bab::latest()->paginate(10);
+        //$babAkreditasi = Bab::latest()->paginate(10);
+        $babAkreditasi = DB::table('babAkreditasi')->paginate(10);
 
         return view('bab.index', compact('babAkreditasi'));
     }
@@ -42,13 +43,15 @@ class BabController extends Controller
         $this->validate($request, [
             'NomorBab' => 'required',
             'KodeBab' => 'required',
-            'NamaBab' => 'required'
+            'NamaBab' => 'required',
+            'GambaranUmum' => 'required'
         ]);
 
         $babAkreditasi = Bab::create([
             'NomorBab' => $request->input('NomorBab'),
             'KodeBab' => $request->input('KodeBab'),
             'NamaBab' => $request->input('NamaBab'),
+            'GambaranUmum' => $request->input('GambaranUmum'),
             'lock' => $request->input('lock'),
             'periodeakreditasi_idperiodeakreditasi' => $request->input('periodeakreditasi_idperiodeakreditasi')
         ]);
@@ -98,14 +101,16 @@ class BabController extends Controller
     {
         $this->validate($request, [
             'NomorBab' => 'required',
-            'KodeBab' => 'required',
-            'NamaBab' => 'required'
+            'KodeBab' => 'required', 
+            'NamaBab' => 'required',
+            'GambaranUmum' => 'required'
         ]);
         $babAkreditasi = Bab::findOrFail($id);
         $babAkreditasi->update([
             'NomorBab' => $request->input('NomorBab'),
             'KodeBab' => $request->input('KodeBab'),
             'NamaBab' => $request->input('NamaBab'),
+            'GambaranUmum' =>  $request->input('GambaranUmum'),
             'lock' => $request->input('lock'),
             'periodeakreditasi_idperiodeakreditasi' => $request->input('periodeakreditasi_idperiodeakreditasi')
         ]);

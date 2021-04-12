@@ -38,10 +38,6 @@
                                 <td>{{ $kriteria->MaksudDanTujuan }}</td>
                             </tr>
 
-                            <tr>
-                                <th scope="col">Gambaran Umum</th>
-                                <td>{{ $kriteria->GambaranUmum }}</td>
-                            </tr>
 
 
                             <tr>

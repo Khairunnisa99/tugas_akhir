@@ -16,7 +16,7 @@ class TipepelaksanaanController extends Controller
      */
     public function index()
     {
-        $tipepelaksanaan = tipepelaksanaan::latest()->when(request()->q, function ($tipepelaksanaan) {
+        $tipepelaksanaan = DB::table('typepelaksanaan')->when(request()->q, function ($tipepelaksanaan) {
             $tipepelaksanaan = $tipepelaksanaan->where(
                 'namaTypePelaksanaan',
                 'like',

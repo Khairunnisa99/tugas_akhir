@@ -17,7 +17,8 @@ class SubSubBabController extends Controller
      */
     public function index()
     {
-        $babs = SubSubBab::latest()->paginate(10);
+        //$babs = SubSubBab::latest()->paginate(10);
+        $babs = DB::table('SubSubBab')->paginate(10);
         return view('babsatu.index', compact('babs'));
     }
 
@@ -45,7 +46,7 @@ class SubSubBabController extends Controller
             'NomerKriteria' => 'required',
             'namaKriteria' => 'required',
             'MaksudDanTujuan' => 'required',
-            'GambaranUmum' => 'required'
+
         ]);
 
         $subbab = SubSubBab::create([
@@ -53,7 +54,6 @@ class SubSubBabController extends Controller
             'NomerKriteria' => $request->input('NomerKriteria'),
             'namaKriteria' => $request->input('namaKriteria'),
             'MaksudDanTujuan' => $request->input('MaksudDanTujuan'),
-            'GambaranUmum' => $request->input('GambaranUmum'),
             'Skor' => $request->input('Skor'),
             'periodeakreditasi_idperiodeakreditasi' => $request->input('Skor'),
             'lock' => $request->input('lock'),
@@ -111,7 +111,7 @@ class SubSubBabController extends Controller
             'NomerKriteria' => 'required',
             'namaKriteria' => 'required',
             'MaksudDanTujuan' => 'required',
-            'GambaranUmum' => 'required'
+
         ]);
         $subbab = SubSubBab::findOrFail($id);
         $subbab->update([
@@ -119,7 +119,7 @@ class SubSubBabController extends Controller
             'NomerKriteria' => $request->input('NomerKriteria'),
             'namaKriteria' => $request->input('namaKriteria'),
             'MaksudDanTujuan' => $request->input('MaksudDanTujuan'),
-            'GambaranUmum' =>  $request->input('GambaranUmum'),
+
             'Skor' => $request->input('Skor'),
             'periodeakreditasi_idperiodeakreditasi' => $request->input('Skor'),
             'lock' => $request->input('lock'),

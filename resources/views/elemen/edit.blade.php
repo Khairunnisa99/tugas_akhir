@@ -58,6 +58,7 @@
             <div class="col-sm-8">
                 <div class="form-group">
                   <label for="">Dokumen</label>
+                  <br><small>Note : Gunakan tombol ctrl jika ingin menambahkan lebih dari satu dokumen</small>
                   <select class="selectpicker form-control" name="dokumen[]" multiple data-live-search="true">
                       <option data-icon="icon-heart" disabled></option>
                       @foreach ($dokumen as $item)
